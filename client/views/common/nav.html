@@ -49,6 +49,10 @@
         <a href="{{ pathFor 'users'}}">Faculty</a>
     </li>
 
+    <li class="{{ activeIfTemplateIs 'twilioForm' }}">
+        <a href="{{ pathFor 'twilioForm'}}">Twilio</a>
+    </li>
+
     {{> navdropdown}}
 
 

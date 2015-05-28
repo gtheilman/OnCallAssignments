@@ -1,0 +1,56 @@
+<!--This template is for setting/changing Twilio credentials -->
+<template name="twilioForm">
+
+    <h2>Twilio Credentials</h2>
+
+    <div class='row'>
+        <div class="col-md-12">
+            <p>
+                For security reasons, you cannot retrieve/edit Twilio credentials in this application. You can only
+                enter
+                new credentials. If you need to make changes to the Twilio credentials, just submit them as "new". The
+                new credentials will overwrite the ones already in the database.
+            </p>
+        </div>
+    </div>
+
+
+    <div class='row'>
+        <div class="col-md-12">
+            <p>
+                {{#if twilioCredentials }}
+                <b>There are no credentials stored in the database.</b>
+                {{else}}
+                <b>There are already credentials stored in the database. Submitting credentials below will overwrite
+                    the existing credentials.</b>
+                {{/if}}
+            </p>
+        </div>
+    </div>
+
+
+    <form id="twilioForm">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="accountsid">AccountSID</label>
+                    <input type="text" class="form-control" id="accountsid" placeholder="AccountSID">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="authtoken">AuthToken</label>
+                    <input type="password" class="form-control" id="authtoken" placeholder="AuthToken">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <p>&nbsp;</p>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>
+
