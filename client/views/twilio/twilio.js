@@ -1,8 +1,14 @@
 if (!Meteor.isClient) {
 } else {
 
-    // Handles the result of the user form submission
-    Template.userForm.events({
+    Template.twilioForm.helpers({
+        credentialValidityCheck: function () {
+            return Session.get("credentialValidityCheck");
+        }
+    });
+
+    // Handles the result of the user (faculty) form submission
+    Template.twilioForm.events({
         "submit #twilioForm": function (event) {
             event.preventDefault();
 
@@ -18,14 +24,26 @@ if (!Meteor.isClient) {
                     authtoken: $('#authtoken').val()
                 };
 
-                Meteor.call('validateTwilioCredentials', credentials);
-                // Router.go('users');
+                Meteor.call("validateTwilioCredentials", credentials, function (error, result) {
+                    if (error) {
+                        console.log(error.reason);
+                        alert('Invalid credentials');
+                    }
+                    else {
+                        // console.log(result);
+                        if (result == $('#accountsid').val()) {
+                            alert('Credentials validated by Twilio');
+                            Router.go('consults');
+                        } else {
+                            alert('Invalid credentials');
+                            Router.go('twilioForm');
+                        }
+                    }
+                });
+
             }
         }
 
-    })
-    ;
-
-
+    });
 }
 

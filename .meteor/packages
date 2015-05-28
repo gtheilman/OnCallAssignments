@@ -11,3 +11,5 @@ jquery
 aldeed:tabular
 accounts-password
 accounts-ui
+http
+session
