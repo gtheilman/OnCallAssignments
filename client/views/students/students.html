@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-12">
             <a href="studentForm">
-                <button type="button" id="newStudent" class="btn btn-lg btn-default newStudent">New Student</button>
+                <button type="button" id="newStudent" class="btn  btn-sm  btn-default newStudent">New Student</button>
             </a>
         </div>
     </div>
@@ -86,11 +86,14 @@
 
         <div class="row">
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-sm btn-success">Submit</button>
             </div>
+
+            {{#if _id }}
             <div class="col-md-2">
-                <button type="button" id="deleteStudentButton" class="btn btn-danger">Delete</button>
+                <button type="button" id="deleteStudentButton" class="btn btn-sm btn-danger">Delete</button>
             </div>
+            {{/if}}
         </div>
 
     </form>

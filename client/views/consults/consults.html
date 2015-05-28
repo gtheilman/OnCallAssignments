@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-12">
             <a href="consultForm">
-                <button type="button" id="newConsult" class="btn btn-lg btn-default newConsult">New Consult</button>
+                <button type="button" id="newConsult" class="btn  btn-sm  btn-default newConsult">New Consult</button>
             </a>
         </div>
     </div>
@@ -28,15 +28,17 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="shortName">shortName</label>
-                    <input type="text" class="form-control" id="shortName" placeholder="shortName"
+                    <label for="shortName">Name</label>
+                    <input type="text" class="form-control" id="shortName"
+                           placeholder="Some short name to identify the consult..."
                            value="{{shortName}}">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="tweetHeader">tweetHeader</label>
-                    <input type="text" class="form-control" id="tweetHeader" placeholder="tweetHeader" value="{{tweetHeader}}">
+                    <label for="tweetHeader">Tweet Header</label>
+                    <input type="text" class="form-control" id="tweetHeader" placeholder="Pharmacist On-Call:"
+                           value="{{tweetHeader}}">
                 </div>
             </div>
         </div>
@@ -44,84 +46,148 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="consultURL">consultURL</label>
-                    <input type="text" class="form-control" id="consultURL" placeholder="consultURL" value="{{consultURL}}">
+                    <label for="consultURL">Consult URL</label>
+                    <input type="url" class="form-control" id="consultURL" placeholder="The webpage with the consult"
+                           value="{{consultURL}}">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="keyURL">keyURL</label>
-                    <input type="text" class="form-control" id="keyURL" placeholder="keyURL" value="{{keyURL}}">
+                    <label for="keyURL">Key URL</label>
+                    <input type="url" class="form-control" id="keyURL" placeholder="The webpage with the key"
+                           value="{{keyURL}}">
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <div class="form-group">
-                    <label for="phoneMessage">phoneMessage</label>
-                    <input type="text" class="form-control" id="phoneMessage" placeholder="phoneMessage" value="{{phoneMessage}}">
+                    <label for="phoneMessage">Phone Message</label>
+                    <input type="text" class="form-control" id="phoneMessage"
+                           placeholder="Thanks for calling me back.  What do you think we ought to do about ..."
+                           value="{{phoneMessage}}">
                 </div>
             </div>
-            <div class="col-md-4">
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
                 <div class="form-group">
-                    <label for="hangupMessage">hangupMessage</label>
-                    <input type="text" class="form-control" id="hangupMessage" placeholder="hangupMessage" value="{{hangupMessage}}">
+                    <label for="hangupMessage">Hangup Message</label>
+                    <input type="text" class="form-control" id="hangupMessage"
+                           placeholder="I appreciate your help.   Goodbye." value="{{hangupMessage}}">
                 </div>
             </div>
             <div class="col-md-4">
 
             </div>
         </div>
+
 
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="voice">voice</label>
-                    <input type="text" class="form-control" id="voice" placeholder="voice" value="{{voice}}">
+                    <label for="phone">Twilio Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="6015551212" value="{{phone}}">
                 </div>
             </div>
         </div>
-
 
 
         <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="maxSeconds">phoneMessage</label>
-                    <input type="text" class="form-control" id="maxSeconds" placeholder="120" value="{{maxSeconds}}">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="transcribe">transcribe</label>
-                    <input type="text" class="form-control" id="transcribe" placeholder="transcribe" value="{{transcribe}}">
-                </div>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
+                <label for="voice">Voice</label>
 
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="voice" id="voice" value="woman" {{womanChecked}}>
+                        Woman
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="voice" id="voice" value="man" {{manChecked}}>
+                        Man
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="voice" id="voice" value="alice" {{aliceChecked}}>
+                        Alice
+                    </label>
+                </div>
             </div>
-        </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="maxSeconds">Max Record Length</label>
+                    <input type="number" class="form-control" id="maxSeconds" placeholder="120" value="{{maxSeconds}}">
+                </div>
+                </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="checkbox">
+                        {{#if transcribe}}
+                        <input type="checkbox" id="transcribe" name="transcribe" checked>
+                        {{else}}
+                        <input type="checkbox" id="transcribe" name="transcribe">
+                        {{/if}}
+                        Transcribe?<br>(Extra charge)
+                    </div>
+                </div>
+                </div>
+
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="checkbox">
+                        {{#if nameLookup}}
+                        <input type="checkbox" id="nameLookup" checked>
+                        {{else}}
+                        <input type="checkbox" id="nameLookup">
+                        {{/if}}
+                        Lookup caller?<br>(Extra charge)
+                    </div>
+                </div>
+            </div>
+            </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
                 <div class="form-group">
-                    <label for="nameLookup">nameLookup</label>
-                    <input type="text" class="form-control" id="nameLookup" placeholder="nameLookup" value="{{nameLookup}}">
+                    <div class="checkbox">
+                        {{#if activate}}
+                        <input type="checkbox" id="activate" name="activate" checked>
+                        {{else}}
+                        <input type="checkbox" id="activate" name="activate">
+                        {{/if}}
+                        Make active. This will be the consult students will hear when they call the phone number
+                        associated with this consult.<br>
+                        Other consults associated with this phone number will be deactivated automatically.
+                    </div>
                 </div>
             </div>
         </div>
-
 
 
         <div class="row">
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-sm btn-success">Submit</button>
             </div>
+
+            {{#if _id }}
             <div class="col-md-2">
-                <button type="button" id="deleteConsultButton" class="btn btn-danger">Delete</button>
+                <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete</button>
             </div>
+
+            <input type="hidden" name="id" value="{{_id}}" id="id">
+            {{/if}}
         </div>
+
 
     </form>
 

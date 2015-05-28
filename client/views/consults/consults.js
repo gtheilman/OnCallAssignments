@@ -6,14 +6,21 @@ if (!Meteor.isClient) {
         "submit #consultForm": function (event) {
             event.preventDefault();
 
+
             if ($('#shortName').val() == "") {
-                alert('A shortName must be provided');
+                alert('A name must be provided');
+            } else if ($('#phone').val() == "") {
+                alert('A phone number must be provided');
+            } else if ($('#phoneMessage').val() == "") {
+                alert('An outgoing phone message must be provided.');
             }
 
             else {
 
+
                 var consult =
                 {
+                    id: $('#id').val(),
                     shortName: $('#shortName').val(),
                     tweetHeader: $('#tweetHeader').val(),
                     consultURL: $('#consultURL').val(),
@@ -21,9 +28,10 @@ if (!Meteor.isClient) {
                     phoneMessage: $('#phoneMessage').val(),
                     hangupMessage: $('#hangupMessage').val(),
                     phone: $('#phone').val(),
-                    voice: $('#voice').val(),
-                    transcribe: $('#transcribe').val(),
-                    nameLookup: $('#nameLookup').val(),
+                    voice: $('input:radio[name=voice]:checked').val(),
+                    transcribe: $('#transcribe').is(':checked'),
+                    nameLookup: $('#nameLookup').is(':checked'),
+                    activate: $('#activate').is(':checked'),
                     createdAt: new Date()
                 };
 
@@ -32,7 +40,7 @@ if (!Meteor.isClient) {
             }
         },
         "click #deleteConsultButton": function (event) {
-            Meteor.call('deleteConsultData', $('#consultid').val());
+            Meteor.call('deleteConsult', $('#id').val());
             Router.go('consults');
         }
     });
