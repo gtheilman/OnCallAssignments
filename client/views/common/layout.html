@@ -1,0 +1,20 @@
+<head>
+    <title>On-Call Assignments</title>
+</head>
+
+<template name="layout">
+    <div class="container-fluid">
+        <header>
+            {{> nav }}
+        </header>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        {{#if currentUser}}
+             {{> yield}}
+        {{/if}}
+    </div>
+    <footer>
+        {{> footer}}
+    </footer>
+</template>
+

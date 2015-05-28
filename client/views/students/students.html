@@ -1,0 +1,100 @@
+<!--This template displays all students using the aldeed:tabular package -->
+<template name='students'>
+    <div class='row'>
+        <div class="col-sm-4">
+            <h2>Students</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{> tabular table=TabularTables.Students class="table table-striped table-bordered table-condensed"}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="studentForm">
+                <button type="button" id="newStudent" class="btn btn-lg btn-default newStudent">New Student</button>
+            </a>
+        </div>
+    </div>
+</template>
+
+
+<!--This template is for creating, updating and deleting students -->
+<template name="studentForm">
+    <form id="studentForm">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
+                           value="{{firstName}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" value="{{lastName}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="studentid">Student ID</label>
+                    <input type="text" class="form-control" id="studentid" placeholder="123456" value="{{studentid}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" value="{{username}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="Email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" value="{{email}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="6015551212" value="{{phone}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="gradYear">Graduation Year</label>
+                    <input type="text" class="form-control" id="gradYear" placeholder="2021" value="{{gradYear}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" id="deleteStudentButton" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+
+    </form>
+
+</template>
+
+

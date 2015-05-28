@@ -1,0 +1,130 @@
+<!--This template displays all consults using the aldeed:tabular package -->
+<template name='consults'>
+    <div class='row'>
+        <div class="col-sm-4">
+            <h2>Consults</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{> tabular table=TabularTables.Consults class="table table-striped table-bordered table-condensed"}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="consultForm">
+                <button type="button" id="newConsult" class="btn btn-lg btn-default newConsult">New Consult</button>
+            </a>
+        </div>
+    </div>
+</template>
+
+
+<!--This template is for creating, updating and deleting consults -->
+<template name="consultForm">
+    <form id="consultForm">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="shortName">shortName</label>
+                    <input type="text" class="form-control" id="shortName" placeholder="shortName"
+                           value="{{shortName}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="tweetHeader">tweetHeader</label>
+                    <input type="text" class="form-control" id="tweetHeader" placeholder="tweetHeader" value="{{tweetHeader}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="consultURL">consultURL</label>
+                    <input type="text" class="form-control" id="consultURL" placeholder="consultURL" value="{{consultURL}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="keyURL">keyURL</label>
+                    <input type="text" class="form-control" id="keyURL" placeholder="keyURL" value="{{keyURL}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="phoneMessage">phoneMessage</label>
+                    <input type="text" class="form-control" id="phoneMessage" placeholder="phoneMessage" value="{{phoneMessage}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="hangupMessage">hangupMessage</label>
+                    <input type="text" class="form-control" id="hangupMessage" placeholder="hangupMessage" value="{{hangupMessage}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="voice">voice</label>
+                    <input type="text" class="form-control" id="voice" placeholder="voice" value="{{voice}}">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="maxSeconds">phoneMessage</label>
+                    <input type="text" class="form-control" id="maxSeconds" placeholder="120" value="{{maxSeconds}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="transcribe">transcribe</label>
+                    <input type="text" class="form-control" id="transcribe" placeholder="transcribe" value="{{transcribe}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="nameLookup">nameLookup</label>
+                    <input type="text" class="form-control" id="nameLookup" placeholder="nameLookup" value="{{nameLookup}}">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" id="deleteConsultButton" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+
+    </form>
+
+</template>
+
+
