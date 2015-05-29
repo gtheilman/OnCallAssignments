@@ -76,14 +76,8 @@ if (Meteor.isServer) {
             });
         },
         'say': function () {
-            var resp = new twilio.TwimlResponse();
-            resp.say('Welcome to Twilio!');
-            resp.say('Please let us know if we can help during your development.', {
-                voice: 'woman',
-                language: 'en-gb'
-            });
-
-            return resp.toString()
+            var resp = '<?xml version="1.0" encoding="UTF-8"?><Response><Say voice="woman" language="fr">Chapeau!</Say></Response>';
+            return resp
         }
 
     });
