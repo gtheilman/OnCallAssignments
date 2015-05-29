@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-12">
             <a href="userForm">
-                <button type="button" id="newUser" class="btn btn-lg btn-default newUser">New User</button>
+                <button type="button" id="newUser" class="btn btn-sm btn-default newUser">New User</button>
             </a>
         </div>
     </div>
@@ -25,7 +25,6 @@
 <!--This template is for creating users -->
 <template name="userForm">
     <form id="userForm">
-
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
@@ -33,29 +32,139 @@
                     <input type="text" class="form-control" id="username" placeholder="Username">
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class=" col-md-3">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" placeholder="Email">
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class=" col-md-3">
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" placeholder="Password"
+                           value="{{password}}">
                 </div>
             </div>
-            <div class="col-md-3">
+        </div>
+
+
+        <div class=" row">
+            <div class="col-md-5">
                 <div class="form-group">
                     <p>&nbsp;</p>
-                    <button type="submit" class="btn btn-success">Create</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </div>
             </div>
-
 
         </div>
 
     </form>
+
+</template>
+
+
+<!--This template is for editing users -->
+<template name="editUserForm">
+    <form id="editUserForm">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username"
+                           value="{{username}}">
+                </div>
+            </div>
+            <div class=" col-md-3">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email"
+                           value="{{email}}">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="checkbox">
+                        {{#if active}}
+                        <input type="checkbox" id="active" name="active" checked>
+                        {{else}}
+                        <input type="checkbox" id="active" name="active">
+                        {{/if}}
+                        Active (unchecking this disables account, but doesn't delete user)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="checkbox">
+                        {{#if admin}}
+                        <input type="checkbox" id="admin" name="admin" checked>
+                        {{else}}
+                        <input type="checkbox" id="admin" name="admin">
+                        {{/if}}
+                        Administrator (can do everything)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="checkbox">
+                        {{#if grader}}
+                        <input type="checkbox" id="grader" name="grader" checked>
+                        {{else}}
+                        <input type="checkbox" id="grader" name="grader">
+                        {{/if}}
+                        Grader (Limited access. Good for residents or others who don't need to alter users, students,
+                        consults...)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class=" row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <p>&nbsp;</p>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <input type="hidden" name="_id" id="_id" value="{{_id}}">
+
+    </form>
+
+    <div class=" row">&nbsp;</div>
+    <div class=" row">&nbsp;</div>
+    <div class=" row">&nbsp;</div>
+
+
+    <div class=" row">
+        <div class="col-md-6">
+            <i>Before deleting a user, consider whether it would be better to just mark them as "inactive"...</i>
+        </div>
+        <div class="col-md-2">
+            <button type="button" id="deleteUserButton" class="btn btn-sm btn-danger">Delete
+            </button>
+        </div>
+
+    </div>
 
 </template>
 

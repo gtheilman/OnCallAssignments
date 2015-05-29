@@ -20,27 +20,3 @@ if (Meteor.isClient) {
     });
 }
 
-
-if (Meteor.isClient) {
-    Template.consultForm.helpers({
-        aliceChecked: function (id) {
-            var consult = Consults.findOne({_id: id});
-            if (consult.voice == 'alice') {
-                return "checked"
-            }
-        },
-        manChecked: function (id) {
-            var consult = Consults.findOne({_id: id});
-            if (consult.voice == 'man') {
-                return "checked"
-            }
-        },
-        womanChecked: function (id) {
-            var consult = Consults.findOne({_id: id});
-            if (consult.voice == 'woman') {
-                return "checked"
-            }
-        }
-    })
-
-}

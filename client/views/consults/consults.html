@@ -102,19 +102,19 @@
 
                 <div class="radio">
                     <label>
-                        <input type="radio" name="voice" id="voice" value="woman" {{womanChecked}}>
+                        <input type="radio" name="voice" id="voice" value="woman" {{womanChecked _id }}>
                         Woman
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="voice" id="voice" value="man" {{manChecked}}>
+                        <input type="radio" name="voice" id="voice" value="man" {{manChecked _id }}>
                         Man
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="voice" id="voice" value="alice" {{aliceChecked}}>
+                        <input type="radio" name="voice" id="voice" value="alice" {{aliceChecked _id }}>
                         Alice
                     </label>
                 </div>
@@ -125,7 +125,7 @@
                     <label for="maxSeconds">Max Record Length</label>
                     <input type="number" class="form-control" id="maxSeconds" placeholder="120" value="{{maxSeconds}}">
                 </div>
-                </div>
+            </div>
             <div class="col-md-1"></div>
             <div class="col-md-2">
                 <div class="form-group">
@@ -138,7 +138,7 @@
                         Transcribe?<br>(Extra charge)
                     </div>
                 </div>
-                </div>
+            </div>
 
 
             <div class="col-md-2">
@@ -153,7 +153,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-1"></div>
