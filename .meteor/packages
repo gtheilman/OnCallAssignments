@@ -10,6 +10,6 @@ twbs:bootstrap
 jquery
 aldeed:tabular
 accounts-password
-accounts-ui
 http
 session
+ian:accounts-ui-bootstrap-3

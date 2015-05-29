@@ -60,9 +60,10 @@
         <a href="{{pathFor 'about'}}">About</a>
     </li>
     {{/if}}
-    <li>
-        {{> loginButtons}}
-    </li>
+
+    <ul class="nav navbar-nav navbar-right">
+        {{> loginButtons}} <!-- here -->
+    </ul>
 
 </template>
 
