@@ -36,6 +36,7 @@
 <template name="navItems">
 
     {{#if currentUser}}
+    {{#if isInRole 'active'}}
     <li class="{{ activeIfTemplateIs 'consults' }}">
         <a href="{{ pathFor 'consults'}}">Consults</a>
     </li>
@@ -59,6 +60,9 @@
     <li class="{{ activeIfTemplateIs 'about' }}">
         <a href="{{pathFor 'about'}}">About</a>
     </li>
+    {{else}}
+    {{logout}}
+    {{/if}}
     {{/if}}
 
     <ul class="nav navbar-nav navbar-right">

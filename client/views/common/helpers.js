@@ -6,10 +6,12 @@ if (!Meteor.isClient) {
             var currentRoute = Router.current();
             return currentRoute &&
             template === currentRoute.lookupTemplate() ? 'active' : '';
+        },
+
+        logout: function () {
+            Meteor.logout();
         }
     });
-
-
 }
 
 

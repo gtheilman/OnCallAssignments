@@ -18,7 +18,7 @@ if (Meteor.isServer) {
             if (result.statusCode == 200) {
                 var respJson = JSON.parse(result.content);
                 if (respJson.sid == credentials.accountsid) {
-                    Twilio.update(
+                    TwilioCredentials.update(
                         {},
                         {
                             $set: {
@@ -39,7 +39,7 @@ if (Meteor.isServer) {
 
         // this is to check if the credentials already in the db are valid
         'confirmTwilioCredentials': function () {
-            var credentials = Twilio.findOne();
+            var credentials = TwilioCredentials.findOne();
             var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + ".json";
             var auth = credentials.accountsid + ":" + credentials.authtoken;
             var result = Meteor.http.get(restURL,
@@ -57,6 +57,33 @@ if (Meteor.isServer) {
             } else {
                 return 0
             }
+        },
+        'sendSMS': function () {
+            var credentials = TwilioCredentials.findOne();
+            twilio = Twilio(credentials.accountsid, credentials.authtoken);
+            twilio.sendSms({
+                to: '+16016131286', // Any number Twilio can deliver to
+                from: '+16017148499', // A number you bought from Twilio and can use for outbound communication
+                body: 'word to your mother.' // body of the SMS message
+            }, function (err, responseData) { //this function is executed when a response is received from Twilio
+                if (!err) { // "err" is an error received during the request, if any
+                    // "responseData" is a JavaScript object containing data received from Twilio.
+                    // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
+                    // http://www.twilio.com/docs/api/rest/sending-sms#example-1
+                    console.log(responseData.from); // outputs "+14506667788"
+                    console.log(responseData.body); // outputs "word to your mother."
+                }
+            });
+        },
+        'say': function () {
+            var resp = new twilio.TwimlResponse();
+            resp.say('Welcome to Twilio!');
+            resp.say('Please let us know if we can help during your development.', {
+                voice: 'woman',
+                language: 'en-gb'
+            });
+
+            return resp.toString()
         }
 
     });
