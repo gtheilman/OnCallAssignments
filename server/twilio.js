@@ -58,13 +58,13 @@ if (Meteor.isServer) {
                 return 0
             }
         },
-        'sendSMS': function () {
+        'sendSMS': function (to, from, message) {
             var credentials = TwilioCredentials.findOne();
             twilio = Twilio(credentials.accountsid, credentials.authtoken);
             twilio.sendSms({
-                to: '+16016131286', // Any number Twilio can deliver to
-                from: '+16017148499', // A number you bought from Twilio and can use for outbound communication
-                body: 'word to your mother.' // body of the SMS message
+                to: to, // Any number Twilio can deliver to
+                from: from, // A number you bought from Twilio and can use for outbound communication
+                body: message // body of the SMS message
             }, function (err, responseData) { //this function is executed when a response is received from Twilio
                 if (!err) { // "err" is an error received during the request, if any
                     // "responseData" is a JavaScript object containing data received from Twilio.

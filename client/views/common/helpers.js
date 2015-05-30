@@ -21,4 +21,3 @@ if (Meteor.isClient) {
         passwordSignupFields: 'USERNAME_AND_EMAIL'
     });
 }
-
