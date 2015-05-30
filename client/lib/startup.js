@@ -1,3 +1,4 @@
+/*
 Meteor.startup(function () {
 
     // checking on startup whether or not the Twilio credentials in the database are valid or not.
@@ -19,3 +20,4 @@ Meteor.startup(function () {
     });
 });
 
+ */

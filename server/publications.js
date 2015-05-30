@@ -21,3 +21,13 @@ Meteor.publish('students', function () {
         }
     }
 });
+
+
+Meteor.publish('responses', function () {
+    //returns empty set if not logged in or not active
+    if (this.userId) {
+        if (Roles.userIsInRole(this.userId, 'active')) {
+            return Responses.find();
+        }
+    }
+});

@@ -27,6 +27,7 @@ if (!Meteor.isClient) {
                     keyURL: $('#keyURL').val(),
                     phoneMessage: $('#phoneMessage').val(),
                     hangupMessage: $('#hangupMessage').val(),
+                    maxSeconds: $('#maxSeconds').val(),
                     phone: $('#phone').val(),
                     voice: $('input:radio[name=voice]:checked').val(),
                     transcribe: $('#transcribe').is(':checked'),

@@ -74,11 +74,8 @@ if (Meteor.isServer) {
                     console.log(responseData.body); // outputs "word to your mother."
                 }
             });
-        },
-        'say': function () {
-            var resp = '<?xml version="1.0" encoding="UTF-8"?><Response><Say voice="woman" language="fr">Chapeau!</Say></Response>';
-            return resp
         }
+
 
     });
 
