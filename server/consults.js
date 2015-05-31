@@ -9,6 +9,7 @@ if (Meteor.isServer) {
         'upsertConsultData': function (consult) {
             // If marked as active, deactivate any consults using that same phone number
             if (consult.activate) {
+                // Mark any currently activated consults using that phone as "inactive"
                 Consults.update(
                     {phone: consult.phone},
                     {
@@ -17,8 +18,58 @@ if (Meteor.isServer) {
                         }
                     },
                     {multi: true}
-                )
+                );
+
+
+                /*   Can't work on this until trial account status is changed.
+
+                 // Set the Request URL associated with that number on the Twilio website
+                 // First, get the id associated with this phone number
+                 var credentials = TwilioCredentials.findOne();
+                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/IncomingPhoneNumbers.json";
+                 var auth = credentials.accountsid + ":" + credentials.authtoken;
+                 var phoneInfo = Meteor.http.get(restURL,
+                 {
+                 auth: auth,
+                 params: {
+                 PhoneNumber: "%2B1" + consult.phone
+                 }
+                 });
+                 // Then, try to set the Request URL to our own server
+                 if (phoneInfo.statusCode == 200) {
+                 console.log(phoneInfo);
+                 var respJson = JSON.parse(phoneInfo.content);
+                 var sid = respJson.incoming_phone_numbers[0].sid;
+                 restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid
+                 + "/IncomingPhoneNumbers/" + sid + ".json";
+                 var voiceURLInfo = Meteor.http.post(restURL,
+                 {
+                 auth: auth,
+                 params: {
+                 VoiceUrl: Meteor.absoluteUrl() + "say/" + consult.phone
+                 }
+                 });
+                 // Confirm that it was set correctly
+                 if (voiceURLInfo.statusCode == 200) {
+                 var voiceJson = JSON.parse(phoneInfo.content);
+                 if (voiceJson.voice_url == Meteor.absoluteUrl() + "say/" + consult.phone) {
+                 return sid
+                 } else {
+                 var errorJson = voiceJson.parse(result.content);
+                 throw new Meteor.Error(result.statusCode, errorJson.error);
+                 }
+                 }
+                 } else {
+                 var errorJson = JSON.parse(result.content);
+                 throw new Meteor.Error(result.statusCode, errorJson.error);
+                 }
+                 }
+
+
+                 */
+
             }
+
             // Insert/update the consult
             Consults.upsert(
                 {_id: consult.id},
@@ -38,8 +89,10 @@ if (Meteor.isServer) {
                     createdAt: new Date()
                 }
             )
-        }
-        ,
+
+        },
+
+
         'deleteConsult': function (id) {
             Consults.remove(
                 {

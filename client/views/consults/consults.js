@@ -53,7 +53,6 @@ if (Meteor.isClient) {
     Template.consultForm.helpers({
         aliceChecked: function (id) {
             var consult = Consults.findOne({_id: id});
-            console.log(id);
             if (consult.voice == 'alice') {
                 return "checked"
             }
@@ -69,7 +68,10 @@ if (Meteor.isClient) {
             if (consult.voice == 'woman') {
                 return "checked"
             }
+        },
+        consultSelector: function (id) {
+            return {consult_id: Session.get('consult_id')};
         }
-    })
-
+    });
 }
+

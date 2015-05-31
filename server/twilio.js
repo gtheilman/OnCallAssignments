@@ -97,6 +97,27 @@ if (Meteor.isServer) {
                         console.log(responseData.body); // outputs "word to your mother."
                     }
                 });
+            },
+
+
+            // this is to check if newly submitted credentials are valid
+            'callInfo': function (callSid) {
+                var credentials = TwilioCredentials.findOne();
+                var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/Calls/"
+                    + callSid + ".json";
+                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var result = Meteor.http.get(restURL,
+                    {
+                        auth: auth
+                    });
+
+                if (result.statusCode == 200) {
+                    var respJson = JSON.parse(result.content);
+                    return respJson
+                } else {
+                    var errorJson = JSON.parse(result.content);
+                    throw new Meteor.Error(result.statusCode, errorJson.error);
+                }
             }
 
 
