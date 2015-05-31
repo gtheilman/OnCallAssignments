@@ -73,20 +73,20 @@ Template.importStudentCSV.events({
                     if (!csvData.phone) {
                         csvData.phone = ''
                     }
-                    if (!csvData.studentid) {
-                        csvData.studentid = Math.floor(Math.random() * (999999 - 10000 + 1) + 10000); // random number
+                    if (csvData.studentid) {  // skips row if no studentid
+                        var student = {
+                            lastName: csvData.lastName,
+                            firstName: csvData.firstName,
+                            studentid: csvData.studentid,
+                            username: csvData.username,
+                            email: csvData.email,
+                            gradYear: csvData.gradYear,
+                            phone: csvData.phone
+                        };
+                        Meteor.call('upsertStudentData', student);
+                    } else {
+                        console.log("Record skipped because no studentid present.")
                     }
-
-                    var student = {
-                        lastName: csvData.lastName,
-                        firstName: csvData.firstName,
-                        studentid: csvData.studentid,
-                        username: csvData.username,
-                        email: csvData.email,
-                        gradYear: csvData.gradYear,
-                        phone: csvData.phone
-                    };
-                    Meteor.call('upsertStudentData', student);
 
                 });
             }
