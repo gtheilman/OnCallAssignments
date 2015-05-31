@@ -193,33 +193,29 @@
 
 
     {{#if _id }}
-
-        <div class='row'>
-            <div class="col-sm-4">
-                <h3>Responses</h3>
-            </div>
-        </div>
-
-        <table>
-            {{#each consultResponse}}
-                <tr>
-                    <td>Consult</td>
-                    {{>responseRow }}
-                </tr>
-
-            {{/each}}
-
-        </table>
-
+        {{> responses _id}}
     {{/if}}
 
 </template>
 
 
-<template name="responseRow">
-    <td>{{callSid}}</td>
-    <td>{{consult_id}}</td>
-    <td>{{responseCells}}</td>
+<template name="responses">
+    <div class='row'>
+        <div class="col-sm-4">
+            <h3>Responses</h3>
+        </div>
+    </div>
+
+    <table>
+        {{#each consultResponse}}
+            <tr>
+                <td>Consult</td>
+                {{ consultRow }}
+            </tr>
+
+        {{/each}}
+
+    </table>
 </template>
 
 
