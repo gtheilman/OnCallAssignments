@@ -47,3 +47,50 @@ if (!Meteor.isClient) {
 
 }
 
+Template.importStudentCSV.events({
+    "click .btnReadCsv": function (event, template) {
+        Papa.parse(template.find('#csv-file').files[0], {
+            header: true,
+            skipEmptyLines: true,
+            complete: function (results) {
+                _.each(results.data, function (csvData) {
+                    console.log(csvData.studentid);
+                    if (!csvData.lastName) {
+                        csvData.lastName = ''
+                    }
+                    if (!csvData.firstName) {
+                        csvData.firstName = ''
+                    }
+                    if (!csvData.username) {
+                        csvData.username = ''
+                    }
+                    if (!csvData.email) {
+                        csvData.email = ''
+                    }
+                    if (!csvData.gradYear) {
+                        csvData.gradYear = ''
+                    }
+                    if (!csvData.phone) {
+                        csvData.phone = ''
+                    }
+                    if (!csvData.studentid) {
+                        csvData.studentid = Math.floor(Math.random() * (999999 - 10000 + 1) + 10000); // random number
+                    }
+
+                    var student = {
+                        lastName: csvData.lastName,
+                        firstName: csvData.firstName,
+                        studentid: csvData.studentid,
+                        username: csvData.username,
+                        email: csvData.email,
+                        gradYear: csvData.gradYear,
+                        phone: csvData.phone
+                    };
+                    Meteor.call('upsertStudentData', student);
+
+                });
+            }
+        });
+        Router.go('students');
+    }
+});

@@ -49,29 +49,51 @@ if (!Meteor.isClient) {
 }
 
 
-if (Meteor.isClient) {
+if (!Meteor.isClient) {
+} else {
     Template.consultForm.helpers({
-        aliceChecked: function (id) {
-            var consult = Consults.findOne({_id: id});
+
+
+        aliceChecked: function () {
+            var consult = Consults.findOne({_id: Session.get("consult_id")});
             if (consult.voice == 'alice') {
-                return "checked"
+                return consult && "checked"
             }
-        },
-        manChecked: function (id) {
-            var consult = Consults.findOne({_id: id});
-            if (consult.voice == 'man') {
-                return "checked"
-            }
-        },
-        womanChecked: function (id) {
-            var consult = Consults.findOne({_id: id});
-            if (consult.voice == 'woman') {
-                return "checked"
-            }
-        },
-        consultSelector: function (id) {
-            return {consult_id: Session.get('consult_id')};
         }
+        ,
+        manChecked: function () {
+            var consult = Consults.findOne({_id: Session.get("consult_id")});
+            if (consult.voice == 'man') {
+                return consult && "checked"
+            }
+        }
+        ,
+        womanChecked: function () {
+            var consult = Consults.findOne({_id: Session.get("consult_id")});
+            if (consult.voice == 'woman') {
+                return consult && "checked"
+            }
+        },
+
+        consultResponse: function () {
+            return Responses.find({consult_id: Session.get("consult_id")});
+        }
+
+
     });
+
+    Template.responseRow.helpers({
+        responseCells: function () {
+            // return "before";
+            var callInfo = Meteor.call('callInfo', this.callSid);
+            console.log(callInfo.from);
+            return callInfo.from;
+
+        }
+    })
+
+
 }
+
+
 

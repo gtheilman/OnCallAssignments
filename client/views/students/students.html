@@ -13,9 +13,14 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
             <a href="studentForm">
-                <button type="button" id="newStudent" class="btn  btn-sm  btn-default newStudent">New Student</button>
+                <button type="button" id="newStudent" class="btn  btn-sm  btn-default">New Student</button>
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="importStudentCSV">
+                <button type="button" id="importStudentCSV" class="btn  btn-sm  btn-info">Import Students</button>
             </a>
         </div>
     </div>
@@ -90,9 +95,9 @@
             </div>
 
             {{#if _id }}
-            <div class="col-md-2">
-                <button type="button" id="deleteStudentButton" class="btn btn-sm btn-danger">Delete</button>
-            </div>
+                <div class="col-md-2">
+                    <button type="button" id="deleteStudentButton" class="btn btn-sm btn-danger">Delete</button>
+                </div>
             {{/if}}
         </div>
 
@@ -101,3 +106,50 @@
 </template>
 
 
+<template name="importStudentCSV">
+    <div class='row'>
+        <div class="col-sm-4">
+            <h3>Import Students</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <p>
+                You can import a CSV file containing student information into the database.
+            </p>
+            <ul>
+                <li>A sample CSV file can be obtained <a href="studentImportTemplate.csv">here.</a>
+                </li>
+                <li>You <b>must not</b> change the names of the column headers in the file.</li>
+                <li>You can also update student info by uploading a spreadsheet.
+                    <ul>
+                        <li>The <i>studentid</i> is what has to remain constant.</li>
+                        <li>No two students can have the same <i>studentid</i>.</li>
+                        <li>Uploading a student record with an identical <i>studentid</i> will overwrite the
+                            student record already in the database.
+                        </li>
+                    </ul>
+                </li>
+                <li>Suggestion: Use the same <i>studentid</i> and <i>username</i> as Blackboard (or whatever
+                    LMS your school uses).
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class="col-sm-4">
+            <input type="file" id="csv-file" name="files"/>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class="col-sm-4">
+            <div>&nbsp;</div>
+            <button type="submit" class="btn btn-primary btnReadCsv">Import</button>
+        </div>
+    </div>
+
+</template>
