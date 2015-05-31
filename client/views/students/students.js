@@ -43,6 +43,7 @@ if (!Meteor.isClient) {
             Meteor.call('deleteStudentData', $('#studentid').val());
             Router.go('students');
         }
+
     });
 
 }
