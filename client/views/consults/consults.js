@@ -80,31 +80,35 @@ if (!Meteor.isClient) {
     Template.responses.created = function () {
         // consult_id was set by iron router when the route was started
         Responses.find({consult_id: Session.get("consult_id")}).forEach(function (response) {
-            Meteor.call('callInfo', response.callSid, function (err, data) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    if (response.student_id) {
-                        var student = Students.findOne({_id: response.student_id});
+            if (!ConsultResponses.findOne({callSid: response.callSid})) {  // don't hit Twilio if we already have the info
+                Meteor.call('callInfo', response.callSid, function (err, data) {
+                    if (err) {
+                        console.log(err);
                     } else {
-                        var student = {};
+                        console.log(data);
+                        if (response.student_id) {
+                            var student = Students.findOne({_id: response.student_id});
+                        } else {
+                            var student = {};
+                        }
+                        var consult = Consults.findOne({_id: response.consult_id});
+
+                        ConsultResponses.insert({
+                            callSid: data.sid,
+                            to: data.to,
+                            from: data.from,
+                            start_time: data.start_time,
+                            caller_name: data.caller_name,
+                            student_id: response.student_id,
+                            username: student.username,
+                            consult_id: response.consult_id,
+                            shortName: consult.shortName
+                            // recording: "https://api.twilio.com" + subresource_uris[0].recordings[0]
+
+                        })
                     }
-                    var consult = Consults.findOne({_id: response.consult_id});
-
-                    ConsultResponses.insert({
-                        callSid: data.sid,
-                        to: data.to,
-                        from: data.from,
-                        start_time: data.start_time,
-                        caller_name: data.caller_name,
-                        student_id: response.student_id,
-                        username: student.username,
-                        consult_id: response.consult_id,
-                        shortName: consult.shortName
-
-                    })
-                }
-            });
+                });
+            }
         });
     };
 
