@@ -13,6 +13,8 @@ if (!Meteor.isClient) {
                 alert('A phone number must be provided');
             } else if ($('#phoneMessage').val() == "") {
                 alert('An outgoing phone message must be provided.');
+            } else if ($('#maxSeconds').val() == "") {
+                alert('What is the maximum length of the recording?');
             }
 
             else {
