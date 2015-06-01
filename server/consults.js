@@ -70,25 +70,50 @@ if (Meteor.isServer) {
 
             }
 
+
             // Insert/update the consult
-            Consults.upsert(
-                {_id: consult.id},
-                {
-                    shortName: consult.shortName,
-                    tweetHeader: consult.tweetHeader,
-                    consultURL: consult.consultURL,
-                    keyURL: consult.keyURL,
-                    phoneMessage: consult.phoneMessage,
-                    hangupMessage: consult.hangupMessage,
-                    voice: consult.voice,
-                    phone: consult.phone,
-                    maxSeconds: consult.maxSeconds,
-                    transcribe: consult.transcribe,
-                    nameLookup: consult.nameLookup,
-                    activate: consult.activate,
-                    createdAt: new Date()
-                }
-            )
+
+            if (Consults.findOne({_id: consult.id})) {
+
+                Consults.update(
+                    {_id: consult.id},
+                    {
+                        $set: {
+                            shortName: consult.shortName,
+                            tweetHeader: consult.tweetHeader,
+                            consultURL: consult.consultURL,
+                            keyURL: consult.keyURL,
+                            phoneMessage: consult.phoneMessage,
+                            hangupMessage: consult.hangupMessage,
+                            voice: consult.voice,
+                            phone: consult.phone,
+                            maxSeconds: consult.maxSeconds,
+                            transcribe: consult.transcribe,
+                            nameLookup: consult.nameLookup,
+                            activate: consult.activate
+                        }
+                    }
+                )
+            } else {
+                Consults.insert(
+                    {
+                        shortName: consult.shortName,
+                        tweetHeader: consult.tweetHeader,
+                        consultURL: consult.consultURL,
+                        keyURL: consult.keyURL,
+                        phoneMessage: consult.phoneMessage,
+                        hangupMessage: consult.hangupMessage,
+                        voice: consult.voice,
+                        phone: consult.phone,
+                        maxSeconds: consult.maxSeconds,
+                        transcribe: consult.transcribe,
+                        nameLookup: consult.nameLookup,
+                        activate: consult.activate,
+                        createdAt: new Date()
+                    }
+                )
+            }
+
 
         },
 

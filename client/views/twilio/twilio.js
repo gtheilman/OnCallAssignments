@@ -33,9 +33,11 @@ if (!Meteor.isClient) {
                         // console.log(result);
                         if (result == $('#accountsid').val()) {
                             alert('Credentials validated by Twilio');
+                            Session.set("credentialValidityCheck", '<div class="alert alert-success" role="alert">The Twilio credentials in the database are valid.</div>');
                             Router.go('consults');
                         } else {
                             alert('Invalid credentials');
+                            Session.set("credentialValidityCheck", '<div class="alert alert-danger" role="alert">The Twilio credentials in the database are NOT valid.</div>');
                             Router.go('twilioForm');
                         }
                     }

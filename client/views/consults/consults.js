@@ -17,7 +17,6 @@ if (!Meteor.isClient) {
 
             else {
 
-
                 var consult =
                 {
                     id: $('#id').val(),
@@ -32,8 +31,7 @@ if (!Meteor.isClient) {
                     voice: $('input:radio[name=voice]:checked').val(),
                     transcribe: $('#transcribe').is(':checked'),
                     nameLookup: $('#nameLookup').is(':checked'),
-                    activate: $('#activate').is(':checked'),
-                    createdAt: new Date()
+                    activate: $('#activate').is(':checked')
                 };
 
                 Meteor.call('upsertConsultData', consult);
@@ -46,37 +44,7 @@ if (!Meteor.isClient) {
         }
     });
 
-    /*
-     Template.consultForm.helpers({
-        aliceChecked: function () {
-            var consult = Consults.findOne({_id: Session.get("consult_id")});
-            if (consult.voice == 'alice') {
-     return "checked"
-     } else {
-     return null
-            }
-        }
-        ,
-        manChecked: function () {
-            var consult = Consults.findOne({_id: Session.get("consult_id")});
-            if (consult.voice == 'man') {
-     return  "checked"
-     } else {
-     return  null
-            }
-        }
-        ,
-        womanChecked: function () {
-            var consult = Consults.findOne({_id: Session.get("consult_id")});
-            if (consult.voice == 'woman') {
-     return "checked"
-     } else {
-     return  null
-            }
-        }
-    });
 
-     */
 
     Template.consultForm.onRendered(function () {
         var consult = Consults.findOne({_id: Session.get("consult_id")});

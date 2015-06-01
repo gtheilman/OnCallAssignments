@@ -27,11 +27,8 @@ if (Meteor.isServer) {
 
                 var result = Meteor.http.get(restURL,
                     {
-                        auth: auth,
-                        params: {
-                            //  username: credentials.accountsid,
-                            //  password: credentials.authtoken
-                        }
+                        auth: auth
+
                     });
 
                 if (result.statusCode == 200) {
@@ -61,6 +58,9 @@ if (Meteor.isServer) {
             // this is to check if the credentials already in the db are valid
             'confirmTwilioCredentials': function () {
                 var credentials = TwilioCredentials.findOne();
+                if (!credentials.accountsid) {
+                    return error
+                }
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + ".json";
                 var auth = credentials.accountsid + ":" + credentials.authtoken;
                 var result = Meteor.http.get(restURL,
