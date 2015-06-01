@@ -100,8 +100,17 @@ if (Meteor.isServer) {
             },
 
 
-            // this is to check if newly submitted credentials are valid
+            // this is to check details about a call from a student
             'callInfo': function (callSid) {
+                var response = Responses.findOne({callSid: callSid});
+
+                if (response.student_id) {
+                    var student = Students.findOne({_id: response.student_id});
+                } else {
+                    var student = {};
+                }
+                var consult = Consults.findOne({_id: response.consult_id});
+
                 var credentials = TwilioCredentials.findOne();
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/Calls/"
                     + callSid + ".json";
@@ -112,11 +121,60 @@ if (Meteor.isServer) {
                     });
 
                 if (result.statusCode == 200) {
-                    var respJson = JSON.parse(result.content);
-                    return respJson
+                    var data = JSON.parse(result.content);
+                    Responses.update(
+                        {callSid: callSid},
+
+                        {
+                            $set: {
+                                to: data.to,
+                                from: data.from,
+                                start_time: data.start_time,
+                                caller_name: data.caller_name,
+                                student_id: response.student_id,
+                                username: student.username,
+                                shortName: consult.shortName
+                            }
+
+                        });
+                    return data
                 } else {
                     var errorJson = JSON.parse(result.content);
                     throw new Meteor.Error(result.statusCode, errorJson.error);
+                }
+            },
+
+            // this is to retrieve information about the recording associated with the call
+            'recordingInfo': function (callSid) {
+                var credentials = TwilioCredentials.findOne();
+                var auth = credentials.accountsid + ":" + credentials.authtoken;
+
+                //  need to get list of recordings
+                var baseRestURL = "https://api.twilio.com";
+                var restURL = baseRestURL + "/2010-04-01/Accounts/" + credentials.accountsid + "/Calls/"
+                    + callSid + "/Recordings.json";
+                var recordingList = Meteor.http.get(restURL,
+                    {
+                        auth: auth
+                    });
+                if (recordingList.statusCode == 200) {
+                    var recordingInfo = JSON.parse(recordingList.content);
+                    var accountSid = recordingInfo.recordings[0].account_sid;
+                    var recordingSid = recordingInfo.recordings[0].sid;
+                    var recordingURL = "https://api.twilio.com/2010-04-01/Accounts/" + accountSid +
+                        "/Recordings/" + recordingSid + ".mp3";
+                    Responses.update(
+                        {callSid: callSid},
+                        {
+                            $set: {
+                                recordingURL: recordingURL
+                            }
+                        }
+                    );
+                    return recordingURL
+                } else {
+                    var errorJson = JSON.parse(recordingList.content);
+                    throw new Meteor.Error(recordingList.statusCode, errorJson.error);
                 }
             }
 
