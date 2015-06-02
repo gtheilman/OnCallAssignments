@@ -47,7 +47,6 @@ if (!Meteor.isClient) {
     });
 
 
-
     Template.consultForm.onRendered(function () {
         var consult = Consults.findOne({_id: Session.get("consult_id")});
         if (consult.voice == 'alice') {
@@ -95,6 +94,19 @@ if (!Meteor.isClient) {
 
             consultResponseSelector: function () {
                 return {consult_id: Session.get("consult_id")};
+            }
+
+
+        }
+    );
+    Template.test.helpers({
+            studentSelect: function () {
+                var select = '<select name="student_id">';
+                Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
+                    select += '<option value="' + student._id + '">' + student.lastName + ', ' + student.firstName + '</option>';
+                });
+                select += "</select>";
+                return select
             }
 
 
