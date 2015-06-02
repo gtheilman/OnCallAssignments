@@ -92,6 +92,7 @@ if (Meteor.isServer) {
 
             ,
 
+
             // TODO need to change this to REST API and get rid of node Twilio
             'sendSMS': function (to, from, message) {
                 var credentials = Credentials.findOne();
@@ -110,6 +111,40 @@ if (Meteor.isServer) {
                     }
                 });
             },
+
+
+            /*
+
+             'sendSMS': function (to, from, message) {
+             var credentials = Credentials.findOne();
+             var auth = credentials.accountsid + ":" + credentials.authtoken;
+             var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/Messages.json";
+             var result = Meteor.http.post(restURL,
+             {
+             auth: auth
+             },
+             {
+             params: {
+             to: to,
+             from: from,
+             body: message
+             }
+             }
+             );
+
+             if (result.statusCode == 200) {
+             var respJson = JSON.parse(result.content);
+             if (respJson.account_sid == credentials.accountsid) {
+             return respJson;
+             } else {
+             return result.error
+             }
+             } else {
+             return result.error
+             }
+             },
+
+             */
 
 
             // this is to check details about a call from a student

@@ -40,10 +40,17 @@ if (!Meteor.isClient) {
                 Router.go('consults');
             }
         },
+
         "click #deleteConsultButton": function (event) {
             Meteor.call('deleteConsult', $('#id').val());
             Router.go('consults');
+        },
+
+        "click #btnConfirm": function (event) {
+            alert("btnConfirm Clicked");
         }
+
+
     });
 
 
@@ -90,6 +97,28 @@ if (!Meteor.isClient) {
     };
 
 
+    Template.consultForm.helpers({
+
+            tweet: function () {
+                var tweet = "<span class='label label-info'>" + this.tweetHeader + " ";
+                tweet += this.consultURL + " ";
+                tweet += this.phone + " ";
+                tweet += "</span>    ";
+
+                var tweetLength = tweet.length;
+                var tweetCharacters = "  <i>(" + tweetLength + " characters)</i>";
+
+                tweetLine = tweet + tweetCharacters;
+
+                return tweetLine
+            }
+
+
+        }
+    );
+
+
+
     Template.responses.helpers({
 
             consultResponseSelector: function () {
@@ -99,17 +128,51 @@ if (!Meteor.isClient) {
 
         }
     );
-    Template.test.helpers({
-            studentSelect: function () {
-                var select = '<select name="student_id">';
+    Template.studentSelectCell.helpers({
+            studentSelect: function (from) {
+
+                var select = '<form><select name="student_id">';
+
+                // generates the select box
                 Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
-                    select += '<option value="' + student._id + '">' + student.lastName + ', ' + student.firstName + '</option>';
+                    select += '<option value="' + student._id + '" ';
+
+
+                    // if the response document already has a student_id saved with it, select it
+                    if (this.student_id) {
+                        if (student._id == this.student_id) {
+                            select += " selected ";
+
+                        }
+                    }
+                    else {  // if not student assigned, try to guess based on from phone number
+                        if (from.search(student.phone) > 0) {
+                            select += " selected ";
+
+                        }
+                    }
+
+
+                    select += '>' + student.lastName + ', ' + student.firstName + '</option>';
+
                 });
+
+
                 select += "</select>";
+
+
+                // Wrong student assigned?   Change it here.
+                if (this.student_id) {
+                    if (student._id == this.student_id) {
+                        select += " <button type='submit'  id='btnReassign'  class='btn btn-sm btn-default'>Re-assign</button><form>";
+                    }
+                }
+                else {  // if no student assigned at all
+                    select += "<button type='submit' id='btnConfirm' class='btn btn-sm btn-success'>Confirm</button><form>";
+                }
                 return select
-            }
 
-
+            }  // studentSelect
         }
     )
     ;

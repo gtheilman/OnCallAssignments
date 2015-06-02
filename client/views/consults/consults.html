@@ -203,6 +203,17 @@
 
     </form>
 
+    <div class="row">
+        <div class="col-md-8">
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>
+                <b>Tweet:</b> {{{ tweet }}}
+            </p>
+        </div>
+    </div>
 
     {{#if _id }}
     {{> responses }}
@@ -229,6 +240,6 @@
 </template>
 
 
-<template name="test">
-    {{{ studentSelect }}}
+<template name="studentSelectCell">
+    {{{studentSelect this.from }}}
 </template>
