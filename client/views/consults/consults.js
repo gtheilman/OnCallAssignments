@@ -47,10 +47,18 @@ if (!Meteor.isClient) {
         },
 
         "click #btnConfirm": function (event) {
-            alert("btnConfirm Clicked");
+            event.preventDefault();
+            alert("clicked");
+            var response =
+            {
+                _id: $("#response_id").val(),
+                student_id: $("#student_id").val()
+            };
+
+            Meteor.call('updateResponse', response);
+            alert("Called");
+            console.log(response);
         }
-
-
     });
 
 
@@ -117,8 +125,6 @@ if (!Meteor.isClient) {
         }
     );
 
-
-
     Template.responses.helpers({
 
             consultResponseSelector: function () {
@@ -128,42 +134,39 @@ if (!Meteor.isClient) {
 
         }
     );
+
+
+    // generates the cell in the responses row which has the student select box and confirm button
     Template.studentSelectCell.helpers({
-            studentSelect: function (from) {
+            studentSelect: function (data) {
 
-                var select = '<form><select name="student_id">';
+                var select = '<form style="display: inline-block;"><select name="student_id" id="student_id">';
 
-                // generates the select box
                 Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
                     select += '<option value="' + student._id + '" ';
 
-
                     // if the response document already has a student_id saved with it, select it
-                    if (this.student_id) {
-                        if (student._id == this.student_id) {
+                    if (data.student_id) {
+                        if (data.student_id == student._id) {
                             select += " selected ";
-
                         }
                     }
                     else {  // if not student assigned, try to guess based on from phone number
-                        if (from.search(student.phone) > 0) {
+                        if (data.from.search(student.phone) > 0) {
                             select += " selected ";
-
                         }
                     }
-
 
                     select += '>' + student.lastName + ', ' + student.firstName + '</option>';
 
                 });
 
-
                 select += "</select>";
-
+                select += '<input type="hidden" name="response_id" id="response_id" value="' + data._id + '">';
 
                 // Wrong student assigned?   Change it here.
                 if (this.student_id) {
-                    if (student._id == this.student_id) {
+                    if (student._id == data.student_id) {
                         select += " <button type='submit'  id='btnReassign'  class='btn btn-sm btn-default'>Re-assign</button><form>";
                     }
                 }
