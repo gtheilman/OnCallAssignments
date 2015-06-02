@@ -91,7 +91,8 @@ if (Meteor.isServer) {
             }
 
             ,
-            // need to change this to REST API and get rid of node Twilio
+
+            // TODO need to change this to REST API and get rid of node Twilio
             'sendSMS': function (to, from, message) {
                 var credentials = Credentials.findOne();
                 twilio = Twilio(credentials.accountsid, credentials.authtoken);
