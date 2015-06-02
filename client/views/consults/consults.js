@@ -140,35 +140,33 @@ if (!Meteor.isClient) {
     Template.studentSelectCell.helpers({
             studentSelect: function (data) {
 
+                var response = data;
+
                 var select = '<form style="display: inline-block;"><select name="student_id" id="student_id">';
 
                 Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
                     select += '<option value="' + student._id + '" ';
 
                     // if the response document already has a student_id saved with it, select it
-                    if (data.student_id) {
-                        if (data.student_id == student._id) {
+                    if (response.student_id) {
+                        if (student._id == response.student_id) {
                             select += " selected ";
                         }
                     }
                     else {  // if not student assigned, try to guess based on from phone number
-                        if (data.from.search(student.phone) > 0) {
+                        if (response.from.search(student.phone) > 0) {
                             select += " selected ";
                         }
                     }
-
                     select += '>' + student.lastName + ', ' + student.firstName + '</option>';
-
                 });
 
                 select += "</select>";
-                select += '<input type="hidden" name="response_id" id="response_id" value="' + data._id + '">';
+                select += '<input type="hidden" name="response_id" id="response_id" value="' + response._id + '">';
 
                 // Wrong student assigned?   Change it here.
-                if (this.student_id) {
-                    if (student._id == data.student_id) {
-                        select += " <button type='submit'  id='btnReassign'  class='btn btn-sm btn-default'>Re-assign</button><form>";
-                    }
+                if (response.student_id) {
+                    select += " <button type='submit'  id='btnReassign'  class='btn btn-sm btn-default'>Re-assign</button><form>";
                 }
                 else {  // if no student assigned at all
                     select += "<button type='submit' id='btnConfirm' class='btn btn-sm btn-success'>Confirm</button><form>";
@@ -176,6 +174,58 @@ if (!Meteor.isClient) {
                 return select
 
             }  // studentSelect
+        }
+    )
+    ;
+
+
+    Template.consultResponses.helpers({
+            responses: function () {
+                return Responses.find({}, {createdAt: 1});
+            },
+
+            createdAtFormatted: function () {
+                return moment(this.createdAt).format("YYYY-MM-DD HH:mm");
+            },
+
+            studentSelectBox: function () {
+
+                var response = this;
+
+                var select = '<form style="display: inline-block;"><select name="student_id" id="student_id">';
+
+                Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
+                    select += '<option value="' + student._id + '" ';
+
+                    // if the response document already has a student_id saved with it, select it
+                    if (response.student_id) {
+                        if (student._id == response.student_id) {
+                            select += " selected ";
+                        }
+                    }
+                    else {  // if not student assigned, try to guess based on from phone number
+                        if (response.from.search(student.phone) > 0) {
+                            select += " selected ";
+                        }
+                    }
+                    select += '>' + student.lastName + ', ' + student.firstName + '</option>';
+                });
+
+                select += "</select>";
+                select += '<input type="hidden" name="response_id" id="response_id" value="' + response._id + '">';
+
+                // Wrong student assigned?   Change it here.
+                if (response.student_id) {
+                    select += " <button type='submit'  id='btnReassign'  class='btn btn-sm btn-default'>Re-assign</button><form>";
+                }
+                else {  // if no student assigned at all
+                    select += "<button type='submit' id='btnConfirm' class='btn btn-sm btn-success'>Confirm</button><form>";
+                }
+                return select
+
+            }  // studentSelect
+
+
         }
     )
     ;

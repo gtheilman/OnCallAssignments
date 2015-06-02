@@ -236,10 +236,43 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            {{> consultResponses }}
+        </div>
+    </div>
 
 </template>
 
 
 <template name="studentSelectCell">
-    {{{studentSelect this.student_id }}}
+    {{{studentSelect this }}}
+</template>
+
+
+<template name="consultResponses">
+    <table>
+        {{#each responses}}
+        <tr>
+            <td>
+                {{createdAtFormatted}}
+            </td>
+            <td>
+                <audio controls>
+                    <source src="{{recordingURL}}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </td>
+            <td>
+                {{from}}
+            </td>
+
+            <td>
+                {{{ studentSelectBox }}}
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+
+
 </template>
