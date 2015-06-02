@@ -20,7 +20,7 @@ Two common options for deploying Meteor applications are Meteor itself and Modul
 
 Deploying to "myservice.meteor.com" is simplest (and free!), but the service is really intended for prototyping, not production.  However, it would probably do fine for the short bursts of activity that would be associated with using this program.
 
-Deploying to Modulus takes a few more steps to set up but is not really all that difficult.  Modulus charges to host the application.  However, Modulus allows you to "turn off" the application during times it is not being used.  It also has the capability to scaling up the dedicated processing power and memory for brief periods of time in case you find the website is not keeping up with student demand.
+Deploying to Modulus (http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) takes a few more steps to set up but is not really all that difficult.  Modulus charges to host the application.  However, Modulus allows you to "turn off" the application during times it is not being used.  It also has the capability to scaling up the dedicated processing power and memory for brief periods of time in case you find the website is not keeping up with student demand.
 
 
 This is still in development.  Not ready to be used.
