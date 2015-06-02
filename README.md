@@ -14,9 +14,13 @@ Faculty can then go through the responses left by the students and score them on
 
 This particular version uses Twilio as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever charges are incurred.   I do not have any financial interest in Twilio and this software could probably be easily adapted to use a different service.   Twilio just seemed to have a nicely documented REST API to work with.
 
-The program is written using the Meteor framework.
+The program is written using the Meteor framework.   Meteor was chosen to allow for easy customization and deployment by faculty members with little experience in information technology.   
 
+Two common options for deploying Meteor applications are Meteor itself and Modulus.
 
+Deploying to "myservice.meteor.com" is simplest (and free!), but the service is really intended for prototyping, not production.  However, it would probably do fine for the short bursts of activity that would be associated with using this program.
+
+Deploying to Modulus takes a few more steps to set up but is not really all that difficult.  Modulus charges to host the application.  However, Modulus allows you to "turn off" the application during times it is not being used.  It also has the capability to scaling up the dedicated processing power and memory for brief periods of time in case you find the website is not keeping up with student demand.
 
 
 This is still in development.  Not ready to be used.
