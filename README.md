@@ -5,11 +5,16 @@ The scenario given to the students is that they are "on-call" for a certain peri
 
 When the student calls the number, they are greeted by a message saying something along the lines of "Thanks for calling me back.  What do you think we should do with this patient?".   They then have two minutes to explain their recommendation.
 
-After the student hangs up, they receive a text message on their phone with a link to a recording of the the response they just left.
+After the student hangs up, they receive a text message on their phone with a link to a recording of the the response they just left.  This text confirms to the student that their response was received and recorded.
 
 Faculty can then go through the responses left by the students and score them on communications skills, clinical reasoning, professionalism, etc.
 
 
+
+
+This particular version uses Twilio as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever charges are incurred.   I do not have any financial interest in Twilio and this software could probably be easily adapted to use a different service.   Twilio just seemed to have a nicely documented REST API to work with.
+
+The program is written using the Meteor framework.
 
 
 
