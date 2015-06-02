@@ -1,3 +1,13 @@
+/*
+
+ This page should have all the methods that interact with the Twilio service.  If you are planning to
+ use a different service (like Tropo), you would want to change this page to use their API.   In  pages that call
+ this one you would need to make sure that they reference the variable names that API uses (although I imagine that
+ variable names like 'from' and 'caller' would be very similar).
+
+ */
+
+
 if (Meteor.isServer) {
     Meteor.methods({
             shortenURL: function (URL) {
@@ -21,7 +31,7 @@ if (Meteor.isServer) {
 
 
             // this is to check if newly submitted credentials are valid
-            'validateTwilioCredentials': function (credentials) {
+            'validateCredentials': function (credentials) {
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + ".json";
                 var auth = credentials.accountsid + ":" + credentials.authtoken;
 
@@ -34,7 +44,7 @@ if (Meteor.isServer) {
                 if (result.statusCode == 200) {
                     var respJson = JSON.parse(result.content);
                     if (respJson.sid == credentials.accountsid) {
-                        TwilioCredentials.update(
+                        Credentials.update(
                             {},
                             {
                                 $set: {
@@ -56,8 +66,8 @@ if (Meteor.isServer) {
             ,
 
             // this is to check if the credentials already in the db are valid
-            'confirmTwilioCredentials': function () {
-                var credentials = TwilioCredentials.findOne();
+            'confirmCredentials': function () {
+                var credentials = Credentials.findOne();
                 if (!credentials.accountsid) {
                     return error
                 }
@@ -81,8 +91,9 @@ if (Meteor.isServer) {
             }
 
             ,
+            // need to change this to REST API and get rid of node Twilio
             'sendSMS': function (to, from, message) {
-                var credentials = TwilioCredentials.findOne();
+                var credentials = Credentials.findOne();
                 twilio = Twilio(credentials.accountsid, credentials.authtoken);
                 twilio.sendSms({
                     to: to, // Any number Twilio can deliver to
@@ -111,7 +122,7 @@ if (Meteor.isServer) {
                 }
                 var consult = Consults.findOne({_id: response.consult_id});
 
-                var credentials = TwilioCredentials.findOne();
+                var credentials = Credentials.findOne();
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/Calls/"
                     + callSid + ".json";
                 var auth = credentials.accountsid + ":" + credentials.authtoken;
@@ -146,7 +157,7 @@ if (Meteor.isServer) {
 
             // this is to retrieve information about the recording associated with the call
             'recordingInfo': function (callSid) {
-                var credentials = TwilioCredentials.findOne();
+                var credentials = Credentials.findOne();
                 var auth = credentials.accountsid + ":" + credentials.authtoken;
 
                 //  need to get list of recordings

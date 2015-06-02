@@ -24,7 +24,7 @@ if (!Meteor.isClient) {
                     authtoken: $('#authtoken').val()
                 };
 
-                Meteor.call("validateTwilioCredentials", credentials, function (error, result) {
+                Meteor.call("validateCredentials", credentials, function (error, result) {
                     if (error) {
                         console.log(error.reason);
                         alert('Invalid credentials');

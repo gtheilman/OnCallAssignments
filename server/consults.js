@@ -25,7 +25,7 @@ if (Meteor.isServer) {
 
                  // Set the Request URL associated with that number on the Twilio website
                  // First, get the id associated with this phone number
-                 var credentials = TwilioCredentials.findOne();
+                 var credentials = Credentials.findOne();
                  var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/IncomingPhoneNumbers.json";
                  var auth = credentials.accountsid + ":" + credentials.authtoken;
                  var phoneInfo = Meteor.http.get(restURL,
