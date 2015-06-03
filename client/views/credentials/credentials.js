@@ -1,15 +1,15 @@
 if (!Meteor.isClient) {
 } else {
 
-    Template.twilioForm.helpers({
+    Template.credentialsForm.helpers({
         credentialValidityCheck: function () {
             return Session.get("credentialValidityCheck");
         }
     });
 
     // Handles the result of the user (faculty) form submission
-    Template.twilioForm.events({
-        "submit #twilioForm": function (event) {
+    Template.credentialsForm.events({
+        "submit #twilioCredentialsForm": function (event) {
             event.preventDefault();
 
             if ($('#authtoken').val() == "") {
@@ -38,7 +38,7 @@ if (!Meteor.isClient) {
                         } else {
                             alert('Invalid credentials');
                             Session.set("credentialValidityCheck", '<div class="alert alert-danger" role="alert">The Twilio credentials in the database are NOT valid.</div>');
-                            Router.go('twilioForm');
+                            Router.go('credentialsForm');
                         }
                     }
                 });
