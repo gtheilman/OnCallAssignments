@@ -143,9 +143,9 @@
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if transcribe}}
-                            <input type="checkbox" id="transcribe" name="transcribe" checked>
+                        <input type="checkbox" id="transcribe" name="transcribe" checked>
                         {{else}}
-                            <input type="checkbox" id="transcribe" name="transcribe">
+                        <input type="checkbox" id="transcribe" name="transcribe">
                         {{/if}}
                         Transcribe?<br>(Extra charge)
                     </div>
@@ -157,9 +157,9 @@
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if nameLookup}}
-                            <input type="checkbox" id="nameLookup" checked>
+                        <input type="checkbox" id="nameLookup" checked>
                         {{else}}
-                            <input type="checkbox" id="nameLookup">
+                        <input type="checkbox" id="nameLookup">
                         {{/if}}
                         Lookup caller?<br>(Extra charge)
                     </div>
@@ -173,9 +173,9 @@
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if activate}}
-                            <input type="checkbox" id="activate" name="activate" checked>
+                        <input type="checkbox" id="activate" name="activate" checked>
                         {{else}}
-                            <input type="checkbox" id="activate" name="activate">
+                        <input type="checkbox" id="activate" name="activate">
                         {{/if}}
                         Make active. This will be the consult students will hear when they call the phone number
                         associated with this consult.<br>
@@ -192,11 +192,11 @@
             </div>
 
             {{#if _id }}
-                <div class="col-md-2">
-                    <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete</button>
-                </div>
+            <div class="col-md-2">
+                <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete</button>
+            </div>
 
-                <input type="hidden" name="id" value="{{_id}}" id="id">
+            <input type="hidden" name="id" value="{{_id}}" id="id">
             {{/if}}
         </div>
 
@@ -238,32 +238,31 @@
 </template>
 
 
-
 <template name="consultResponses">
-    <table>
-        {{#each responses}}
-        <tr>
-            <td>
-                {{createdAtFormatted}}
-            </td>
-            <td>
-                <audio controls>
-                    <source src="{{recordingURL}}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </td>
-            <td>
-                {{from}}
-            </td>
+    <div class="table-responsive">
+        <table class="table">
+            {{#each responses}}
+            <tr>
+                <td>
+                    {{createdAtFormatted}}
+                </td>
+                <td>
+                    <audio controls>
+                        <source src="{{recordingURL}}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td>
+                    {{from}}
+                </td>
 
-            <td>
-                {{{ studentSelectBox }}}
-            </td>
-        </tr>
-        {{/each}}
-    </table>
-
-
+                <td>
+                    {{{ studentSelectBox }}}
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
 </template>
 
 

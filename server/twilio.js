@@ -31,7 +31,7 @@ if (Meteor.isServer) {
 
 
             // this is to check if newly submitted credentials are valid
-            'validateCredentials': function (credentials) {
+            'validateTwilioCredentials': function (credentials) {
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + ".json";
                 var auth = credentials.accountsid + ":" + credentials.authtoken;
 
@@ -66,7 +66,7 @@ if (Meteor.isServer) {
             ,
 
             // this is to check if the credentials already in the db are valid
-            'confirmCredentials': function () {
+            'confirmTwilioCredentials': function () {
                 var credentials = Credentials.findOne();
                 if (!credentials.accountsid) {
                     return error
