@@ -88,63 +88,26 @@ if (Meteor.isServer) {
                 } else {
                     return 0
                 }
-            }
-
-            ,
-
-
-            // TODO need to change this to REST API and get rid of node Twilio
-            'sendSMS': function (to, from, message) {
-                var credentials = Credentials.findOne();
-                twilio = Twilio(credentials.accountsid, credentials.authtoken);
-                twilio.sendSms({
-                    to: to, // Any number Twilio can deliver to
-                    from: from, // A number you bought from Twilio and can use for outbound communication
-                    body: message // body of the SMS message
-                }, function (err, responseData) { //this function is executed when a response is received from Twilio
-                    if (!err) { // "err" is an error received during the request, if any
-                        // "responseData" is a JavaScript object containing data received from Twilio.
-                        // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
-                        // http://www.twilio.com/docs/api/rest/sending-sms#example-1
-                        console.log(responseData.from); // outputs "+14506667788"
-                        console.log(responseData.body); // outputs "word to your mother."
-                    }
-                });
             },
 
 
-            /*
+            'sendSMS': function (to, from, message) {
+                var credentials = Credentials.findOne();
+                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/Messages.json";
 
-             'sendSMS': function (to, from, message) {
-             var credentials = Credentials.findOne();
-             var auth = credentials.accountsid + ":" + credentials.authtoken;
-             var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/Messages.json";
-             var result = Meteor.http.post(restURL,
-             {
-             auth: auth
-             },
-             {
-             params: {
-             to: to,
-             from: from,
-             body: message
-             }
-             }
-             );
+                Meteor.http.post(restURL,
+                    {
+                        params: {From: from, To: to, Body: message},
+                        auth: auth,
+                        headers: {'content-type': 'application/x-www-form-urlencoded'}
+                    }, function () {
+                        console.log("Success")
+                    }
+                );
 
-             if (result.statusCode == 200) {
-             var respJson = JSON.parse(result.content);
-             if (respJson.account_sid == credentials.accountsid) {
-             return respJson;
-             } else {
-             return result.error
-             }
-             } else {
-             return result.error
-             }
-             },
 
-             */
+            },
 
 
             // this is to check details about a call from a student
