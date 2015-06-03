@@ -44,20 +44,6 @@ if (!Meteor.isClient) {
         "click #deleteConsultButton": function (event) {
             Meteor.call('deleteConsult', $('#id').val());
             Router.go('consults');
-        },
-
-        "click #btnConfirm": function (event) {
-            event.preventDefault();
-            alert("clicked");
-            var response =
-            {
-                _id: $("#response_id").val(),
-                student_id: $("#student_id").val()
-            };
-
-            Meteor.call('updateResponse', response);
-            alert("Called");
-            console.log(response);
         }
     });
 
@@ -125,58 +111,8 @@ if (!Meteor.isClient) {
         }
     );
 
-    Template.responses.helpers({
-
-            consultResponseSelector: function () {
-                return {consult_id: Session.get("consult_id")};
-            }
 
 
-        }
-    );
-
-
-    // generates the cell in the responses row which has the student select box and confirm button
-    Template.studentSelectCell.helpers({
-            studentSelect: function (data) {
-
-                var response = data;
-
-                var select = '<form style="display: inline-block;"><select name="student_id" id="student_id">';
-
-                Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
-                    select += '<option value="' + student._id + '" ';
-
-                    // if the response document already has a student_id saved with it, select it
-                    if (response.student_id) {
-                        if (student._id == response.student_id) {
-                            select += " selected ";
-                        }
-                    }
-                    else {  // if not student assigned, try to guess based on from phone number
-                        if (response.from.search(student.phone) > 0) {
-                            select += " selected ";
-                        }
-                    }
-                    select += '>' + student.lastName + ', ' + student.firstName + '</option>';
-                });
-
-                select += "</select>";
-                select += '<input type="hidden" name="response_id" id="response_id" value="' + response._id + '">';
-
-                // Wrong student assigned?   Change it here.
-                if (response.student_id) {
-                    select += " <button type='submit'  id='btnReassign'  class='btn btn-sm btn-default'>Re-assign</button><form>";
-                }
-                else {  // if no student assigned at all
-                    select += "<button type='submit' id='btnConfirm' class='btn btn-sm btn-success'>Confirm</button><form>";
-                }
-                return select
-
-            }  // studentSelect
-        }
-    )
-    ;
 
 
     Template.consultResponses.helpers({
@@ -223,12 +159,30 @@ if (!Meteor.isClient) {
                 }
                 return select
 
-            }  // studentSelect
+            }  // Idea:  ID each portion with the id of the response      <form_Erdafdfladiuyadkfj>
+            //   Include Jquery in the return select itself that handles the form submission
 
 
         }
     )
     ;
+
+    // Handles the result of the consult form submission
+    Template.consultForm.events({
+        "submit #btnConfirm": function (event) {
+            event.preventDefault();
+
+            var response =
+            {
+                _id: $("#response_id").val(),
+                student_id: $("#student_id").val()
+            };
+
+            Meteor.call('updateResponse', response);
+            console.log(response);
+        }
+    });
+
 
 
 }
