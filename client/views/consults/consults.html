@@ -257,7 +257,22 @@
                 </td>
 
                 <td>
-                    {{{ studentSelectBox }}}
+
+                    <form id="form" style="display: inline-block;">
+
+                        <select id="student_id_selector" name="student_id">
+
+                            {{#each students}}
+                            <option value="{{_id}}">{{lastName}} , {{firstName}}</option>
+                            {{/each}}
+                        </select>
+
+                        <input type="hidden" name="response_id" id="response_id" value="{{_id}}">
+
+                        <button type='submit' id='btnConfirm' class='btn btn-sm btn-success'>Confirm</button>
+
+                    </form>
+
                 </td>
             </tr>
 

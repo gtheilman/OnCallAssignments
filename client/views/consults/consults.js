@@ -124,61 +124,54 @@ if (!Meteor.isClient) {
                 return moment(this.createdAt).format("YYYY-MM-DD HH:mm");
             },
 
-            studentSelectBox: function () {
-
+            students: function () {
                 var response = this;
-
-                var select = '<form id="form_' + response._id + '" style="display: inline-block;"><select name="student_id_' + response._id + '"id="student_id_' + response._id + '">';
+                var studentJSON = "students: [";
 
                 Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
-                    select += '<option value="' + student._id + '" ';
+                    studentJSON += "{_id: \"" + student._id + "\", ";
+                    studentJSON += "lastName: \"" + student.lastName + "\", ";
+                    studentJSON += "firstName: \"" + student.firstName + "\", ";
 
-                    // if the response document already has a student_id saved with it, select it
+
                     if (response.student_id) {
-                        if (student._id == response.student_id) {
-                            select += " selected ";
-                        }
+                        studentJSON += "selected: \"selected\" ,";
+                        studentJSON += "btnText: \"Change\" ";
+                    } else if (response.from.search(student.phone) > 0) {
+                        studentJSON += "selected: \"selected\",";
+                        studentJSON += "btnText: \"Confirm\", ";
+                    } else {
+                        studentJSON += "selected: \"\", ";
+                        studentJSON += "btnText: \"Select\",";
                     }
-                    else {  // if not student assigned, try to guess based on from phone number
-                        if (response.from.search(student.phone) > 0) {
-                            select += " selected ";
-                        }
-                    }
-                    select += '>' + student.lastName + ', ' + student.firstName + '</option>';
+
+                    studentJSON += "phone: \"" + student.phone + "\"}, ";
+
+
                 });
-
-                select += "</select>";
-                select += '<input type="hidden" name="response_id_' + response._id + '" id="response_id_' + response._id + '" value="' + response._id + '">';
-
-                // Wrong student assigned?   Change it here.
-                if (response.student_id) {
-                    select += " <button type='submit'  id='btnConfirm'  class='btn btn-sm btn-default'>Re-assign</button><form>";
+                {
+                    studentJSON += "{_id: \"\",lastName: \"\",firstName: \"\",selected: \"\",btnText: \"\",phone: \"\"}";
                 }
-                else {  // if no student assigned at all
-                    select += "<button type='submit' id='btnConfirm' value='" + response._id + "' class='btn btn-sm btn-success'>Confirm</button><form>";
-                }
+                studentJSON += "]";
+                console.log(studentJSON);
+                // var obj = $.parseJSON(studentJSON);
+                //console.log(obj);
+                // var studentArray = jQuery.makeArray(obj);
+                //  console.log(studentArray);
+                return studentJSON
 
-                return select
-
-            },
-
-            extraJavascript: function () {
-
-                var response = this;
-
-                javascript = "<b>Hello</b><script>$('#btnConfirm').mouseover(function() {Session.set('response_id','" + response._id + "');});</script>";
-
-                return javascript
 
             }
+
 
         }
     )
     ;
+    /*
 
     // Handles the result of the consult form submission
-    Template.consultForm.events({
-        "submit #btnConfirm": function (event) {
+     Template.consultResponses.events({
+     "change #student_id_selector": function (event) {
             event.preventDefault();
 
             var response_id = Session.get('response_id');
@@ -195,6 +188,7 @@ if (!Meteor.isClient) {
         }
     });
 
+     */
 
 
 }
