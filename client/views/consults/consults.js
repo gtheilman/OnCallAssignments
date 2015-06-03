@@ -128,7 +128,7 @@ if (!Meteor.isClient) {
 
                 var response = this;
 
-                var select = '<form style="display: inline-block;"><select name="student_id" id="student_id">';
+                var select = '<form id="form_' + response._id + '" style="display: inline-block;"><select name="student_id_' + response._id + '"id="student_id_' + response._id + '">';
 
                 Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
                     select += '<option value="' + student._id + '" ';
@@ -148,20 +148,29 @@ if (!Meteor.isClient) {
                 });
 
                 select += "</select>";
-                select += '<input type="hidden" name="response_id" id="response_id" value="' + response._id + '">';
+                select += '<input type="hidden" name="response_id_' + response._id + '" id="response_id_' + response._id + '" value="' + response._id + '">';
 
                 // Wrong student assigned?   Change it here.
                 if (response.student_id) {
-                    select += " <button type='submit'  id='btnReassign'  class='btn btn-sm btn-default'>Re-assign</button><form>";
+                    select += " <button type='submit'  id='btnConfirm'  class='btn btn-sm btn-default'>Re-assign</button><form>";
                 }
                 else {  // if no student assigned at all
-                    select += "<button type='submit' id='btnConfirm' class='btn btn-sm btn-success'>Confirm</button><form>";
+                    select += "<button type='submit' id='btnConfirm' value='" + response._id + "' class='btn btn-sm btn-success'>Confirm</button><form>";
                 }
+
                 return select
 
-            }  // Idea:  ID each portion with the id of the response      <form_Erdafdfladiuyadkfj>
-            //   Include Jquery in the return select itself that handles the form submission
+            },
 
+            extraJavascript: function () {
+
+                var response = this;
+
+                javascript = "<b>Hello</b><script>$('#btnConfirm').mouseover(function() {Session.set('response_id','" + response._id + "');});</script>";
+
+                return javascript
+
+            }
 
         }
     )
@@ -172,10 +181,13 @@ if (!Meteor.isClient) {
         "submit #btnConfirm": function (event) {
             event.preventDefault();
 
+            var response_id = Session.get('response_id');
+            var student_id = $('#student_id_' + response_id).val();
+
             var response =
             {
-                _id: $("#response_id").val(),
-                student_id: $("#student_id").val()
+                _id: response_id,
+                student_id: student_id
             };
 
             Meteor.call('updateResponse', response);
