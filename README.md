@@ -35,23 +35,23 @@ If you are a faculty member at an accredited health-care education school and wo
 
 Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.
 
-# Step 1:  Install Meteor on your local computer
+#### Step 1:  Install Meteor on your local computer
 Instructions are [here](https://www.meteor.com/install).
 
-# Step 2:  Create a directory on your local computer
+####  Step 2:  Create a directory on your local computer
 Call it something like "OnCallAssignments".
 
-# Step 3:  Copy the contents of this repository into that directory
+####  Step 3:  Copy the contents of this repository into that directory
 
-# Step 4:  Deploy the application
+####  Step 4:  Deploy the application
 While you can [run the application locally] (http://docs.meteor.com/#/basic/quickstart) on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server.
 
 When the application is initially set up, the login is admin|admin.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.
 
-# Step 5:  Get a Twilio account
+####  Step 5:  Get a Twilio account
 
-# Step 6:  Enter your Twiliio credentials into the application.
+####  Step 6:  Enter your Twiliio credentials into the application.
 
-# Step 7:  Call the Twilio phone number from a cell phone.
+####  Step 7:  Call the Twilio phone number from a cell phone.
 
 **This is still in development.  Not ready to be used.**
