@@ -52,9 +52,11 @@ When you deploy to Meteor, you will be given a URL where your application can be
 
 **Step 6:** Run the application using the Meteor URL  
 
-When the application is initially set up, the login | password  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate roles (i.e., administrator, active).
+When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate roles (i.e., administrator, active).
 
-**Step 6:**  Get a Twilio account
+**Step 6:**  Sign up for a [Twilio account](https://www.twilio.com/)
+
+The Twilio website takes you through the process of obtaining a phone number.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
 
 **Step 7:**  Enter your Twiliio credentials into the application.
 
