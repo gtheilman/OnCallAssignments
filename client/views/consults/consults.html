@@ -260,10 +260,11 @@
 
                     <form id="form" style="display: inline-block;">
 
-                        <select id="student_id_selector" name="student_id">
 
+                        <select id="student_id_selector" name="student_id">
+                            <option></option>
                             {{#each students}}
-                            <option value="{{_id}}">{{lastName}} , {{firstName}}</option>
+                                <option value="{{_id}}"  {{selected _id }}>{{lastName}}, {{firstName}}</option>
                             {{/each}}
                         </select>
 

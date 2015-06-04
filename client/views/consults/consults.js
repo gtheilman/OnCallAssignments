@@ -125,6 +125,22 @@ if (!Meteor.isClient) {
             },
 
             students: function () {
+
+                return Students.find({}, {lastName: 1, firstName: 1});
+
+            },
+
+            selected: function (student_id) {
+                var response = Template.parentData(1);
+                if (student_id == response.student_id) {
+                    return "selected";
+                } // else if (Students.findOne({phone: response.from.replace("+1","")})) {
+                // return "selected";
+                // }
+            }
+
+
+            /*          students: function () {
                 var response = this;
                 var studentJSON = "students: [";
 
@@ -161,7 +177,7 @@ if (!Meteor.isClient) {
                 return studentJSON
 
 
-            }
+             }*/
 
 
         }
