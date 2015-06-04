@@ -36,31 +36,33 @@
 <template name="navItems">
 
     {{#if currentUser}}
-    {{#if isInRole 'active'}}
-    <li class="{{ activeIfTemplateIs 'consults' }}">
-        <a href="{{ pathFor 'consults'}}">Consults</a>
-    </li>
-    <li class="{{ activeIfTemplateIs 'students' }}">
-        <a href="{{ pathFor 'students'}}">Students</a>
-    </li>
+        {{#if isInRole 'active'}}
+            <li class="{{ activeIfTemplateIs 'consults' }}">
+                <a href="{{ pathFor 'consults'}}">Consults</a>
+            </li>
+            <li class="{{ activeIfTemplateIs 'students' }}">
+                <a href="{{ pathFor 'students'}}">Students</a>
+            </li>
 
-        <li class="{{ activeIfTemplateIs 'users' }}">
-        <a href="{{ pathFor 'users'}}">Faculty</a>
-    </li>
+            <li class="{{ activeIfTemplateIs 'users' }}">
+                <a href="{{ pathFor 'users'}}">Faculty</a>
+            </li>
 
-        <li class="{{ activeIfTemplateIs 'credentialsForm' }}">
-            <a href="{{ pathFor 'credentialsForm'}}">Credentials</a>
-    </li>
+            {{#if isInRole 'admin'}}
 
-    <!--{{> navdropdown}}-->
+                <li class="{{ activeIfTemplateIs 'credentialsForm' }}">
+                    <a href="{{ pathFor 'credentialsForm'}}">Credentials</a>
+                </li>
+            {{/if}}
 
 
-    <li class="{{ activeIfTemplateIs 'about' }}">
-        <a href="{{pathFor 'about'}}">About</a>
-    </li>
-    {{else}}
-    {{logout}}
-    {{/if}}
+
+            <li class="{{ activeIfTemplateIs 'about' }}">
+                <a href="{{pathFor 'about'}}">About</a>
+            </li>
+        {{else}}
+            {{logout}}
+        {{/if}}
     {{/if}}
 
     <ul class="nav navbar-nav navbar-right">

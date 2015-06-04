@@ -12,13 +12,19 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <a href="consultForm">
-                <button type="button" id="newConsult" class="btn  btn-sm  btn-default newConsult">New Consult</button>
-            </a>
+
+    {{#if isInRole 'admin'}}
+        <div class="row">
+            <div class="col-md-12">
+                <a href="consultForm">
+                    <button type="button" id="newConsult" class="btn  btn-sm  btn-default newConsult">New Consult
+                    </button>
+                </a>
+            </div>
         </div>
-    </div>
+    {{/if}}
+
+
 </template>
 
 
@@ -48,9 +54,9 @@
                 <div class="form-group">
                     <label for="consultURL">
                         {{#if consultURL}}
-                        <a href="{{consultURL}}" target="_blank">Consult URL</a>
+                            <a href="{{consultURL}}" target="_blank">Consult URL</a>
                         {{else}}
-                        Consult URL
+                            Consult URL
                         {{/if}}
                     </label>
                     <input type="url" class="form-control" id="consultURL" placeholder="The webpage with the consult"
@@ -61,9 +67,9 @@
                 <div class="form-group">
                     <label for="keyURL">
                         {{#if keyURL}}
-                        <a href="{{keyURL}}" target="_blank">Key URL</a>
+                            <a href="{{keyURL}}" target="_blank">Key URL</a>
                         {{else}}
-                        Key URL
+                            Key URL
                         {{/if}}
                     </label>
                     <input type="url" class="form-control" id="keyURL" placeholder="The webpage with the key"
@@ -143,9 +149,9 @@
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if transcribe}}
-                        <input type="checkbox" id="transcribe" name="transcribe" checked>
+                            <input type="checkbox" id="transcribe" name="transcribe" checked>
                         {{else}}
-                        <input type="checkbox" id="transcribe" name="transcribe">
+                            <input type="checkbox" id="transcribe" name="transcribe">
                         {{/if}}
                         Transcribe?<br>(Extra charge)
                     </div>
@@ -157,9 +163,9 @@
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if nameLookup}}
-                        <input type="checkbox" id="nameLookup" checked>
+                            <input type="checkbox" id="nameLookup" checked>
                         {{else}}
-                        <input type="checkbox" id="nameLookup">
+                            <input type="checkbox" id="nameLookup">
                         {{/if}}
                         Lookup caller?<br>(Extra charge)
                     </div>
@@ -173,9 +179,9 @@
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if activate}}
-                        <input type="checkbox" id="activate" name="activate" checked>
+                            <input type="checkbox" id="activate" name="activate" checked>
                         {{else}}
-                        <input type="checkbox" id="activate" name="activate">
+                            <input type="checkbox" id="activate" name="activate">
                         {{/if}}
                         Make active. This will be the consult students will hear when they call the phone number
                         associated with this consult.<br>
@@ -185,21 +191,23 @@
             </div>
         </div>
 
+        {{#if isInRole 'admin'}}
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                {{#if _id }}
+
+                    <div class="col-md-2">
+                        <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete</button>
+                    </div>
+
+                    <input type="hidden" name="id" value="{{_id}}" id="id">
+                {{/if}}
+
             </div>
-
-            {{#if _id }}
-            <div class="col-md-2">
-                <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete</button>
-            </div>
-
-            <input type="hidden" name="id" value="{{_id}}" id="id">
-            {{/if}}
-        </div>
-
+        {{/if}}
 
     </form>
 
@@ -216,7 +224,7 @@
     </div>
 
     {{#if _id }}
-    {{> responses }}
+        {{> responses }}
     {{/if}}
 
 </template>
@@ -261,40 +269,41 @@
             </thead>
             <tbody>
             {{#each responses}}
-            <tr>
-                <td>
-                    {{createdAtFormatted}}
-                </td>
-                <td>
-                    <audio controls>
-                        <source src="{{recordingURL}}" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </td>
-                <td>
-                    {{phoneFormat from}}
-                </td>
+                <tr>
+                    <td>
+                        {{createdAtFormatted}}
+                    </td>
+                    <td>
+                        <audio controls>
+                            <source src="{{recordingURL}}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+                    <td>
+                        {{phoneFormat from}}
+                    </td>
 
-                <td>
+                    <td>
 
-                    <form id="{{_id}}" class="studentSelectForm" style="display: inline-block;">
+                        <form id="{{_id}}" class="studentSelectForm" style="display: inline-block;">
 
 
-                        <select id="selector_{{_id}}" name="student_id">
-                            <option></option>
-                            {{#each students}}
-                                <option value="{{_id}}"  {{selected _id }}>{{lastName}}, {{firstName}}</option>
-                            {{/each}}
-                        </select>
+                            <select id="selector_{{_id}}" name="student_id">
+                                <option></option>
+                                {{#each students}}
+                                    <option value="{{_id}}"  {{selected _id }}>{{lastName}}, {{firstName}}</option>
+                                {{/each}}
+                            </select>
 
-                        <input type="hidden" name="response_id" id="response_id" value="{{_id}}">
+                            <input type="hidden" name="response_id" id="response_id" value="{{_id}}">
 
-                        <button type='submit' id='btnConfirm_{{_id}}' class='btn btn-sm btn-default'>Confirm</button>
+                            <button type='submit' id='btnConfirm_{{_id}}' class='btn btn-sm btn-default'>Confirm
+                            </button>
 
-                    </form>
+                        </form>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
             {{/each}}
             </tbody>

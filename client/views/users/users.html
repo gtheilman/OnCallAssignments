@@ -12,13 +12,15 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <a href="userForm">
-                <button type="button" id="newUser" class="btn btn-sm btn-default newUser">New User</button>
-            </a>
+    {{#if isInRole 'admin'}}
+        <div class="row">
+            <div class="col-md-12">
+                <a href="userForm">
+                    <button type="button" id="newUser" class="btn btn-sm btn-default newUser">New User</button>
+                </a>
+            </div>
         </div>
-    </div>
+    {{/if}}
 </template>
 
 
@@ -85,15 +87,16 @@
         </div>
 
 
+        {{#if isInRole 'admin'}}
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-8">
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if active}}
-                        <input type="checkbox" id="active" name="active" checked>
+                            <input type="checkbox" id="active" name="active" checked>
                         {{else}}
-                        <input type="checkbox" id="active" name="active">
+                            <input type="checkbox" id="active" name="active">
                         {{/if}}
                         Active (unchecking this disables account, but doesn't delete user)
                     </div>
@@ -107,9 +110,9 @@
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if admin}}
-                        <input type="checkbox" id="admin" name="admin" checked>
+                            <input type="checkbox" id="admin" name="admin" checked>
                         {{else}}
-                        <input type="checkbox" id="admin" name="admin">
+                            <input type="checkbox" id="admin" name="admin">
                         {{/if}}
                         Administrator (can do everything)
                     </div>
@@ -123,9 +126,9 @@
                 <div class="form-group">
                     <div class="checkbox">
                         {{#if grader}}
-                        <input type="checkbox" id="grader" name="grader" checked>
+                            <input type="checkbox" id="grader" name="grader" checked>
                         {{else}}
-                        <input type="checkbox" id="grader" name="grader">
+                            <input type="checkbox" id="grader" name="grader">
                         {{/if}}
                         Grader (Limited access. Good for residents or others who don't need to alter users, students,
                         consults...)
@@ -133,7 +136,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class=" row">
             <div class="col-md-5">
@@ -147,14 +149,15 @@
 
 
         <input type="hidden" name="_id" id="_id" value="{{_id}}">
-
+        {{/if}}
     </form>
 
+
     <div class=" row">&nbsp;</div>
     <div class=" row">&nbsp;</div>
     <div class=" row">&nbsp;</div>
 
-
+    {{#if isInRole 'admin'}}
     <div class=" row">
         <div class="col-md-6">
             <i>Before deleting a user, consider whether it would be better to just mark them as "inactive"...</i>
@@ -165,6 +168,6 @@
         </div>
 
     </div>
-
+    {{/if}}
 </template>
 
