@@ -41,7 +41,7 @@ The official instructions are [here](https://www.meteor.com/install), but you al
 **Step 2:**  Create a directory on your local computer
 Call it something like "OnCallAssignments".
 
-**Step 3:**  Download a zip file of the contents of this repository and unzip it into that directory.  The "Download Zip" button is on the right-side of the repository page.
+**Step 3:**  Download the zip file with the contents of this repository and unzip it into that directory.  The "Download Zip" button is on the right-side of the repository page.  
 
 **Step 4:**  Deploy the application
 While you can [run the application locally] (http://docs.meteor.com/#/basic/quickstart) on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  For production purposes, a PaaS service like [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) may be more appropriate.
