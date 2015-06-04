@@ -36,7 +36,7 @@ If you are a faculty member at an accredited health-care education school and wo
 Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.
 
 **Step 1:** Install Meteor on your local Windows, Mac or Linux computer.
-Instructions are [here](https://www.meteor.com/install).
+The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/) or [this video](https://youtu.be/9EsDHeI327s) helpful.
 
 **Step 2:**  Create a directory on your local computer
 Call it something like "OnCallAssignments".
