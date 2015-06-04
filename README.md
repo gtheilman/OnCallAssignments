@@ -56,9 +56,11 @@ When the application is initially set up, the _login | password_  is _admin | ad
 
 **Step 6:**  Sign up for a [Twilio account](https://www.twilio.com/)
 
-The Twilio website takes you through the process of obtaining a phone number.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
+The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
 
-**Step 7:**  Enter your Twiliio credentials into the application.
+**Step 7:**  Enter your Twilio credentials into the application.
+
+This is the AccountSID and AuthToken associated with your Twilio account.   They are entered under "Credentials" in the application.
 
 **Step 8:**  Call the Twilio phone number from a cell phone.
 
