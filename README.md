@@ -46,7 +46,7 @@ Call it something like "OnCallAssignments".
 **Step 4:**  Deploy the application
 While you can [run the application locally] (http://docs.meteor.com/#/basic/quickstart) on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  For production purposes, a PaaS service like [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) may be more appropriate.
 
-When the application is initially set up, the login is admin|admin.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.
+When the application is initially set up, the login | password  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate roles (i.e., administrator, active).
 
 **Step 5:**  Get a Twilio account
 
