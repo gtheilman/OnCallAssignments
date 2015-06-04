@@ -62,6 +62,8 @@ The Twilio website takes you through the process of obtaining a phone number, bu
 
 This is the AccountSID and AuthToken associated with your Twilio account.   They are entered under "Credentials" in the application.
 
-**Step 8:**  Call the Twilio phone number from a cell phone.
+**Step 8:**  Call the Twilio phone number from a cell phone and leave a message.
+
+**Step 9:**  Review the response within the application.
 
 **This is still in development.  Not ready to be used.**
