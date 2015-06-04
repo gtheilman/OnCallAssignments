@@ -36,25 +36,34 @@ If you are a faculty member at an accredited health-care education school and wo
 Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.
 
 **Step 1:** Install Meteor on your local Windows, Mac or Linux computer.
-Instructions are [here](https://www.meteor.com/install).
 
-**Step 2:**  Create a directory on your local computer
-Call it something like "OnCallAssignments".
+The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/) or [this video](https://youtu.be/9EsDHeI327s) helpful.
 
-**Step 3:**  Download a zip file of the contents of this repository and unzip it into that directory
+**Step 2:**  Create a directory on your local computer.  Call it something like "OnCallAssignments".
+
+**Step 3:**  Download the zip file with the contents of this repository and unzip it into that directory. 
+The "Download Zip" button is on the right-side of the repository page.  
 
 **Step 4:**  Deploy the application
+
 While you can [run the application locally] (http://docs.meteor.com/#/basic/quickstart) on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  For production purposes, a PaaS service like [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) may be more appropriate.
 
 When you deploy to Meteor, you will be given a URL where your application can be accessed.  Make a note of it.
 
 **Step 6:** Run the application using the Meteor URL  
-When the application is initially set up, the login | password  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate roles (i.e., administrator, active).
 
-**Step 6:**  Get a Twilio account
+When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate roles (i.e., administrator, active).
 
-**Step 7:**  Enter your Twiliio credentials into the application.
+**Step 6:**  Sign up for a [Twilio account](https://www.twilio.com/)
 
-**Step 8:**  Call the Twilio phone number from a cell phone.
+The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
+
+**Step 7:**  Enter your Twilio credentials into the application.
+
+This is the AccountSID and AuthToken associated with your Twilio account.   They are entered under "Credentials" in the application.
+
+**Step 8:**  Call the Twilio phone number from a cell phone and leave a message.
+
+**Step 9:**  Review the response within the application.
 
 **This is still in development.  Not ready to be used.**
