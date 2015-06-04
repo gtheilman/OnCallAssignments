@@ -114,7 +114,10 @@ if (!Meteor.isClient) {
 
     Template.consultResponses.helpers({
         responses: function () {
-            return Responses.find({}, {createdAt: 1});
+            var consult = Template.parentData(1);
+            console.log("Consult:");
+            console.log(consult._id);
+            return Responses.find({consult_id: consult._id}, {createdAt: 1});
         },
 
         createdAtFormatted: function () {
@@ -172,14 +175,13 @@ if (!Meteor.isClient) {
 
         Responses.find({consult_id: consult_id}).forEach(function (response) {
             if (response.student_id) {
-                console.log("#btnConfirm_" + response._id);
                 $("#btnConfirm_" + response._id).removeClass('btn-default').addClass('btn-info').html("Change");
+                $("#selector_" + response._id).val(response.student_id);
             }
         });
 
 
     });
-
 
 
 }
