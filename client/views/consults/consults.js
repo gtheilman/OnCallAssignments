@@ -112,102 +112,32 @@ if (!Meteor.isClient) {
     );
 
 
-
-
-
     Template.consultResponses.helpers({
-            responses: function () {
-                return Responses.find({}, {createdAt: 1});
-            },
+        responses: function () {
+            return Responses.find({}, {createdAt: 1});
+        },
 
-            createdAtFormatted: function () {
-                return moment(this.createdAt).format("YYYY-MM-DD HH:mm");
-            },
+        createdAtFormatted: function () {
+            return moment(this.createdAt).format("YYYY-MM-DD HH:mm");
+        },
 
-            students: function () {
+        students: function () {
 
-                return Students.find({}, {lastName: 1, firstName: 1});
+            return Students.find({}, {lastName: 1, firstName: 1});
 
-            },
+        },
 
-            selected: function (student_id) {
-                var response = Template.parentData(1);
-                if (student_id == response.student_id) {
-                    return "selected";
-                } // else if (Students.findOne({phone: response.from.replace("+1","")})) {
-                // return "selected";
-                // }
+        selected: function (student_id) {
+            var response = Template.parentData(1);
+            if (student_id == response.student_id) {
+                return "selected";
+            } else if (Students.findOne({_id: student_id, phone: response.from.replace("+1", "")})) {
+                return "selected";
             }
-
-
-            /*          students: function () {
-                var response = this;
-                var studentJSON = "students: [";
-
-                Students.find({}, {lastName: 1, firstName: 1}).forEach(function (student) {
-                    studentJSON += "{_id: \"" + student._id + "\", ";
-                    studentJSON += "lastName: \"" + student.lastName + "\", ";
-                    studentJSON += "firstName: \"" + student.firstName + "\", ";
-
-
-                    if (response.student_id) {
-                        studentJSON += "selected: \"selected\" ,";
-                        studentJSON += "btnText: \"Change\" ";
-                    } else if (response.from.search(student.phone) > 0) {
-                        studentJSON += "selected: \"selected\",";
-                        studentJSON += "btnText: \"Confirm\", ";
-                    } else {
-                        studentJSON += "selected: \"\", ";
-                        studentJSON += "btnText: \"Select\",";
-                    }
-
-                    studentJSON += "phone: \"" + student.phone + "\"}, ";
-
-
-                });
-                {
-                    studentJSON += "{_id: \"\",lastName: \"\",firstName: \"\",selected: \"\",btnText: \"\",phone: \"\"}";
-                }
-                studentJSON += "]";
-                console.log(studentJSON);
-                // var obj = $.parseJSON(studentJSON);
-                //console.log(obj);
-                // var studentArray = jQuery.makeArray(obj);
-                //  console.log(studentArray);
-                return studentJSON
-
-
-             }*/
-
-
         }
-    )
-    ;
-    /*
 
-    // Handles the result of the consult form submission
-     Template.consultResponses.events({
-     "change #student_id_selector": function (event) {
-            event.preventDefault();
 
-            var response_id = Session.get('response_id');
-            var student_id = $('#student_id_' + response_id).val();
-
-            var response =
-            {
-                _id: response_id,
-                student_id: student_id
-            };
-
-            Meteor.call('updateResponse', response);
-            console.log(response);
-        }
     });
-
-     */
 
 
 }
-
-
-
