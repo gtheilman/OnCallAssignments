@@ -7,7 +7,15 @@ if (Meteor.isServer) {
                         username: user.username,
                         email: user.email,
                         password: user.password
-                    })
+                    });
+
+                    var newUser = Meteor.users.findOne({username: user.username});
+
+                    if (newUser) {
+                        Roles.addUsersToRoles(newUser._id, ['grader', 'active']);
+                        return true
+                    }
+
                 }
             },
             'retrieveUser': function (id) {
@@ -67,6 +75,9 @@ if (Meteor.isServer) {
             'passwordUser': function (_id) {
                 if (Roles.userIsInRole(Meteor.user(), 'active')) {
                     Accounts.sendResetPasswordEmail(_id);
+                    return true
+                } else {
+                    return false
                 }
             }
 

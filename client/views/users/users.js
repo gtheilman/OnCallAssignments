@@ -31,13 +31,25 @@ if (!Meteor.isClient) {
 
                     createdAt: new Date()
                 };
-                //TODO:  Fix this callback
-                Meteor.call('createNewUser', user);
-                sAlert.success('Created.', {
-                    effect: 'scale', position: 'top-right',
-                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+
+                Meteor.call('createNewUser', user, function (error, result) {
+                    if (error) {
+                        console.log(error);
+                        sAlert.warning('There may have been an error creating the user.  Check the console.log..', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
+                    } else {
+                        sAlert.success('User created with ++grader++ rights.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
+                    }
+                    Router.go('users');
+
                 });
-                Router.go('users');
+
+
             }
         }
 
