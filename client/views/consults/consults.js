@@ -130,14 +130,57 @@ if (!Meteor.isClient) {
         selected: function (student_id) {
             var response = Template.parentData(1);
             if (student_id == response.student_id) {
+                // $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-success');
                 return "selected";
             } else if (Students.findOne({_id: student_id, phone: response.from.replace("+1", "")})) {
+                //  $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info');
                 return "selected";
             }
         }
 
 
     });
+    /*  This was an incredibly hackish
+     *
+     * */
+    Template.consultResponses.events({
+        "submit .studentSelectForm": function (event) {
+            event.preventDefault();
+            var response_id = event.currentTarget.id;
+            var student_id = $("#selector_" + response_id).val();
+            var response = {
+                student_id: student_id,
+                response_id: response_id
+            };
+
+            Meteor.call('updateResponse', response, function (err, data) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-success').html("Changed");
+                }
+
+            });
+
+
+        },
+
+        "click #deleteConsultButton": function (event) {
+            // Meteor.call('deleteConsult', $('#id').val());
+            //Router.go('consults');
+        }
+    });
+
+    Template.consultResponses.onRendered(function () {
+        var response = this;
+        Responses.find({consult_id: response.consult_id, student_id: {$exists: true}}).forEach(function (response) {
+
+            $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info').html("Change");
+        });
+
+
+    });
+
 
 
 }

@@ -258,10 +258,10 @@
 
                 <td>
 
-                    <form id="form" style="display: inline-block;">
+                    <form id="{{_id}}" class="studentSelectForm" style="display: inline-block;">
 
 
-                        <select id="student_id_selector" name="student_id">
+                        <select id="selector_{{_id}}" name="student_id">
                             <option></option>
                             {{#each students}}
                                 <option value="{{_id}}"  {{selected _id }}>{{lastName}}, {{firstName}}</option>
@@ -270,7 +270,7 @@
 
                         <input type="hidden" name="response_id" id="response_id" value="{{_id}}">
 
-                        <button type='submit' id='btnConfirm' class='btn btn-sm btn-success'>Confirm</button>
+                        <button type='submit' id='btnConfirm_{{_id}}' class='btn btn-sm btn-default'>Select</button>
 
                     </form>
 
