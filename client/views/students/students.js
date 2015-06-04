@@ -55,7 +55,7 @@ Template.importStudentCSV.events({
             skipEmptyLines: true,
             complete: function (results) {
                 _.each(results.data, function (csvData) {
-                    console.log(csvData.studentid);
+                    // console.log(csvData.studentid);
                     if (!csvData.lastName) {
                         csvData.lastName = ''
                     }

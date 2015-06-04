@@ -102,7 +102,7 @@ if (Meteor.isServer) {
                         auth: auth,
                         headers: {'content-type': 'application/x-www-form-urlencoded'}
                     }, function () {
-                        console.log("Success")
+
                     }
                 );
 

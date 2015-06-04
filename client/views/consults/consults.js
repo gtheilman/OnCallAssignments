@@ -80,7 +80,7 @@ if (!Meteor.isClient) {
                             if (err) {
                                 console.log(err);
                             } else {
-                                console.log(recordingInfo)
+                                // console.log(recordingInfo)
 
                             }
                         });
@@ -130,19 +130,19 @@ if (!Meteor.isClient) {
         selected: function (student_id) {
             var response = Template.parentData(1);
             if (student_id == response.student_id) {
-                // $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-success');
+                $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-success');
                 return "selected";
             } else if (Students.findOne({_id: student_id, phone: response.from.replace("+1", "")})) {
-                //  $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info');
+                $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info');
                 return "selected";
             }
         }
 
 
     });
-    /*  This was an incredibly hackish
-     *
-     * */
+    /*  This was an incredibly hackish way of getting the students associated with the response record.  The problem
+     * was trying to associate button presses with forms when they all had the same names and ids. Ended up giving
+     *  each form/button/select a different name and pulling the info out of the event.currentTarget scope.*/
     Template.consultResponses.events({
         "submit .studentSelectForm": function (event) {
             event.preventDefault();
@@ -163,19 +163,18 @@ if (!Meteor.isClient) {
             });
 
 
-        },
-
-        "click #deleteConsultButton": function (event) {
-            // Meteor.call('deleteConsult', $('#id').val());
-            //Router.go('consults');
         }
     });
 
+    // Change the color of the buttons on the responses to blue if they have already been associated with students.
     Template.consultResponses.onRendered(function () {
-        var response = this;
-        Responses.find({consult_id: response.consult_id, student_id: {$exists: true}}).forEach(function (response) {
+        var consult_id = this.data._id;
 
-            $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info').html("Change");
+        Responses.find({consult_id: consult_id}).forEach(function (response) {
+            if (response.student_id) {
+                console.log("#btnConfirm_" + response._id);
+                $("#btnConfirm_" + response._id).removeClass('btn-default').addClass('btn-info').html("Change");
+            }
         });
 
 

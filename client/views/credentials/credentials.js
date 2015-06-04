@@ -70,14 +70,14 @@ if (!Meteor.isClient) {
                     smtpServer: $('#smtpServer').val(),
                     smtpPort: $('#smtpPort').val()
                 };
-                console.log(credentials);
+                // console.log(credentials);
 
                 Meteor.call("updateEmailCredentials", credentials, function (error, result) {
                     if (error) {
                         console.log(error.reason);
                         alert('Problem saving email credentials');
                     } else {
-                        console.log(result);
+                        // console.log(result);
                         Session.set("emailValidityCheck", '<div class="alert alert-success" role="alert">There are email credentials in the database.</div>');
                         Router.go('consults');
                     }
