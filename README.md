@@ -29,8 +29,29 @@ Deploying to [Meteor](https://www.meteor.com/try/6)   is the simplest option (an
 
 Deploying to [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) takes a few more steps to set up but is not really all that difficult.  Modulus charges to host the application but allows you to "turn off" the application during times it is not being used.  It also has the capability to scaling up for brief periods of time in case you find the website is not keeping up with student demand.
 
+###Installation
 
 If you are a faculty member at an accredited health-care education school and would like assistance setting this up for your institution, please feel free to contact me.   
 
+Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.
+
+# Step 1:  Install Meteor on your local computer
+Instructions are [here](https://www.meteor.com/install).
+
+# Step 2:  Create a directory on your local computer
+Call it something like "OnCallAssignments".
+
+# Step 3:  Copy the contents of this repository into that directory
+
+# Step 4:  Deploy the application
+While you can [run the application locally] (http://docs.meteor.com/#/basic/quickstart) on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server.
+
+When the application is initially set up, the login is admin|admin.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.
+
+# Step 5:  Get a Twilio account
+
+# Step 6:  Enter your Twiliio credentials into the application.
+
+# Step 7:  Call the Twilio phone number from a cell phone.
 
 **This is still in development.  Not ready to be used.**
