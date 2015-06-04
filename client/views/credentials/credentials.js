@@ -18,9 +18,16 @@ if (!Meteor.isClient) {
             event.preventDefault();
 
             if ($('#authtoken').val() == "") {
-                alert('An AuthToken must be provided');
+
+                sAlert.error('A Twilio AuthToken must be provided', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#accountsid').val() == "") {
-                alert('An AccountSID must be provided');
+                sAlert.error('A Twilio AccountSID must be provided', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             }
             else {
                 var credentials =
@@ -31,17 +38,26 @@ if (!Meteor.isClient) {
 
                 Meteor.call("validateTwilioCredentials", credentials, function (error, result) {
                     if (error) {
-                        console.log(error.reason);
-                        alert('Invalid credentials');
+                        // console.log(error.reason);
+                        sAlert.error('Invalid credentials.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
                     }
                     else {
                         // console.log(result);
                         if (result == $('#accountsid').val()) {
-                            alert('Credentials validated by Twilio');
+                            sAlert.success('Credentials validated by Twilio.', {
+                                effect: 'scale', position: 'top-right',
+                                timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                            });
                             Session.set("credentialValidityCheck", '<div class="alert alert-success" role="alert">The Twilio credentials in the database are valid.</div>');
                             Router.go('consults');
                         } else {
-                            alert('Invalid credentials');
+                            sAlert.error('Invalid credentials.', {
+                                effect: 'scale', position: 'top-right',
+                                timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                            });
                             Session.set("credentialValidityCheck", '<div class="alert alert-danger" role="alert">The Twilio credentials in the database are NOT valid.</div>');
                             Router.go('credentialsForm');
                         }
@@ -54,13 +70,25 @@ if (!Meteor.isClient) {
             event.preventDefault();
 
             if ($('#emailUsername').val() == "") {
-                alert('A username must be provided');
+                sAlert.error('A username must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#emailPassword').val() == "") {
-                alert('An password must be provided');
+                sAlert.error('A password must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#smtpServer').val() == "") {
-                alert('An SMTP server must be provided');
+                sAlert.error('An SMTP Server must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#smtpPort').val() == "") {
-                alert('An port must be provided');
+                sAlert.error('An SMTP port must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             }
             else {
                 var credentials =
@@ -75,7 +103,10 @@ if (!Meteor.isClient) {
                 Meteor.call("updateEmailCredentials", credentials, function (error, result) {
                     if (error) {
                         console.log(error.reason);
-                        alert('Problem saving email credentials');
+                        sAlert.error('Problem saving credentials.  See console.log.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
                     } else {
                         // console.log(result);
                         Session.set("emailValidityCheck", '<div class="alert alert-success" role="alert">There are email credentials in the database.</div>');
@@ -91,7 +122,10 @@ if (!Meteor.isClient) {
             event.preventDefault();
 
             if ($('#testEmailAddress').val() == "") {
-                alert('An email address must be provided');
+                sAlert.error('An email address must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             }
             else {
                 Meteor.call('sendEmail',
@@ -99,7 +133,10 @@ if (!Meteor.isClient) {
                     $('#testEmailAddress').val(),
                     'Test from OnCallAssignments',
                     'This is the test email you requested from the OnCallAssignments program.');
-                alert("Sent");
+                sAlert.success('Sent', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             }
         }
 

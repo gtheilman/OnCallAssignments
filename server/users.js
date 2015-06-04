@@ -64,9 +64,9 @@ if (Meteor.isServer) {
                     return
                 }
             },
-            'passwordUser': function (id) {
+            'passwordUser': function (_id) {
                 if (Roles.userIsInRole(Meteor.user(), 'active')) {
-                    Accounts.sendResetPasswordEmail(id);
+                    Accounts.sendResetPasswordEmail(_id);
                 }
             }
 

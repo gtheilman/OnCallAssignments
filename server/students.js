@@ -23,13 +23,18 @@ if (Meteor.isServer) {
                 }
             )
         },
-        'deleteStudentData': function(studentid) {
-            Students.remove (
-                {
-                    studentid: studentid
-                }
-
-            )
+        'deleteStudentData': function (student_id) {
+            var responses = Responses.find({student_id: student_id}).count();
+            if (responses == 0) {
+                Students.remove(
+                    {
+                        _id: student_id
+                    }
+                );
+                return true
+            } else {
+                return false
+            }
         }
 
 

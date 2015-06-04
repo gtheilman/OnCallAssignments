@@ -3,16 +3,21 @@
 </head>
 
 <template name="layout">
+    <body>
+    {{> sAlert}}
     <div class="container-fluid">
         <header>
             {{> nav }}
         </header>
+
         <p>&nbsp;</p>
+
         <p>&nbsp;</p>
         {{#if currentUser}}
-             {{> yield}}
+        {{> yield}}
         {{/if}}
     </div>
+    </body>
     <footer>
         {{> footer}}
     </footer>

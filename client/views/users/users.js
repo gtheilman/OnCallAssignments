@@ -7,11 +7,20 @@ if (!Meteor.isClient) {
             event.preventDefault();
 
             if ($('#email').val() == "") {
-                alert('User email address must be provided');
+                sAlert.error('A faculty email address must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#password').val() == "") {
-                alert('User password must be provided');
+                sAlert.error('A password must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#username').val() == "") {
-                alert('A username must be provided');
+                sAlert.error('A username must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else {
 
                 var user =
@@ -22,8 +31,12 @@ if (!Meteor.isClient) {
 
                     createdAt: new Date()
                 };
-
+                //TODO:  Fix this callback
                 Meteor.call('createNewUser', user);
+                sAlert.success('Created.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
                 Router.go('users');
             }
         }
@@ -59,9 +72,15 @@ if (!Meteor.isClient) {
             event.preventDefault();
 
             if ($('#email').val() == "") {
-                alert('User email address must be provided');
+                sAlert.error('An email address must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#username').val() == "") {
-                alert('A username must be provided');
+                sAlert.error('A username must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else {
 
                 var user =

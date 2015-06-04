@@ -8,13 +8,25 @@ if (!Meteor.isClient) {
 
 
             if ($('#shortName').val() == "") {
-                alert('A name must be provided');
+                sAlert.error('A name must be provided', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#phone').val() == "") {
-                alert('A phone number must be provided');
+                sAlert.error('A Twilio phone number must be provided', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#phoneMessage').val() == "") {
-                alert('An outgoing phone message must be provided.');
+                sAlert.error('An outgoing message must be provided', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else if ($('#maxSeconds').val() == "") {
-                alert('What is the maximum length of the recording?');
+                sAlert.error('What is the maximum length of the recording allowed?', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             }
 
             else {
@@ -41,9 +53,32 @@ if (!Meteor.isClient) {
             }
         },
 
+
         "click #deleteConsultButton": function (event) {
-            Meteor.call('deleteConsult', $('#id').val());
-            Router.go('consults');
+            Meteor.call('deleteConsult', $('#id').val(), function (error, result) {
+                if (result) {
+                    sAlert.success('Deleted.', {
+                        effect: 'scale', position: 'top-right',
+                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                    });
+                    Router.go('consults');
+                } else if (error) {
+                    console.log(error);
+                    sAlert.error('Something went wrong  Check console.log.', {
+                        effect: 'scale', position: 'top-right',
+                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                    });
+                }
+                else {
+                    sAlert.error('Could not delete consult.  Students may have already responded to it.', {
+                        effect: 'scale', position: 'top-right',
+                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                    });
+
+                }
+
+            });
+
         }
     });
 
@@ -70,11 +105,15 @@ if (!Meteor.isClient) {
             if (!response.recordingURL) {
                 Meteor.call('callInfo', response.callSid, function (err, data) {
                     if (err) {
+                        sAlert.error('There was an error.  Check the console.log.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
                         console.log(err);
                     } else {
-                        console.log("Hitting Twilio Database");
-                        console.log(data);
-                        console.log("After Hitting Twilio Database");
+                        // console.log("Hitting Twilio Database");
+                        // console.log(data);
+                        // console.log("After Hitting Twilio Database");
                         // Get recording information
                         Meteor.call('recordingInfo', response.callSid, function (err, recordingInfo) {
                             if (err) {
@@ -115,8 +154,8 @@ if (!Meteor.isClient) {
     Template.consultResponses.helpers({
         responses: function () {
             var consult = Template.parentData(1);
-            console.log("Consult:");
-            console.log(consult._id);
+            //console.log("Consult:");
+            // console.log(consult._id);
             return Responses.find({consult_id: consult._id}, {createdAt: 1});
         },
 
@@ -158,9 +197,17 @@ if (!Meteor.isClient) {
 
             Meteor.call('updateResponse', response, function (err, data) {
                 if (err) {
+                    sAlert.error('There was an error.  Check the console.log.', {
+                        effect: 'scale', position: 'top-right',
+                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                    });
                     console.log(err);
                 } else {
                     $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-success').html("Changed");
+                    sAlert.success('Changed.', {
+                        effect: 'scale', position: 'top-right',
+                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                    });
                 }
 
             });

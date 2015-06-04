@@ -118,12 +118,18 @@ if (Meteor.isServer) {
         },
 
 
-        'deleteConsult': function (id) {
-            Consults.remove(
-                {
-                    _id: id
-                }
-            )
+        'deleteConsult': function (consult_id) {
+            var responses = Responses.find({consult_id: consult_id}).count();
+            if (responses == 0) {
+                Consults.remove(
+                    {
+                        _id: consult_id
+                    }
+                );
+                return true
+            } else {
+                return false
+            }
         }
 
 
