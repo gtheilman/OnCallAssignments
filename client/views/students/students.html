@@ -222,7 +222,8 @@
                 You can import a CSV file containing student information into the database.
             </p>
             <ul>
-                <li>A sample CSV file can be obtained <a href="studentImportTemplate.csv">here.</a>
+                <li>
+                    A sample CSV file can be obtained <a href="{{ pathFor 'exportSampleStudentCSV' }}">here</a>.
                 </li>
                 <li>You <b>must not</b> change the names of the column headers in the file.</li>
                 <li>Each row must have a <i>studentid</i>. If there is no value for <i>studentid</i>, the row will
@@ -232,7 +233,7 @@
                     <ul>
                         <li>The <i>studentid</i> is what has to remain constant.</li>
                         <li>No two students can have the same <i>studentid</i>.</li>
-                        <li>Uploading a student record with an identical <i>studentid</i> will overwrite the
+                        <li>Uploading a student record with an identical <i>studentid</i> will update the
                             student record already in the database.
                         </li>
                     </ul>
