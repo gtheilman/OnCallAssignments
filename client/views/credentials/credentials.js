@@ -8,7 +8,16 @@ if (!Meteor.isClient) {
 
         emailCredentialsCheck: function () {
             return Session.get("emailValidityCheck");
+        },
+        //TODO:  Figure out why this isn't working
+        twilioPhone: function () {
+            Meteor.call("phoneList", function (error, result) {
+                console.log(result);
+                return String(result)
+            });
+
         }
+
 
     });
 
