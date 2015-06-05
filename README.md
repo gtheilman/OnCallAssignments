@@ -72,7 +72,9 @@ This is the AccountSID and AuthToken associated with your Twilio account.   They
 
 
 
-**Some Warnings
+
+
+**Some Warnings **
 
 While not absolutely necessary to use the program, this application is designed to store  student information.  Some of that information (such as phone number) might fall under  [Federal rules](http://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html) regarding  protecting student information.   While I have done my best to avoid situations which might expose private student information, I am making no guarantees as to data security.  You are responsible for reviewing the source code and making sure it meets the requirements of your institution. 
 
