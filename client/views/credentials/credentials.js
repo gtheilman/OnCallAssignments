@@ -45,38 +45,30 @@ if (!Meteor.isClient) {
 
                 Meteor.call("validateTwilioCredentials", credentials, function (error, result) {
                     if (error) {
-                        console.log("First Error");
-                        console.log(error.reason);
-                        console.log(error.details);
                         console.log(error);
-                        sAlert.error('Invalid credentials!', {
+                        sAlert.error('Invalid credentials', {
                             effect: 'scale', position: 'top-right',
                             timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                         });
                     }
                     else {
 
-                        console.log("First Result");
-                        console.log(result);
-
-                        if (result.accountsid == $('#accountsid').val()) {
+                        if (result == $('#accountsid').val()) {
                             sAlert.success('Credentials validated by Twilio.', {
                                 effect: 'scale', position: 'top-right',
                                 timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                             });
                             Session.set("credentialValidityCheck", '<div class="alert alert-success" role="alert">The Twilio credentials in the database are valid.</div>');
+                            Session.set("credentialsStatus", 1);
                             Router.go('consults');
                         } else {
-                            console.log("Second Error");
-                            console.log(error.reason);
-                            console.log(error.details);
                             console.log(error);
                             sAlert.error('Invalid credentials...', {
                                 effect: 'scale', position: 'top-right',
                                 timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                             });
                             Session.set("credentialValidityCheck", '<div class="alert alert-danger" role="alert">The Twilio credentials in the database are NOT valid.</div>');
-                            Router.go('credentialsForm');
+                            // Router.go('credentialsForm');
                         }
                     }
                 });
