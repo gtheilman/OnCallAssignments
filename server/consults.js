@@ -40,26 +40,23 @@ if (Meteor.isServer) {
                     var sid = respJson.incoming_phone_numbers[0].sid;
                     restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid
                     + "/IncomingPhoneNumbers/" + sid + ".json";
+                    var outgoingURL = Meteor.absoluteUrl() + "say/" + consult.phone;
                     var voiceURLInfo = Meteor.http.post(restURL,
                         {
                             auth: auth,
                             params: {
-                                VoiceUrl: Meteor.absoluteUrl() + "say/" + consult.phone
+                                VoiceUrl: outgoingURL
                             }
                         });
                     // Confirm that it was set correctly
                     if (voiceURLInfo.statusCode == 200) {
                         var voiceJson = JSON.parse(phoneInfo.content);
-                        if (voiceJson.voice_url == Meteor.absoluteUrl() + "say/" + consult.phone) {
-                            return sid
-                        } else {
-                            var errorJson = voiceJson.parse(result.content);
-                            throw new Meteor.Error(result.statusCode, errorJson.error);
+                        var voice_url = voiceJson.incoming_phone_numbers[0].voice_url;
+                        if (voice_url != outgoingURL) {
+                            return error
+
                         }
                     }
-                } else {
-                    var errorJson = JSON.parse(result.content);
-                    throw new Meteor.Error(result.statusCode, errorJson.error);
                 }
             }
 
