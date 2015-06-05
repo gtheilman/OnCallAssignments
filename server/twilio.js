@@ -91,6 +91,63 @@ if (Meteor.isServer) {
             },
 
 
+            // this is to check for the data associated with a phone number.
+            'getPhoneNumberDetails': function (PhoneNumber) {
+                var credentials = Credentials.findOne();
+                if (!credentials.accountsid) {
+                    return error
+                }
+                var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/IncomingPhoneNumbers.json";
+                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var phoneInfo = Meteor.http.get(restURL,
+                    {
+                        auth: auth,
+                        params: {
+                            PhoneNumber: PhoneNumber
+                        }
+                    });
+
+                if (phoneInfo.statusCode == 200) {
+                    var respJson = JSON.parse(phoneInfo.content);
+                    return respJson.incoming_phone_numbers[0];
+                } else {
+                    return 0;
+                }
+
+            },
+
+
+            // this is to set the URL Twilio contacts when a phone call is received
+            'setTwilioVoiceURL': function (PhoneNumber, sid) {
+                var credentials = Credentials.findOne();
+                if (!credentials.accountsid) {
+                    return error
+                }
+
+                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid
+                + "/IncomingPhoneNumbers/" + sid + ".json";
+
+                var outgoingURL = Meteor.absoluteUrl() + "say/" + PhoneNumber;
+
+                var voiceURLInfo = Meteor.http.post(restURL,
+                    {
+                        auth: auth,
+                        params: {
+                            VoiceUrl: outgoingURL
+                        }
+                    });
+                // Confirm that it was set correctly
+                if (voiceURLInfo.statusCode == 200) {
+                    return voiceJson = JSON.parse(voiceURLInfo.content);
+
+                } else {
+                    return false
+                }
+
+            },
+
+
             'sendSMS': function (to, from, message) {
                 var credentials = Credentials.findOne();
                 var auth = credentials.accountsid + ":" + credentials.authtoken;
@@ -107,7 +164,9 @@ if (Meteor.isServer) {
                 );
 
 
-            },
+            }
+
+            ,
 
 
             // this is to check details about a call from a student
@@ -152,7 +211,9 @@ if (Meteor.isServer) {
                     var errorJson = JSON.parse(result.content);
                     throw new Meteor.Error(result.statusCode, errorJson.error);
                 }
-            },
+            }
+
+            ,
 
 
             // this is to retrieve all the phone numbers associated with this account
@@ -177,7 +238,9 @@ if (Meteor.isServer) {
                     var errorJson = JSON.parse(phones.content);
                     throw new Meteor.Error(recordingList.statusCode, errorJson.error);
                 }
-            },
+            }
+
+            ,
 
 
             // this is to retrieve information about the recording associated with the call

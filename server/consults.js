@@ -23,43 +23,23 @@ if (Meteor.isServer) {
 
                 // Set the Request URL associated with that number on the Twilio website
                 // First, get the id associated with this phone number
-                var credentials = Credentials.findOne();
-                var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/IncomingPhoneNumbers.json";
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
-                var phoneInfo = Meteor.http.get(restURL,
-                    {
-                        auth: auth,
-                        params: {
-                            PhoneNumber: "1" + consult.phone
-                        }
-                    });
-                // Then, try to set the Request URL to our own server
-                if (phoneInfo.statusCode == 200) {
+                var PhoneNumber = "1" + consult.phone;
 
-                    var respJson = JSON.parse(phoneInfo.content);
-                    var sid = respJson.incoming_phone_numbers[0].sid;
-                    restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid
-                    + "/IncomingPhoneNumbers/" + sid + ".json";
-                    var outgoingURL = Meteor.absoluteUrl() + "say/" + consult.phone;
-                    var voiceURLInfo = Meteor.http.post(restURL,
-                        {
-                            auth: auth,
-                            params: {
-                                VoiceUrl: outgoingURL
+                Meteor.call("getPhoneNumberDetails", PhoneNumber, function (error, result) {
+                    if (error) {
+                        return error
+                    } else {
+                        var sid = result.sid;
+                        // now set the voice URL associated with this phone number on the Twilio website
+                        Meteor.call("setTwilioVoiceURL", PhoneNumber, sid, function (error, result) {
+                            var voice_url = result.incoming_phone_numbers[0].voice_url;
+                            if (voice_url != outgoingURL) {
+                                return error
                             }
                         });
-                    // Confirm that it was set correctly
-                    if (voiceURLInfo.statusCode == 200) {
-                        var voiceJson = JSON.parse(phoneInfo.content);
-                        var voice_url = voiceJson.incoming_phone_numbers[0].voice_url;
-                        if (voice_url != outgoingURL) {
-                            return error
-
-                        }
                     }
-                }
+                });
             }
-
 
             // Insert/update the consult
 
@@ -105,7 +85,8 @@ if (Meteor.isServer) {
             }
 
 
-        },
+        }
+        ,
 
 
         'deleteConsult': function (consult_id) {
