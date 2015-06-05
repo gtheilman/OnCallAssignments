@@ -35,16 +35,20 @@ If you are a faculty member at an accredited health-care education school and wo
 
 Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.
 
-**Step 1:** Install Meteor on your local Windows, Mac or Linux computer.
+**Step 1:**  Sign up for a [Twilio account](https://www.twilio.com/)
+
+The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
+
+**Step 2:** Install Meteor on your local Windows, Mac or Linux computer.
 
 The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/) or [this video](https://youtu.be/9EsDHeI327s) helpful.
 
-**Step 2:**  Create a directory on your local computer.  Call it something like "OnCallAssignments".
+**Step 3:**  Create a directory on your local computer.  Call it something like "OnCallAssignments".
 
-**Step 3:**  Download the zip file with the contents of this repository and unzip it into that directory. 
+**Step 4:**  Download the zip file with the contents of this repository and unzip it into that directory. 
 The "Download Zip" button is on the right-side of the repository page.  
 
-**Step 4:**  Deploy the application
+**Step 5:**  Deploy the application
 
 While you can [run the application locally] (http://docs.meteor.com/#/basic/quickstart) on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  For production purposes, a PaaS service like [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) may be more appropriate.
 
@@ -53,10 +57,6 @@ When you deploy to Meteor, you will be given a URL where your application can be
 **Step 6:** Run the application using the Meteor URL  
 
 When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate roles (i.e., administrator, active).
-
-**Step 6:**  Sign up for a [Twilio account](https://www.twilio.com/)
-
-The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
 
 **Step 7:**  Enter your Twilio credentials into the application.
 
