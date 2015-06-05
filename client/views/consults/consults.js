@@ -48,7 +48,10 @@ if (!Meteor.isClient) {
                     activate: $('#activate').is(':checked')
                 };
 
-                Meteor.call('upsertConsultData', consult);
+                Meteor.call('upsertConsultData', consult, function (result, error) {
+                    console.log(result);
+                    console.log(error);
+                });
                 Router.go('consults');
             }
         },
