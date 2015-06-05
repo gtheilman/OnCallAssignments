@@ -24,7 +24,7 @@ Faculty can then go through the responses left by the students and score them on
 
 This particular version uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever charges are incurred.   I do not have any financial interest in Twilio and this software could probably be easily adapted to use a different service.   Twilio just seemed to have a nicely documented REST API to work with.
 
-![Process.png](https://github.com/gtheilman/OncallAssignments/blob/master/media/Process.png)
+![](https://github.com/gtheilman/OncallAssignments/blob/master/media/Process.png)
  
 The program is written using the Meteor framework.   Meteor was chosen to allow for easy customization and deployment by faculty members with little experience in information technology.   
 
