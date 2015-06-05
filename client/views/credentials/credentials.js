@@ -45,15 +45,21 @@ if (!Meteor.isClient) {
 
                 Meteor.call("validateTwilioCredentials", credentials, function (error, result) {
                     if (error) {
-                        // console.log(error.reason);
-                        sAlert.error('Invalid credentials.', {
+                        console.log("First Error");
+                        console.log(error.reason);
+                        console.log(error.details);
+                        console.log(error);
+                        sAlert.error('Invalid credentials!', {
                             effect: 'scale', position: 'top-right',
                             timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                         });
                     }
                     else {
-                        // console.log(result);
-                        if (result == $('#accountsid').val()) {
+
+                        console.log("First Result");
+                        console.log(result);
+
+                        if (result.accountsid == $('#accountsid').val()) {
                             sAlert.success('Credentials validated by Twilio.', {
                                 effect: 'scale', position: 'top-right',
                                 timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
@@ -61,7 +67,11 @@ if (!Meteor.isClient) {
                             Session.set("credentialValidityCheck", '<div class="alert alert-success" role="alert">The Twilio credentials in the database are valid.</div>');
                             Router.go('consults');
                         } else {
-                            sAlert.error('Invalid credentials.', {
+                            console.log("Second Error");
+                            console.log(error.reason);
+                            console.log(error.details);
+                            console.log(error);
+                            sAlert.error('Invalid credentials...', {
                                 effect: 'scale', position: 'top-right',
                                 timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                             });

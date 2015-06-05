@@ -56,16 +56,57 @@ if (Meteor.isServer) {
                         );
                     }
                     //TODO:  Set initial voice URL
-                    return respJson.sid;
+                    // Check to see if initial example consult number has been changed
+                    var firstTestConsult = Consults.findOne({shortName: "First Test Consult"});
+                    if (firstTestConsult) {
+                        if (firstTestConsult.phone == "6015551212") {
+                            Meteor.call("phoneList", function (error, result) {
+
+                                if (error) {
+                                    return error
+                                } else {
+                                    var phone_number = result[0].phone_number.replace("+1", "");
+
+                                    Consults.update(
+                                        {_id: firstTestConsult._id},
+                                        {
+                                            $set: {
+                                                phone: phone_number
+                                            }
+                                        }
+                                    );
+
+
+                                    Meteor.call("setTwilioVoiceURL", phone_number, result[0].sid, function (error, result) {
+                                        if (result) {
+                                            return result.account_sid;
+                                        } else {
+                                            var errorJson = JSON.parse(result.content);
+                                            throw new Meteor.Error(result.statusCode, errorJson.error);
+                                        }
+                                    });
+
+                                }
+                            });
+
+
+                        } //end 6015551212
+
+
+                        // if (firstTestConsult) BELOW
+                    } else {
+                        return respJson.sid; // SUCCCESS Because returning account_sid
+                    }
+
+                    // end if STatus code 200 below
                 } else {
                     var errorJson = JSON.parse(result.content);
                     throw new Meteor.Error(result.statusCode, errorJson.error);
                 }
-            }
+            }, // END validateTwilioCredentials
 
-            ,
 
-            // this is to check if the credentials already in the db are valid
+// this is to check if the credentials already in the db are valid
             'confirmTwilioCredentials': function () {
                 var credentials = Credentials.findOne();
                 if (!credentials.accountsid) {
@@ -88,10 +129,11 @@ if (Meteor.isServer) {
                 } else {
                     return 0
                 }
-            },
+            }
+            ,
 
 
-            // this is to check for the data associated with a phone number.
+// this is to check for the data associated with a phone number.
             'getPhoneNumberDetails': function (PhoneNumber) {
                 var credentials = Credentials.findOne();
                 if (!credentials.accountsid) {
@@ -114,10 +156,11 @@ if (Meteor.isServer) {
                     return 0;
                 }
 
-            },
+            }
+            ,
 
 
-            // this is to set the URL Twilio contacts when a phone call is received
+// this is to set the URL Twilio contacts when a phone call is received
             'setTwilioVoiceURL': function (PhoneNumber, sid) {
                 var credentials = Credentials.findOne();
                 if (!credentials.accountsid) {
@@ -145,7 +188,8 @@ if (Meteor.isServer) {
                     return false
                 }
 
-            },
+            }
+            ,
 
 
             'sendSMS': function (to, from, message) {
@@ -169,7 +213,7 @@ if (Meteor.isServer) {
             ,
 
 
-            // this is to check details about a call from a student
+// this is to check details about a call from a student
             'callInfo': function (callSid) {
                 var response = Responses.findOne({callSid: callSid});
 
@@ -216,7 +260,7 @@ if (Meteor.isServer) {
             ,
 
 
-            // this is to retrieve all the phone numbers associated with this account
+// this is to retrieve all the phone numbers associated with this account
             'phoneList': function (callSid) {
                 var credentials = Credentials.findOne();
                 var auth = credentials.accountsid + ":" + credentials.authtoken;
@@ -242,7 +286,7 @@ if (Meteor.isServer) {
             ,
 
 
-            // this is to retrieve information about the recording associated with the call
+// this is to retrieve information about the recording associated with the call
             'recordingInfo': function (callSid) {
                 var credentials = Credentials.findOne();
                 var auth = credentials.accountsid + ":" + credentials.authtoken;
