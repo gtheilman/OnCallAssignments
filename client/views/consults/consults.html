@@ -107,8 +107,9 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="phone">Twilio Phone Number</label>
+                    <label for="phone">Twilio Phone Number:</label>
                     <input type="tel" class="form-control" id="phone" placeholder="6015551212" value="{{phone}}">
+                    {{ twilioPhone }}
                 </div>
             </div>
         </div>
@@ -211,6 +212,7 @@
 
     </form>
 
+    {{#if _id }}
     <div class="row">
         <div class="col-md-8">
             <p>&nbsp;</p>
@@ -223,7 +225,7 @@
         </div>
     </div>
 
-    {{#if _id }}
+
         {{> responses }}
     {{/if}}
 

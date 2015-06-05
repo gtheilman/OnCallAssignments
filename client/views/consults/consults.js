@@ -147,6 +147,20 @@ if (!Meteor.isClient) {
                 tweetLine = tweet + tweetCharacters;
 
                 return tweetLine
+            },
+            // TODO:  Figure out why this isn't working.
+            twilioPhone: function () {
+                Meteor.call('phoneList', function (err, data) {
+                    if (err) {
+                        console.log(err);
+                        return "6015551212"
+
+                    } else {
+                        console.log(data.replace("+1", ""));
+                        return data.replace("+1", "");
+                    }
+                });
+
             }
 
 

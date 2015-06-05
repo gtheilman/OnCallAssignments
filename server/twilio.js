@@ -154,6 +154,32 @@ if (Meteor.isServer) {
                 }
             },
 
+
+            // this is to retrieve all the phone numbers associated with this account
+            'phoneList': function (callSid) {
+                var credentials = Credentials.findOne();
+                var auth = credentials.accountsid + ":" + credentials.authtoken;
+
+                var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/IncomingPhoneNumbers.json";
+                var phones = Meteor.http.get(restURL,
+                    {
+                        auth: auth
+
+                    });
+
+
+                if (phones.statusCode == 200) {
+                    var phonesJSON = JSON.parse(phones.content);
+
+                    return accountSid = phonesJSON.incoming_phone_numbers[0].phone_number
+
+                } else {
+                    var errorJson = JSON.parse(phones.content);
+                    throw new Meteor.Error(recordingList.statusCode, errorJson.error);
+                }
+            },
+
+
             // this is to retrieve information about the recording associated with the call
             'recordingInfo': function (callSid) {
                 var credentials = Credentials.findOne();
