@@ -135,19 +135,31 @@ if (!Meteor.isClient) {
 
     Template.consultForm.helpers({
 
-            tweet: function () {
-                var tweet = "<span class='label label-info'>" + this.tweetHeader + " ";
-                tweet += this.consultURL + " ";
-                tweet += this.phone + " ";
-                tweet += "</span>    ";
+            tweetlength: function (tweet) {
+                var tweetlength = tweet.length;
 
-                var tweetLength = tweet.length;
-                var tweetCharacters = "  <i>(" + tweetLength + " characters)</i>";
+                if (tweetlength) {
+                    return tweetlength
+                }
 
-                tweetLine = tweet + tweetCharacters;
-
-                return tweetLine
             },
+
+
+            tweet: function (tweet) {
+                var tweet = this.tweetHeader + " ";
+                tweet += this.consultURL + " ";
+                tweet += this.phone;
+                Session.set('tweetLength', tweet.length);
+
+
+                if (tweet) {
+                    return tweet
+                }
+
+            },
+
+
+
             // TODO:  Figure out why this isn't working.
             twilioPhone: function () {
                 var phones = Meteor.call('phoneList');

@@ -91,20 +91,6 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label for="hangupMessage">Hangup Message</label>
-                    <input type="text" class="form-control" id="hangupMessage"
-                           placeholder="I appreciate your help.   Goodbye." value="{{hangupMessage}}">
-                </div>
-            </div>
-            <div class="col-md-4">
-
-            </div>
-        </div>
-
-
-        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="phone">Twilio Phone Number:</label>
@@ -213,17 +199,20 @@
     </form>
 
     {{#if _id }}
-    <div class="row">
-        <div class="col-md-8">
-            <p>&nbsp;</p>
+        <div class="row">
+            <div class="col-md-8">
+                <p>&nbsp;</p>
 
-            <p>&nbsp;</p>
-
-            <p>
-                <b>Tweet:</b> {{{ tweet }}}
-            </p>
+                <p>&nbsp;</p>
+                {{#if tweet }}
+                    <p>
+                        <b>Tweet:</b>  {{ tweet }}
+                        <br>
+                        ( <i> {{ tweetlength tweet }}  characters ) </i>
+                    </p>
+                {{/if}}
+            </div>
         </div>
-    </div>
 
 
         {{> responses }}
