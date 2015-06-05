@@ -55,7 +55,7 @@ if (Meteor.isServer) {
                             }
                         );
                     }
-
+                    //TODO:  Set initial voice URL
                     return respJson.sid;
                 } else {
                     var errorJson = JSON.parse(result.content);
@@ -231,8 +231,7 @@ if (Meteor.isServer) {
 
                 if (phones.statusCode == 200) {
                     var phonesJSON = JSON.parse(phones.content);
-
-                    return accountSid = phonesJSON.incoming_phone_numbers[0].phone_number
+                    return phonesJSON.incoming_phone_numbers;
 
                 } else {
                     var errorJson = JSON.parse(phones.content);

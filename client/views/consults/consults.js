@@ -158,12 +158,9 @@ if (!Meteor.isClient) {
 
             },
 
-
-
-            // TODO:  Figure out why this isn't working.
-            twilioPhone: function () {
-                var phones = Meteor.call('phoneList');
-                return phones
+            twilioPhones: function () {
+                // simple:reactive-method
+                return ReactiveMethod.call("phoneList");
             }
 
 
