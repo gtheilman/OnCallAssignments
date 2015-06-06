@@ -86,9 +86,11 @@ if (!Meteor.isClient) {
         }
     });
 
-
+    // Use jquery to select values in DOM based on what is already in db
     Template.consultForm.onRendered(function () {
         var consult = Consults.findOne({_id: Session.get("consult_id")});
+        //TODO: Get this to work
+        $('[name=phone]').val(standardizedPhoneFormat(consult.phone));
         if (consult.voice == 'alice') {
             $("#voiceAlice").prop("checked", true);
         } else if (consult.voice == 'woman') {
@@ -97,6 +99,7 @@ if (!Meteor.isClient) {
         } else if (consult.voice == 'man') {
             $("#voiceMan").prop("checked", true);
         }
+
 
     });
 
