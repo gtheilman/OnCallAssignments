@@ -350,10 +350,10 @@ if (Meteor.isServer) {
                             auth: auth
                         });
 
-                    var transcriptionInfo = JSON.parse(recordingList.content);
+                    var transcriptionInfo = JSON.parse(transcriptionList.content);
 
-                    var transcriptionSid = transcriptionInfo[0].sid;
-                    var transcriptionText = transcriptionInfo[0].transcription_text
+                    var transcriptionSid = transcriptionInfo.transcriptions[0].sid;
+                    var transcriptionText = transcriptionInfo.transcriptions[0].transcription_text;
 
                     if (transcriptionSid) {
                         Responses.update(
