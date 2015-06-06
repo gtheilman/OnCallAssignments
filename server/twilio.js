@@ -231,8 +231,45 @@ if (Meteor.isServer) {
                     return false
                 }
 
+            },
+
+
+            // this is to set the URL Twilio contacts when a phone call is received
+            'setVoiceCallerIdLookup': function (PhoneNumber, sid, status) {
+                var credentials = Credentials.findOne();
+                if (!credentials.accountsid) {
+                    return error
             }
-            ,
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
+                restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid
+                + "/IncomingPhoneNumbers/" + sid + ".json";
+
+                var outgoingURL = Meteor.absoluteUrl() + "say/" + PhoneNumber;
+
+                var VoiceCallerIdLookupInfo = Meteor.http.post(restURL,
+                    {
+                        auth: auth,
+                        params: {
+                            VoiceCallerIdLookup: status
+                        }
+                    });
+                // Confirm that it was set correctly
+                if (VoiceCallerIdLookupInfo.statusCode == 200) {
+                    return voiceJson = JSON.parse(VoiceCallerIdLookupInfo.content);
+
+                } else {
+                    return false
+                }
+
+            },
+
+
+
+
+
+
+
 
 
             'sendSMS': function (to, from, message) {

@@ -44,6 +44,7 @@ if (!Meteor.isClient) {
                     phone: standardizedPhoneFormat($('#phone').val()),
                     voice: $('input:radio[name=voice]:checked').val(),
                     transcribe: $('#transcribe').is(':checked'),
+                    voiceCallerIdLookup: $('#voiceCallerIdLookup').is(':checked'),
                     activate: $('#activate').is(':checked')
                 };
                 console.log(consult);
@@ -165,8 +166,10 @@ if (!Meteor.isClient) {
                 return ReactiveMethod.call("phoneList");
             },
 
-            phoneSelected: function (phone) {
-                if (this.phone == phone) {
+            phoneSelected: function (selectPhone) {
+
+                if (standardizedPhoneFormat($('#twilioPhoneNumber').val()) == standardizedPhoneFormat(selectPhone)) {
+
                     return "selected"
                 }
 
@@ -253,9 +256,6 @@ if (!Meteor.isClient) {
             }
         });
         $('[data-toggle="tooltip"]').tooltip();
-
-        //TODO: Get this to work
-        $('select #phone').val(consult.phone);
 
 
     });

@@ -109,14 +109,14 @@
                     <select name="phone" id="phone">
                         <option></option>
                         {{#each twilioPhones}}
-                            <option value="{{standardizedPhoneFormat phone_number}}"  {{ phoneSelected standardizedPhoneFormat phone_number}} >{{friendlyPhoneFormat phone_number}}</option>
+                            <option value="{{standardizedPhoneFormat phone_number}}"  {{ phoneSelected  phone_number}}  >{{friendlyPhoneFormat phone_number}}</option>
                         {{/each}}
                     </select>
                 </div>
             </div>
-
-
         </div>
+
+        <input type="hidden" name="twilioPhoneNumber" id="twilioPhoneNumber" value="{{phone}}">
 
 
         <div class="row">
@@ -149,7 +149,7 @@
                     <input type="number" class="form-control" id="maxSeconds" placeholder="120" value="{{maxSeconds}}">
                 </div>
             </div>
-            <div class="col-md-1"></div>
+
             <div class="col-md-2">
                 <div class="form-group">
                     <div class="checkbox">
@@ -163,6 +163,18 @@
                 </div>
             </div>
 
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="checkbox">
+                        {{#if voiceCallerIdLookup}}
+                            <input type="checkbox" id="voiceCallerIdLookup" name="voiceCallerIdLookup" checked>
+                        {{else}}
+                            <input type="checkbox" id="voiceCallerIdLookup" name="voiceCallerIdLookup">
+                        {{/if}}
+                        Lookup Phone Registrant?<br>(Extra charge)
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-1"></div>
@@ -260,7 +272,7 @@
                     Caller ID
                 </th>
                 <th>
-                    <a href="#" data-toggle="tooltip" title="Must be enabled on Twilio website.  Costs extra.">Phone
+                    <a href="#" data-toggle="tooltip" title="Enable above.  Costs extra.">Phone
                         Registrant</a>
                 </th>
 

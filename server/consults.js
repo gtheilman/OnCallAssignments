@@ -36,8 +36,17 @@ if (Meteor.isServer) {
 
                 // now set the voice URL associated with this phone number on the Twilio website
                 Meteor.call("setTwilioVoiceURL", PhoneNumber, sid, function (error, result) {
+                    var outgoingURL = Meteor.absoluteUrl() + "say/" + PhoneNumber;
                     var voice_url = result.incoming_phone_numbers[0].voice_url;
                     if (voice_url != outgoingURL) {
+                        return error
+                    }
+                });
+
+                // now set the CNAM lookup status associated with this phone number on the Twilio website
+                Meteor.call("setVoiceCallerIdLookup", PhoneNumber, sid, consult.voiceCallerIdLookup, function (error, result) {
+                    var voice_caller_id_lookup = result.incoming_phone_numbers[0].voice_caller_id_lookup;
+                    if (voice_caller_id_lookup != consult.voiceCallerIdLookup) {
                         return error
                     }
                 });
@@ -63,6 +72,7 @@ if (Meteor.isServer) {
                             phone: consult.phone,
                             maxSeconds: consult.maxSeconds,
                             transcribe: consult.transcribe,
+                            voiceCallerIdLookup: consult.voiceCallerIdLookup,
                             activate: consult.activate
                         }
                     }
@@ -80,6 +90,7 @@ if (Meteor.isServer) {
                         phone: consult.phone,
                         maxSeconds: consult.maxSeconds,
                         transcribe: consult.transcribe,
+                        voiceCallerIdLookup: consult.voiceCallerIdLookup,
                         activate: consult.activate,
                         createdAt: new Date()
                     }
