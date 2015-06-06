@@ -28,7 +28,7 @@ This particular version uses [Twilio](http://www.Twilio.com) as a backend for th
 
 ![](https://github.com/gtheilman/OncallAssignments/blob/master/media/Process.png)
  
-The program is written using the Meteor framework.   Meteor was chosen to allow for easy customization and deployment by faculty members with little experience in information technology.   
+The program is written using the Meteor framework.   Meteor was chosen to allow for easy customization and deployment by faculty members with little programming experience.   
 
 Meteor lends itself well to deployment using a [Platform as a Service](https://en.wikipedia.org/wiki/Platform_as_a_service) (Paas) provider.  These are services where the server itself is managed by the company and the user is simply responsible for uploading and maintaining the application running on it.  Two common options for deploying Meteor applications are Meteor itself and Modulus.
 
