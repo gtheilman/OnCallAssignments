@@ -14,9 +14,9 @@ When the student calls the telephone number, they are greeted by a message sayin
  
 _Thanks for calling me back.  What do you think we should do with this patient?_
  
-The students then have two minutes to explain their recommendation.
+The students then have two minutes to explain their recommendation.  They press a key to indicate they are finished.   The voice thanks them for their advice and hangs up.
 
-After the student hangs up, they receive a text message on their phone with a link to a recording of the the response they just left.  This text confirms to the student that their response was received and recorded.  If the student has an email on file that is the same as the caller id of the phone, they will also be emailed the link.
+Within a few minutes the student receives a text message (SMS) on their phone with a link to a recording of the the response they just left.  This SMS confirms to the student that their response was received and recorded.  If the student has an email on file that is associated with the caller ID of their phone, they will also be emailed the link.
 
 Faculty can then go through the responses left by the students and score them on communications skills, clinical reasoning, professionalism, etc.
 
