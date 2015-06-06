@@ -16,9 +16,11 @@ _Thanks for calling me back.  What do you think we should do with this patient?_
  
 The students then have two minutes to explain their recommendation.
 
-After the student hangs up, they receive a text message on their phone with a link to a recording of the the response they just left.  This text confirms to the student that their response was received and recorded.
+After the student hangs up, they receive a text message on their phone with a link to a recording of the the response they just left.  This text confirms to the student that their response was received and recorded.  If the student has an email on file that is the same as the caller id of the phone, they will also be emailed the link.
 
 Faculty can then go through the responses left by the students and score them on communications skills, clinical reasoning, professionalism, etc.
+
+For an additional fee, the service will transcribe the recording and look up the person registered to the cell phone.
 
 ### Technical Details
 
