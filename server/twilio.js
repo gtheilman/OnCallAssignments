@@ -10,23 +10,22 @@
 
 if (Meteor.isServer) {
 
-    // encryption functions
-
-
-    encrypt = function (message) {
-        var passphrase = "M5cq3HyFqHKSp4xxEgkBLjfgKXpcjEJuxMDEra782xMvkSju2app3y9hnq9qsALX8Kab7mW2uJQCueNRWHFnhBfh87U8mXLStDcG";
-        return CryptoJS.AES.encrypt(message, passphrase);
-    };
-
-    decrypt = function (encrypted) {
-        var passphrase = "M5cq3HyFqHKSp4xxEgkBLjfgKXpcjEJuxMDEra782xMvkSju2app3y9hnq9qsALX8Kab7mW2uJQCueNRWHFnhBfh87U8mXLStDcG";
-        return CryptoJS.AES.decrypt(message, passphrase);
-    };
-
-
-
 
     Meteor.methods({
+
+
+            encrypt: function (message) {
+                var passphrase = "XXLStDcGLStXLStDcGDcG";
+                return CryptoJS.AES.encrypt(message, passphrase).toString();
+            },
+
+
+            decrypt: function (encrypted) {
+                var passphrase = "XXLStDcGLStXLStDcGDcG";
+                return CryptoJS.AES.decrypt(encrypted, passphrase).toString(CryptoJS.enc.Utf8);
+            },
+
+
             shortenURL: function (URL) {
                 var shortenerURL = "http://tiny-url.info/api/v1/random";
                 var queryString = 'url=' + URL;
@@ -59,6 +58,7 @@ if (Meteor.isServer) {
                     });
 
                 if (result.statusCode == 200) {
+                    var encrypted_authtoken = Meteor.call("encrypt", credentials.authtoken);
                     var respJson = JSON.parse(result.content);
                     if (respJson.sid == credentials.accountsid) {
                         Credentials.update(
@@ -66,7 +66,7 @@ if (Meteor.isServer) {
                             {
                                 $set: {
                                     accountsid: credentials.accountsid,
-                                    authtoken: credentials.authtoken,
+                                    authtoken: encrypted_authtoken,
                                     createdAt: new Date()
                                 }
                             }
@@ -106,15 +106,13 @@ if (Meteor.isServer) {
                                 }
                             });
 
-                            return returned_account_sid;
+                            return credentials.accountsid
 
 
                         } //end 16015551212
 
 
                         // if (firstTestConsult) BELOW
-                    } else {
-                        return respJson.sid; // SUCCCESS Because returning account_sid
                     }
 
                     // end if STatus code 200 below
@@ -122,6 +120,7 @@ if (Meteor.isServer) {
                     var errorJson = JSON.parse(result.content);
                     throw new Meteor.Error(result.statusCode, errorJson.error);
                 }
+                return credentials.accountsid    // SUCCCESS
             }, // END validateTwilioCredentials
 
 
@@ -132,7 +131,8 @@ if (Meteor.isServer) {
                     return error
                 }
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + ".json";
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
 
 
                 var result = Meteor.http.get(restURL,
@@ -162,7 +162,8 @@ if (Meteor.isServer) {
                     return error
                 }
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/IncomingPhoneNumbers.json";
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
                 var phoneInfo = Meteor.http.get(restURL,
                     {
                         auth: auth,
@@ -189,7 +190,8 @@ if (Meteor.isServer) {
                     return error
                 }
                 var restURL = "https://lookups.twilio.com/v1/PhoneNumbers/+" + PhoneNumber;
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
                 var phoneInfo = Meteor.http.get(restURL,
                     {
                         auth: auth,
@@ -201,17 +203,14 @@ if (Meteor.isServer) {
             ,
 
 
-
-
-
             // this is to set the URL Twilio contacts when a phone call is received
             'setTwilioVoiceURL': function (PhoneNumber, sid) {
                 var credentials = Credentials.findOne();
                 if (!credentials.accountsid) {
                     return error
                 }
-
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
                 restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid
                 + "/IncomingPhoneNumbers/" + sid + ".json";
 
@@ -238,7 +237,8 @@ if (Meteor.isServer) {
 
             'sendSMS': function (to, from, message) {
                 var credentials = Credentials.findOne();
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/Messages.json";
 
                 Meteor.http.post(restURL,
@@ -271,7 +271,8 @@ if (Meteor.isServer) {
                 var credentials = Credentials.findOne();
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/Calls/"
                     + callSid + ".json";
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
                 var result = Meteor.http.get(restURL,
                     {
                         auth: auth
@@ -307,7 +308,8 @@ if (Meteor.isServer) {
             // this is to retrieve all the phone numbers associated with this account
             'phoneList': function (callSid) {
                 var credentials = Credentials.findOne();
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
 
                 var restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid + "/IncomingPhoneNumbers.json";
                 var phones = Meteor.http.get(restURL,
@@ -333,7 +335,8 @@ if (Meteor.isServer) {
             // this is to retrieve information about the recording associated with the call
             'recordingInfo': function (callSid) {
                 var credentials = Credentials.findOne();
-                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var authtoken = Meteor.call("decrypt", credentials.authtoken);
+                var auth = credentials.accountsid + ":" + authtoken;
 
                 //  need to get list of recordings
                 var baseRestURL = "https://api.twilio.com";

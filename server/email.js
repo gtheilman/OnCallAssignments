@@ -9,7 +9,8 @@ if (Meteor.isServer) {
             var credentials = Credentials.findOne();
 
             if (credentials.emailPassword) {
-                process.env.MAIL_URL = 'smtp://' + encodeURIComponent(credentials.emailUsername) + ':' + encodeURIComponent(credentials.emailPassword) + '@' + encodeURIComponent(credentials.smtpServer) + ':' + credentials.smtpPort;
+                var decrypted_emailPassword = Meteor.call("decrypt", credentials.emailPassword);
+                process.env.MAIL_URL = 'smtp://' + encodeURIComponent(credentials.emailUsername) + ':' + encodeURIComponent(decrypted_emailPassword) + '@' + encodeURIComponent(credentials.smtpServer) + ':' + credentials.smtpPort;
             }
 
 
@@ -38,13 +39,14 @@ if (Meteor.isServer) {
 
 
         updateEmailCredentials: function (credentials) {
+            var encrypted_emailPassword = Meteor.call("encrypt", credentials.emailPassword);
             var credential = Credentials.findOne();
             Credentials.update(
                 {_id: credential._id},
                 {
                     $set: {
                         emailUsername: credentials.emailUsername,
-                        emailPassword: credentials.emailPassword,
+                        emailPassword: encrypted_emailPassword,
                         smtpServer: credentials.smtpServer,
                         smtpPort: credentials.smtpPort
                     }
