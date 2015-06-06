@@ -14,19 +14,21 @@ When the student calls the telephone number, they are greeted by a message sayin
  
 _Thanks for calling me back.  What do you think we should do with this patient?_
  
-The students then have two minutes to explain their recommendation.
+The students then have two minutes to explain their recommendation.  They press a key to indicate they are finished.   The voice thanks them for their advice and hangs up.
 
-After the student hangs up, they receive a text message on their phone with a link to a recording of the the response they just left.  This text confirms to the student that their response was received and recorded.
+Within a few minutes the student receives a text message (SMS) on their phone with a link to a recording of the the response they just left.  This SMS confirms to the student that their response was received and recorded.  If the student has an email on file that is associated with the caller ID of their phone, they will also be emailed the link.
 
 Faculty can then go through the responses left by the students and score them on communications skills, clinical reasoning, professionalism, etc.
 
+For an additional fee, the service will transcribe the recording and look up the person registered to that cell phone number.
+
 ### Technical Details
 
-This particular version uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever charges are incurred.   I do not have any financial interest in Twilio and this software could probably be easily adapted to use a different service.   Twilio just seemed to have a nicely documented REST API to work with.
+This particular version uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever [charges](https://www.twilio.com/pricing) are incurred.   I do not have any financial interest in Twilio and this software could probably be easily adapted to use a different service.   Twilio just seemed to have a nicely documented REST API to work with.
 
 ![](https://github.com/gtheilman/OncallAssignments/blob/master/media/Process.png)
  
-The program is written using the Meteor framework.   Meteor was chosen to allow for easy customization and deployment by faculty members with little experience in information technology.   
+The program is written using the Meteor framework.   Meteor was chosen to allow for easy customization and deployment by faculty members with little programming experience.   
 
 Meteor lends itself well to deployment using a [Platform as a Service](https://en.wikipedia.org/wiki/Platform_as_a_service) (Paas) provider.  These are services where the server itself is managed by the company and the user is simply responsible for uploading and maintaining the application running on it.  Two common options for deploying Meteor applications are Meteor itself and Modulus.
 
