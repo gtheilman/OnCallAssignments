@@ -55,17 +55,17 @@ if (Meteor.isServer) {
                             }
                         );
                     }
-                    //TODO:  Set initial voice URL
+                    //  Set initial voice URL
                     // Check to see if initial example consult number has been changed
                     var firstTestConsult = Consults.findOne({shortName: "First Test Consult"});
                     if (firstTestConsult) {
-                        if (firstTestConsult.phone == "6015551212") {
+                        if (firstTestConsult.phone == "16015551212") {
                             Meteor.call("phoneList", function (error, result) {
 
                                 if (error) {
                                     return error
                                 } else {
-                                    phone_number = result[0].phone_number.replace("+1", "");
+                                    phone_number = result[0].phone_number.replace("+", "");
                                     phone_sid = result[0].sid;
 
                                     Consults.update(
@@ -92,7 +92,7 @@ if (Meteor.isServer) {
                             return returned_account_sid;
 
 
-                        } //end 6015551212
+                        } //end 16015551212
 
 
                         // if (firstTestConsult) BELOW

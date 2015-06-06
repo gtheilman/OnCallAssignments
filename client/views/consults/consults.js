@@ -41,16 +41,17 @@ if (!Meteor.isClient) {
                     phoneMessage: $('#phoneMessage').val(),
                     hangupMessage: $('#hangupMessage').val(),
                     maxSeconds: $('#maxSeconds').val(),
-                    phone: $('#phone').val(),
+                    phone: standardizedPhoneFormat($('#phone').val()),
                     voice: $('input:radio[name=voice]:checked').val(),
                     transcribe: $('#transcribe').is(':checked'),
                     nameLookup: $('#nameLookup').is(':checked'),
                     activate: $('#activate').is(':checked')
                 };
+                console.log(consult);
 
                 Meteor.call('upsertConsultData', consult, function (result, error) {
-                    console.log(result);
-                    console.log(error);
+                    //  console.log(result);
+                    //   console.log(error);
                 });
                 Router.go('consults');
             }
@@ -148,7 +149,7 @@ if (!Meteor.isClient) {
             tweet: function (tweet) {
                 var tweet = this.tweetHeader + " ";
                 tweet += this.consultURL + " ";
-                tweet += this.phone;
+                tweet += friendlyPhoneFormat(this.phone);
                 Session.set('tweetLength', tweet.length);
 
 

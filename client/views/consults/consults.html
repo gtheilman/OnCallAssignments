@@ -94,7 +94,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="phone">Twilio Phone Number:</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="6015551212" value="{{phone}}">
+                    <input type="tel" class="form-control" id="phone" placeholder="16015551212" value="{{phone}}">
                     {{ twilioPhone }}
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 Telephone number(s) associated with this account:<br>
                 <ul>
                     {{#each twilioPhones}}
-                    <li>{{phoneFormat phone_number}}</li>
+                        <li>{{friendlyPhoneFormat phone_number}}</li>
                     {{/each}}
                 </ul>
             </div>
@@ -280,7 +280,7 @@
                     </audio>
                 </td>
                 <td>
-                    {{phoneFormat from}}
+                    {{friendlyPhoneFormat from}}
                 </td>
 
                 <td>

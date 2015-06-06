@@ -35,7 +35,7 @@ if (!Meteor.isClient) {
                     email: $('#email').val(),
                     studentid: $('#studentid').val(),
                     gradYear: $('#gradYear').val(),
-                    phone: $('#phone').val(),
+                    phone: standardizedPhoneFormat($('#phone').val()),
                     createdAt: new Date()
                 };
                 /*
@@ -159,7 +159,7 @@ if (!Meteor.isClient) {
                                 username: csvData.username,
                                 email: csvData.email,
                                 gradYear: csvData.gradYear,
-                                phone: csvData.phone
+                                phone: standardizedPhoneFormat(csvData.phone)
                             };
                             Meteor.call('upsertStudentData', student);
                         } else {

@@ -23,23 +23,27 @@ if (Meteor.isServer) {
 
                 // Set the Request URL associated with that number on the Twilio website
                 // First, get the id associated with this phone number
-                var PhoneNumber = "1" + consult.phone;
+                PhoneNumber = consult.phone;
 
                 Meteor.call("getPhoneNumberDetails", PhoneNumber, function (error, result) {
                     if (error) {
                         return error
                     } else {
-                        var sid = result.sid;
-                        // now set the voice URL associated with this phone number on the Twilio website
-                        Meteor.call("setTwilioVoiceURL", PhoneNumber, sid, function (error, result) {
-                            var voice_url = result.incoming_phone_numbers[0].voice_url;
-                            if (voice_url != outgoingURL) {
-                                return error
-                            }
-                        });
+                        sid = result.sid;
+                    }
+
+                });
+
+                // now set the voice URL associated with this phone number on the Twilio website
+                Meteor.call("setTwilioVoiceURL", PhoneNumber, sid, function (error, result) {
+                    var voice_url = result.incoming_phone_numbers[0].voice_url;
+                    if (voice_url != outgoingURL) {
+                        return error
                     }
                 });
-            }
+
+
+            } // end if activate
 
             // Insert/update the consult
 
@@ -84,7 +88,7 @@ if (Meteor.isServer) {
                 )
             }
 
-
+            return
         }
         ,
 
