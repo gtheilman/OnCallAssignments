@@ -109,7 +109,7 @@
                     <select name="phone" id="phone">
                         <option></option>
                         {{#each twilioPhones}}
-                            <option value="{{standardizedPhoneFormat phone_number}}">{{friendlyPhoneFormat phone_number}}</option>
+                            <option value="{{standardizedPhoneFormat phone_number}}"  {{ phoneSelected standardizedPhoneFormat phone_number}} >{{friendlyPhoneFormat phone_number}}</option>
                         {{/each}}
                     </select>
                 </div>

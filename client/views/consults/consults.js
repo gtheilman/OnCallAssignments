@@ -147,7 +147,7 @@ if (!Meteor.isClient) {
             },
 
 
-            tweet: function (tweet) {
+            tweet: function () {
                 var tweet = this.tweetHeader + " ";
                 tweet += this.consultURL + " ";
                 tweet += friendlyPhoneFormat(this.phone);
@@ -163,6 +163,13 @@ if (!Meteor.isClient) {
             twilioPhones: function () {
                 // simple:reactive-method
                 return ReactiveMethod.call("phoneList");
+            },
+
+            phoneSelected: function (phone) {
+                if (this.phone == phone) {
+                    return "selected"
+                }
+
             }
 
 
