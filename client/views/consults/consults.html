@@ -87,14 +87,27 @@
                            value="{{phoneMessage}}">
                 </div>
             </div>
-
         </div>
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="hangupMessage">Hang Up Message</label>
+                    <input type="text" class="form-control" id="hangupMessage"
+                           placeholder="I appreciate your advice.  Goodbye"
+                           value="{{hangupMessage}}">
+                </div>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="phone">Twilio Phone Number:</label>
                     <select name="phone" id="phone">
+                        <option></option>
                         {{#each twilioPhones}}
                             <option value="{{standardizedPhoneFormat phone_number}}">{{friendlyPhoneFormat phone_number}}</option>
                         {{/each}}
@@ -151,55 +164,42 @@
             </div>
 
 
-            <div class="col-md-2">
-                <div class="form-group">
-                    <div class="checkbox">
-                        {{#if nameLookup}}
-                            <input type="checkbox" id="nameLookup" checked>
-                        {{else}}
-                            <input type="checkbox" id="nameLookup">
-                        {{/if}}
-                        Lookup caller?<br>(Extra charge)
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <div class="checkbox">
-                        {{#if activate}}
-                            <input type="checkbox" id="activate" name="activate" checked>
-                        {{else}}
-                            <input type="checkbox" id="activate" name="activate">
-                        {{/if}}
-                        Make active. This will be the consult students will hear when they call the phone number
-                        associated with this consult.<br>
-                        Other consults associated with this phone number will be deactivated automatically.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{#if isInRole 'admin'}}
             <div class="row">
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                <div class="col-md-1"></div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            {{#if activate}}
+                                <input type="checkbox" id="activate" name="activate" checked>
+                            {{else}}
+                                <input type="checkbox" id="activate" name="activate">
+                            {{/if}}
+                            Make active. This will be the consult students will hear when they call the phone number
+                            associated with this consult.<br>
+                            Other consults associated with this phone number will be deactivated automatically.
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                {{#if _id }}
-
-                    <div class="col-md-2">
-                        <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete</button>
+            {{#if isInRole 'admin'}}
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-sm btn-success">Submit</button>
                     </div>
 
-                    <input type="hidden" name="id" value="{{_id}}" id="id">
-                {{/if}}
+                    {{#if _id }}
 
+                        <div class="col-md-2">
+                            <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete</button>
+                        </div>
+
+                        <input type="hidden" name="id" value="{{_id}}" id="id">
+                    {{/if}}
+
+                </div>
+            {{/if}}
             </div>
-        {{/if}}
 
     </form>
 
@@ -254,8 +254,16 @@
                     Recording
                 </th>
                 <th>
+                    <a href="#" data-toggle="tooltip" title="Enable above. Costs extra.">Transcript</a>
+                </th>
+                <th>
                     Caller ID
                 </th>
+                <th>
+                    <a href="#" data-toggle="tooltip" title="Must be enabled on Twilio website.  Costs extra.">Phone
+                        Registrant</a>
+                </th>
+
                 <th>
                     Name
                 </th>
@@ -276,8 +284,16 @@
                         </audio>
                     </td>
                     <td>
+                        {{#if transcriptionText}}
+                            <a href="#" data-toggle="tooltip" title="{{transcriptionText}}">Hover</a>
+                        {{/if}}
+
+                    </td>
+                    <td>
                         {{friendlyPhoneFormat from}}
                     </td>
+
+                    <td>{{callerName}}</td>
 
                     <td>
 

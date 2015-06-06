@@ -2,18 +2,16 @@ if (Meteor.isServer) {
 
 
     Meteor.methods({
-        sendEmail: function (to, from, subject, text) {
-            check([to, from, subject, text], [String]);
+        sendEmail: function (to, subject, text) {
+            check([to, subject, text], [String]);
 
 
             var credentials = Credentials.findOne();
 
-            if (credentials.emailPassword.length > 1) {
+            if (credentials.emailPassword) {
                 process.env.MAIL_URL = 'smtp://' + encodeURIComponent(credentials.emailUsername) + ':' + encodeURIComponent(credentials.emailPassword) + '@' + encodeURIComponent(credentials.smtpServer) + ':' + credentials.smtpPort;
             }
 
-
-            // process.env.MAIL_URL = "smtp://TwitterConsults@gmail.com:wPSJkqj0QGsC!B6gkpzRTOGkrOlXUD@smtp.gmail.com:465/";
 
             // Let other method calls from the same client start running,
             // without waiting for the email sending to complete.
@@ -21,7 +19,7 @@ if (Meteor.isServer) {
 
             Email.send({
                 to: to,
-                from: from,
+                from: credentials.emailUsername,
                 subject: subject,
                 text: text
             });

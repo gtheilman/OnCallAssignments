@@ -139,7 +139,6 @@ if (!Meteor.isClient) {
             else {
                 Meteor.call('sendEmail',
                     $('#testEmailAddress').val(),
-                    $('#testEmailAddress').val(),
                     'Test from OnCallAssignments',
                     'This is the test email you requested from the OnCallAssignments program.');
                 sAlert.success('Sent', {

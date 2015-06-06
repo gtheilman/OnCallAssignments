@@ -165,6 +165,28 @@ if (Meteor.isServer) {
             ,
 
 
+            // Extra fee (1 cent) to lookup name associated with number
+            'getTranscription': function (PhoneNumber) {
+                var credentials = Credentials.findOne();
+                if (!credentials.accountsid) {
+                    return error
+                }
+                var restURL = "https://lookups.twilio.com/v1/PhoneNumbers/+" + PhoneNumber;
+                var auth = credentials.accountsid + ":" + credentials.authtoken;
+                var phoneInfo = Meteor.http.get(restURL,
+                    {
+                        auth: auth,
+                    });
+                var respJson = JSON.parse(phoneInfo.content);
+                return respJson;
+
+            }
+            ,
+
+
+
+
+
             // this is to set the URL Twilio contacts when a phone call is received
             'setTwilioVoiceURL': function (PhoneNumber, sid) {
                 var credentials = Credentials.findOne();
@@ -248,7 +270,7 @@ if (Meteor.isServer) {
                                 to: data.to,
                                 from: data.from,
                                 start_time: data.start_time,
-                                caller_name: data.caller_name,
+                                callerName: data.caller_name,
                                 student_id: response.student_id,
                                 username: student.username,
                                 shortName: consult.shortName
@@ -310,14 +332,41 @@ if (Meteor.isServer) {
                     var recordingSid = recordingInfo.recordings[0].sid;
                     var recordingURL = "https://api.twilio.com/2010-04-01/Accounts/" + accountSid +
                         "/Recordings/" + recordingSid + ".mp3";
+
                     Responses.update(
                         {callSid: callSid},
                         {
                             $set: {
-                                recordingURL: recordingURL
+                                recordingURL: recordingURL,
+                                recordingSid: recordingSid
                             }
                         }
                     );
+
+                    var transcriptionURI = baseRestURL + "/2010-04-01/Accounts/" + credentials.accountsid + "/Recordings/" + recordingSid + "/Transcriptions.json";
+
+                    var transcriptionList = Meteor.http.get(transcriptionURI,
+                        {
+                            auth: auth
+                        });
+
+                    var transcriptionInfo = JSON.parse(recordingList.content);
+
+                    var transcriptionSid = transcriptionInfo[0].sid;
+                    var transcriptionText = transcriptionInfo[0].transcription_text
+
+                    if (transcriptionSid) {
+                        Responses.update(
+                            {callSid: callSid},
+                            {
+                                $set: {
+                                    transcriptionSid: transcriptionSid,
+                                    transcriptionText: transcriptionText
+                                }
+                            }
+                        );
+                    }
+
                     return recordingURL
                 } else {
                     var errorJson = JSON.parse(recordingList.content);

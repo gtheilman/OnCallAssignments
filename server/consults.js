@@ -63,7 +63,6 @@ if (Meteor.isServer) {
                             phone: consult.phone,
                             maxSeconds: consult.maxSeconds,
                             transcribe: consult.transcribe,
-                            nameLookup: consult.nameLookup,
                             activate: consult.activate
                         }
                     }
@@ -81,7 +80,6 @@ if (Meteor.isServer) {
                         phone: consult.phone,
                         maxSeconds: consult.maxSeconds,
                         transcribe: consult.transcribe,
-                        nameLookup: consult.nameLookup,
                         activate: consult.activate,
                         createdAt: new Date()
                     }

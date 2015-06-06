@@ -44,7 +44,6 @@ if (!Meteor.isClient) {
                     phone: standardizedPhoneFormat($('#phone').val()),
                     voice: $('input:radio[name=voice]:checked').val(),
                     transcribe: $('#transcribe').is(':checked'),
-                    nameLookup: $('#nameLookup').is(':checked'),
                     activate: $('#activate').is(':checked')
                 };
                 console.log(consult);
@@ -89,8 +88,6 @@ if (!Meteor.isClient) {
     // Use jquery to select values in DOM based on what is already in db
     Template.consultForm.onRendered(function () {
         var consult = Consults.findOne({_id: Session.get("consult_id")});
-        //TODO: Get this to work
-        $('[name=phone]').val(standardizedPhoneFormat(consult.phone));
         if (consult.voice == 'alice') {
             $("#voiceAlice").prop("checked", true);
         } else if (consult.voice == 'woman') {
@@ -99,6 +96,8 @@ if (!Meteor.isClient) {
         } else if (consult.voice == 'man') {
             $("#voiceMan").prop("checked", true);
         }
+        //TODO: Get this to work
+        $('select #phone').val(consult.phone);
 
 
     });
@@ -247,6 +246,7 @@ if (!Meteor.isClient) {
                 $("#selector_" + response._id).val(response.student_id);
             }
         });
+        $('[data-toggle="tooltip"]').tooltip();
 
 
     });
