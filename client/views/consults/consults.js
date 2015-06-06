@@ -96,8 +96,7 @@ if (!Meteor.isClient) {
         } else if (consult.voice == 'man') {
             $("#voiceMan").prop("checked", true);
         }
-        //TODO: Get this to work
-        $('select #phone').val(consult.phone);
+
 
 
     });
@@ -247,6 +246,9 @@ if (!Meteor.isClient) {
             }
         });
         $('[data-toggle="tooltip"]').tooltip();
+
+        //TODO: Get this to work
+        $('select #phone').val(consult.phone);
 
 
     });

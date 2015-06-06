@@ -9,6 +9,23 @@
 
 
 if (Meteor.isServer) {
+
+    // encryption functions
+
+
+    encrypt = function (message) {
+        var passphrase = "M5cq3HyFqHKSp4xxEgkBLjfgKXpcjEJuxMDEra782xMvkSju2app3y9hnq9qsALX8Kab7mW2uJQCueNRWHFnhBfh87U8mXLStDcG";
+        return CryptoJS.AES.encrypt(message, passphrase);
+    };
+
+    decrypt = function (encrypted) {
+        var passphrase = "M5cq3HyFqHKSp4xxEgkBLjfgKXpcjEJuxMDEra782xMvkSju2app3y9hnq9qsALX8Kab7mW2uJQCueNRWHFnhBfh87U8mXLStDcG";
+        return CryptoJS.AES.decrypt(message, passphrase);
+    };
+
+
+
+
     Meteor.methods({
             shortenURL: function (URL) {
                 var shortenerURL = "http://tiny-url.info/api/v1/random";
