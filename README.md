@@ -28,6 +28,7 @@ Additional features:
 -  Look up the person registered to an incoming cell phone number (extra fee charged by provider)
 -  Choose from different voices for outgoing messages
 -  Specify the maximum amount of time students have to record their responses (no rambling).
+-  Import and export students in CSV format
 
 
 
