@@ -91,6 +91,11 @@ if (!Meteor.isClient) {
                     effect: 'scale', position: 'top-right',
                     timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                 });
+            } else if (($('#username').val() == "admin") && !$('#admin').is(':checked')) {
+                sAlert.error('You cannot remove the admin role from the admin useraccount.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
             } else {
 
                 var user =
