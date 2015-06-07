@@ -158,9 +158,9 @@ if (!Meteor.isClient) {
             },
 
 
-            tweet: function (consult_id) {
+            tweet: function () {
                 var tweet = this.tweetHeader + " ";
-                var consultURL = ConsultPages.findOne({consult_id: consult_id}).consultURL;
+                var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
 
                 if (consultURL) {
                     tweet += "    " + consultURL + "    ";
