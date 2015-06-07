@@ -1,0 +1,32 @@
+<head>
+    <title>On-Call Consult</title>
+    <link rel="icon"
+          type="image/png"
+          href="/phone.ico"/>
+</head>
+
+<template name="layoutOnCall">
+    <body>
+
+    <div class="container-fluid">
+        <header>
+
+        </header>
+
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+        {{> yield region="oncall"}}
+    </div>
+    </body>
+    <footer>
+
+    </footer>
+</template>
+
+<template name="oncall">
+    {{#markdown}}
+        {{consultMD}}
+    {{/markdown}}
+</template>
+

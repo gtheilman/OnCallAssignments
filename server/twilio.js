@@ -15,13 +15,18 @@ if (Meteor.isServer) {
 
 
             encrypt: function (message) {
-                var passphrase = "XXLStDcGLStXLStDcGDcG";
+                // The admin account is created automatically when the application is installed and the admin account
+                // cannot be deleted by the application.   The _id of the admin is generated randomly by the program.
+                // So, we are going to use the _id of the admin (which should
+                // never change) as the passphrase for encryption.  Users other than admin shouldn't be able to
+                //  search for the user id from the console under their own logins
+                var passphrase = Meteor.users.findOne({username: "admin"})._id;
                 return CryptoJS.AES.encrypt(message, passphrase).toString();
             },
 
 
             decrypt: function (encrypted) {
-                var passphrase = "XXLStDcGLStXLStDcGDcG";
+                var passphrase = Meteor.users.findOne({username: "admin"})._id;
                 return CryptoJS.AES.decrypt(encrypted, passphrase).toString(CryptoJS.enc.Utf8);
             },
 

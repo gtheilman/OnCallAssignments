@@ -1,5 +1,4 @@
-if (Meteor.isServer) {
-    Meteor.methods({
+if (Meteor.isServer) Meteor.methods({
         /*
          This server-side function updates a record if the consult already
          exists.  If the consult does not already exist, a new record is
@@ -8,10 +7,14 @@ if (Meteor.isServer) {
          */
         'upsertConsultData': function (consult) {
             // If marked as active, deactivate any consults using that same phone number
-            if (consult.activate) {
+            if
+            (consult.activate) {
                 // Mark any currently activated consults using that phone as "inactive"
                 Consults.update(
-                    {phone: consult.phone},
+                    {
+                        phone: consult.
+                            phone
+                    },
                     {
                         $set: {
                             activate: false
@@ -19,59 +22,80 @@ if (Meteor.isServer) {
                     },
                     {multi: true}
                 );
-
-
                 // Set the Request URL associated with that number on the Twilio website
+
                 // First, get the id associated with this phone number
                 PhoneNumber = consult.phone;
 
-                Meteor.call("getPhoneNumberDetails", PhoneNumber, function (error, result) {
-                    if (error) {
-                        return error
-                    } else {
-                        sid = result.sid;
-                    }
+                Meteor.call(
+                    "getPhoneNumberDetails", PhoneNumber, function (error, result) {
+                        if (error) {
+                            return
+                            error
+                        } else {
+                            sid = result.sid;
+                        }
 
-                });
-
+                    });
                 // now set the voice URL associated with this phone number on the Twilio website
-                Meteor.call("setTwilioVoiceURL", PhoneNumber, sid, function (error, result) {
-                    var outgoingURL = Meteor.absoluteUrl() + "say/" + PhoneNumber;
-                    var voice_url = result.incoming_phone_numbers[0].voice_url;
-                    if (voice_url != outgoingURL) {
-                        return error
-                    }
-                });
+                Meteor.call("setTwilioVoiceURL",
+                    PhoneNumber, sid, function (error, result) {
+                        var outgoingURL = Meteor.absoluteUrl() + "say/" +
+                                PhoneNumber
+                            ;
+                        var voice_url = result.incoming_phone_numbers[0].voice_url;
+                        if (voice_url !=
+                            outgoingURL) {
+                            return error
+                        }
+                    });
 
                 // now set the CNAM lookup status associated with this phone number on the Twilio website
-                Meteor.call("setVoiceCallerIdLookup", PhoneNumber, sid, consult.voiceCallerIdLookup, function (error, result) {
-                    var voice_caller_id_lookup = result.incoming_phone_numbers[0].voice_caller_id_lookup;
-                    if (voice_caller_id_lookup != consult.voiceCallerIdLookup) {
-                        return error
-                    }
-                });
+                Meteor.call("setVoiceCallerIdLookup", PhoneNumber, sid, consult.voiceCallerIdLookup
+                    ,
+                    function (error, result) {
+                        var
 
 
-            } // end if activate
+                            voice_caller_id_lookup = result.
+
+                                incoming_phone_numbers[0].voice_caller_id_lookup;
+                        if (
+                            voice_caller_id_lookup !=
+                            consult.
+                                voiceCallerIdLookup) {
+                            return error
+                        }
+                    });
+
+
+            }
+            // end if activate
+
 
             // Insert/update the consult
 
-            if (Consults.findOne({_id: consult.id})) {
-
+            if (
+                Consults.findOne({
+                    _id: consult.
+                        id
+                })) {
                 Consults.update(
                     {_id: consult.id},
                     {
                         $set: {
                             shortName: consult.shortName,
                             tweetHeader: consult.tweetHeader,
-                            consultURL: consult.consultURL,
-                            keyURL: consult.keyURL,
-                            phoneMessage: consult.phoneMessage,
+                            consultMD: consult.consultMD,
+                            keyMD: consult.keyMD,
+                            phoneMessage: consult.
+                                phoneMessage,
                             hangupMessage: consult.hangupMessage,
                             voice: consult.voice,
                             phone: consult.phone,
                             maxSeconds: consult.maxSeconds,
-                            transcribe: consult.transcribe,
+                            transcribe: consult.transcribe
+                            ,
                             voiceCallerIdLookup: consult.voiceCallerIdLookup,
                             activate: consult.activate
                         }
@@ -82,10 +106,11 @@ if (Meteor.isServer) {
                     {
                         shortName: consult.shortName,
                         tweetHeader: consult.tweetHeader,
-                        consultURL: consult.consultURL,
-                        keyURL: consult.keyURL,
+                        consultMD: consult.consultMD,
+                        keyMD: consult.keyMD,
                         phoneMessage: consult.phoneMessage,
-                        hangupMessage: consult.hangupMessage,
+                        hangupMessage: consult.
+                            hangupMessage,
                         voice: consult.voice,
                         phone: consult.phone,
                         maxSeconds: consult.maxSeconds,
@@ -94,7 +119,25 @@ if (Meteor.isServer) {
                         activate: consult.activate,
                         createdAt: new Date()
                     }
-                )
+                );
+
+                var newConsult = Consults.findOne({
+                    shortName: consult.shortName,
+                    tweetHeader: consult.
+                        tweetHeader,
+                    consultMD: consult.consultMD
+                    ,
+                    keyMD: consult.keyMD
+                });
+                var consultURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + newConsult._id);
+                Consults.update(
+                    {_id: newConsult._id},
+                    {
+                        $set: {
+                            consultURL: consultURL
+                        }
+                    }
+                );
             }
 
             return
@@ -117,7 +160,7 @@ if (Meteor.isServer) {
         }
 
 
-    })
-    ;
-}
+    }
+)
+;
 

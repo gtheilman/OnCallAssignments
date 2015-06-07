@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!--        <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="consultURL">
@@ -76,7 +76,7 @@
                            value="{{keyURL}}">
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div class="row">
             <div class="col-md-8">
@@ -101,6 +101,29 @@
             </div>
         </div>
 
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="consultMD">
+                        <a href="{{pathFor 'oncall' }}" target="_blank">Consult</a> (Markdown Format)
+                    </label>
+                    <textarea class="form-control" name="consultMD"
+                              placeholder="Enter your consult here in Markdown format.  A webpage will be created. The easiest option would probably be to create your document in a Markdown editor like http://StackEdit.io .  Then cut-and-paste the document into this box."
+                              id="consultMD" rows="6">{{consultMD}}</textarea>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="keyMD">
+                        Key (Markdown Format)
+                    </label>
+                    <textarea class="form-control" id="keyMD" name="keyMD"
+                              placeholder="Enter your key here in Markdown format.  A webpage will be created."
+                              rows="6">{{keyMD}}</textarea>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-4">
@@ -336,7 +359,3 @@
 
 </template>
 
-
-<template name="test">
-    Attempted.
-</template>

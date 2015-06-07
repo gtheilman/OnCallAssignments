@@ -9,6 +9,8 @@ Meteor.publish('consults', function () {
         if (Roles.userIsInRole(this.userId, 'active')) {
             return Consults.find();
         }
+    } else {
+        return Consults.find({activate: true});
     }
 });
 
