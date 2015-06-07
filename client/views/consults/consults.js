@@ -7,6 +7,14 @@ if (!Meteor.isClient) {
             event.preventDefault();
 
 
+            if ($('#activate').is(':checked') && (!($('#consultVisible').is(':checked')))) {
+                sAlert.warning('Note that the phone number has been activated but the students cannot view the consult webpage.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '10000', onRouteClose: false, stack: true, offset: '0px'
+                });
+            }
+
+
             if ($('#shortName').val() == "") {
                 sAlert.error('A name must be provided', {
                     effect: 'scale', position: 'top-right',
