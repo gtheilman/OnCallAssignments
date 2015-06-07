@@ -10,6 +10,10 @@ if (!Meteor.isClient) {
             return Session.get("emailValidityCheck");
         },
 
+        twitterCredentialsCheck: function () {
+            return Session.get("twitterValidityCheck");
+        },
+
 
         twilioPhones: function () {
             // simple:reactive-method
@@ -146,8 +150,76 @@ if (!Meteor.isClient) {
                     timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                 });
             }
-        }
+        },
+        "submit #twitterCredentialsForm": function (event) {
+            event.preventDefault();
 
+            if ($('#twitter_consumer_key').val() == "") {
+                sAlert.error('A twitter_consumer_key must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
+            } else if ($('#twitter_consumer_secret').val() == "") {
+                sAlert.error('A twitter_consumer_secret must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
+            } else if ($('#twitter_access_token_key').val() == "") {
+                sAlert.error('An twitter_access_token_key must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
+            } else if ($('#twitter_access_token_secret').val() == "") {
+                sAlert.error('An twitter_access_token_secret must be provided.', {
+                    effect: 'scale', position: 'top-right',
+                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                });
+            }
+            else {
+                var credentials =
+                {
+                    twitter_consumer_key: $('#twitter_consumer_key').val(),
+                    twitter_consumer_secret: $('#twitter_consumer_secret').val(),
+                    twitter_access_token_key: $('#twitter_access_token_key').val(),
+                    twitter_access_token_secret: $('#twitter_access_token_secret').val()
+                };
+                // console.log(credentials);
+
+                Meteor.call("updateTwitterCredentials", credentials, function (error, result) {
+                    if (error) {
+                        console.log(error.reason);
+                        sAlert.error('Problem saving credentials.  See console.log.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
+                    } else {
+                        // console.log(result);
+                        Session.set("twitterValidityCheck", '<div class="alert alert-success" role="alert">There are Twitter credentials in the database.</div>');
+                        Router.go('consults');
+                    }
+
+
+                });
+
+            }
+        },
+
+
+        "click #testTwitterButton": function (event) {
+            event.preventDefault();
+
+
+            Meteor.call("testTwitter", function (error, result) {
+                alert(error);
+                alert(result);
+
+                console.log(error);
+
+                console.log(result);
+
+
+            })
+        }
     });
 }
 
