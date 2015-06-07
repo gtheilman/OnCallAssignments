@@ -99,16 +99,17 @@
         {{#if isInRole 'admin'}}
             <div class="row">
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                    {{#if _id }}
+                        <input type="hidden" name="student_id" value="{{_id}}" id="student_id">
+
+                        <div class="col-md-2">
+                            <button type="button" id="deleteStudentButton" class="btn btn-sm btn-danger">Delete</button>
+                        </div>
+                    {{/if}}
                 </div>
 
-                {{#if _id }}
-                    <input type="hidden" name="student_id" value="{{_id}}" id="student_id">
 
-                    <div class="col-md-2">
-                        <button type="button" id="deleteStudentButton" class="btn btn-sm btn-danger">Delete</button>
-                    </div>
-                {{/if}}
+                <button type="submit" class="btn btn-sm btn-success">Submit</button>
             </div>
         {{/if}}
 

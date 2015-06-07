@@ -192,18 +192,19 @@
             {{#if isInRole 'admin'}}
                 <div class="row">
                     <div class="col-md-6">
-                        <button type="submit" class="btn btn-sm btn-success">Submit</button>
+
+                        {{#if _id }}
+
+                            <div class="col-md-2">
+                                <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete
+                                </button>
+                            </div>
+
+                            <input type="hidden" name="id" value="{{_id}}" id="id">
+                        {{/if}}
                     </div>
 
-                    {{#if _id }}
-
-                        <div class="col-md-2">
-                            <button type="button" id="deleteConsultButton" class="btn btn-sm btn-danger">Delete</button>
-                        </div>
-
-                        <input type="hidden" name="id" value="{{_id}}" id="id">
-                    {{/if}}
-
+                    <button type="submit" class="btn btn-sm btn-success">Submit</button>
                 </div>
             {{/if}}
             </div>

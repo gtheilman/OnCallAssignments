@@ -99,7 +99,6 @@ if (!Meteor.isClient) {
         }
 
 
-
     });
 
 
@@ -139,6 +138,7 @@ if (!Meteor.isClient) {
     Template.consultForm.helpers({
 
             tweetlength: function (tweet) {
+
                 var tweetlength = tweet.length;
 
                 if (tweetlength) {
@@ -156,9 +156,7 @@ if (!Meteor.isClient) {
                     tweet += Meteor.absoluteUrl() + "oncall/" + this._id + "    ";
                 }
 
-                tweet +=  "    " + friendlyPhoneFormat(this.phone);
-                Session.set('tweetLength', tweet.length);
-
+                tweet += "    " + friendlyPhoneFormat(this.phone);
 
                 if (tweet) {
                     return tweet
@@ -208,7 +206,7 @@ if (!Meteor.isClient) {
             if (student_id == response.student_id) {
                 $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-success');
                 return "selected";
-            } else if (Students.findOne({_id: student_id, phone: response.from.replace("+1", "")})) {
+            } else if (Students.findOne({_id: student_id, phone: standardizedPhoneFormat(response.from)})) {
                 $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info');
                 return "selected";
             }
