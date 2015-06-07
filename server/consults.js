@@ -1,4 +1,14 @@
 if (Meteor.isServer) Meteor.methods({
+
+
+        'reverse': function (s) {
+            for (var i = s.length - 1, o = ''; i >= 0; o += s[i--]) {
+            }
+            return o;
+
+        },
+
+
         /*
          This server-side function updates a record if the consult already
          exists.  If the consult does not already exist, a new record is
@@ -88,14 +98,12 @@ if (Meteor.isServer) Meteor.methods({
                             tweetHeader: consult.tweetHeader,
                             consultMD: consult.consultMD,
                             keyMD: consult.keyMD,
-                            phoneMessage: consult.
-                                phoneMessage,
+                            phoneMessage: consult.phoneMessage,
                             hangupMessage: consult.hangupMessage,
                             voice: consult.voice,
                             phone: consult.phone,
                             maxSeconds: consult.maxSeconds,
-                            transcribe: consult.transcribe
-                            ,
+                            transcribe: consult.transcribe,
                             voiceCallerIdLookup: consult.voiceCallerIdLookup,
                             activate: consult.activate
                         }
@@ -109,8 +117,7 @@ if (Meteor.isServer) Meteor.methods({
                         consultMD: consult.consultMD,
                         keyMD: consult.keyMD,
                         phoneMessage: consult.phoneMessage,
-                        hangupMessage: consult.
-                            hangupMessage,
+                        hangupMessage: consult.hangupMessage,
                         voice: consult.voice,
                         phone: consult.phone,
                         maxSeconds: consult.maxSeconds,
@@ -123,18 +130,20 @@ if (Meteor.isServer) Meteor.methods({
 
                 var newConsult = Consults.findOne({
                     shortName: consult.shortName,
-                    tweetHeader: consult.
-                        tweetHeader,
+                    tweetHeader: consult.tweetHeader,
                     consultMD: consult.consultMD
                     ,
                     keyMD: consult.keyMD
                 });
                 var consultURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + newConsult._id);
+                // var reverse_id = Meteor.call('reverse', newConsult_id);
+                // var keyURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + reverse_id);
                 Consults.update(
                     {_id: newConsult._id},
                     {
                         $set: {
                             consultURL: consultURL
+                            // keyURL: keyURL
                         }
                     }
                 );

@@ -39,6 +39,18 @@ if (!Meteor.isClient) {
 
     Template.registerHelper('standardizedPhoneFormat', standardizedPhoneFormat);
 
+
+    // Decided to make the URL for the consult keys the same ending string as the consults, only reversed
+    reverse = function reverse(s) {
+        for (var i = s.length - 1, o = ''; i >= 0; o += s[i--]) {
+        }
+        return o;
+    };
+
+    Template.registerHelper('reverse', reverse);
+
+
+
 }
 
 

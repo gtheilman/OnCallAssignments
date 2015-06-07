@@ -47,7 +47,7 @@ if (!Meteor.isClient) {
                     voiceCallerIdLookup: $('#voiceCallerIdLookup').is(':checked'),
                     activate: $('#activate').is(':checked')
                 };
-                console.log(consult);
+                // console.log(consult);
 
                 Meteor.call('upsertConsultData', consult, function (result, error) {
                     //  console.log(result);
@@ -150,7 +150,12 @@ if (!Meteor.isClient) {
 
             tweet: function () {
                 var tweet = this.tweetHeader + " ";
-                tweet += this.consultURL + " ";
+                if (this.consultURL) {
+                    tweet += this.consultURL + " ";
+                } else {
+                    tweet += Meteor.absoluteUrl() + "oncall/" + this._id;
+                }
+
                 tweet += friendlyPhoneFormat(this.phone);
                 Session.set('tweetLength', tweet.length);
 

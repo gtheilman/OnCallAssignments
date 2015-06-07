@@ -49,34 +49,6 @@
             </div>
         </div>
 
-        <!--        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="consultURL">
-                        {{#if consultURL}}
-                            <a href="{{consultURL}}" target="_blank">Consult URL</a>
-                        {{else}}
-                            Consult URL
-                        {{/if}}
-                    </label>
-                    <input type="url" class="form-control" id="consultURL" placeholder="The webpage with the consult"
-                           value="{{consultURL}}">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="keyURL">
-                        {{#if keyURL}}
-                            <a href="{{keyURL}}" target="_blank">Key URL</a>
-                        {{else}}
-                            Key URL
-                        {{/if}}
-                    </label>
-                    <input type="url" class="form-control" id="keyURL" placeholder="The webpage with the key"
-                           value="{{keyURL}}">
-                </div>
-            </div>
-        </div>-->
 
         <div class="row">
             <div class="col-md-8">
@@ -116,7 +88,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="keyMD">
-                        Key (Markdown Format)
+                        <a href="/key/{{ reverse _id }}" target="_blank">Key</a> (Markdown Format)
                     </label>
                     <textarea class="form-control" id="keyMD" name="keyMD"
                               placeholder="Enter your key here in Markdown format.  A webpage will be created."
