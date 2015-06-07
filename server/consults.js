@@ -96,8 +96,6 @@ if (Meteor.isServer) Meteor.methods({
                         $set: {
                             shortName: consult.shortName,
                             tweetHeader: consult.tweetHeader,
-                            consultMD: consult.consultMD,
-                            keyMD: consult.keyMD,
                             phoneMessage: consult.phoneMessage,
                             hangupMessage: consult.hangupMessage,
                             voice: consult.voice,
@@ -108,14 +106,35 @@ if (Meteor.isServer) Meteor.methods({
                             activate: consult.activate
                         }
                     }
-                )
+                );
+
+                ConsultPages.update(
+                    {consult_id: consult.id},
+                    {
+                        $set: {
+                            consultMD: consult.consultMD,
+                            consultVisible: consult.consultVisible
+                        }
+                    }
+                );
+
+
+                KeyPages.update(
+                    {consult_id: consult.id},
+                    {
+                        $set: {
+                            keyMD: consult.keyMD,
+                            keyVisible: consult.keyVisible
+                        }
+                    }
+                );
+
+
             } else {
                 Consults.insert(
                     {
                         shortName: consult.shortName,
                         tweetHeader: consult.tweetHeader,
-                        consultMD: consult.consultMD,
-                        keyMD: consult.keyMD,
                         phoneMessage: consult.phoneMessage,
                         hangupMessage: consult.hangupMessage,
                         voice: consult.voice,
@@ -131,22 +150,26 @@ if (Meteor.isServer) Meteor.methods({
                 var newConsult = Consults.findOne({
                     shortName: consult.shortName,
                     tweetHeader: consult.tweetHeader,
-                    consultMD: consult.consultMD
-                    ,
+                    consultMD: consult.consultMD,
                     keyMD: consult.keyMD
                 });
+
+
                 var consultURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + newConsult._id);
-                // var reverse_id = Meteor.call('reverse', newConsult_id);
-                // var keyURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + reverse_id);
-                Consults.update(
-                    {_id: newConsult._id},
-                    {
-                        $set: {
-                            consultURL: consultURL
-                            // keyURL: keyURL
-                        }
-                    }
-                );
+                var entry = {
+                    consult_id: consult._id,
+                    consultVisible: consult.consultVisible,
+                    consultMD: consult.consultMD,
+                    consultURL: consultURL
+                };
+                ConsultPages.insert(entry);
+
+                var entry = {
+                    consult_id: consult._id,
+                    keyVisible: consult.keyVisible,
+                    keyMD: consult.keyMD,
+                };
+                KeyPages.insert(entry);
             }
 
             return

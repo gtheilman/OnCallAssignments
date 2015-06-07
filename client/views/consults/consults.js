@@ -37,7 +37,9 @@ if (!Meteor.isClient) {
                     shortName: $('#shortName').val(),
                     tweetHeader: $('#tweetHeader').val(),
                     consultMD: $('#consultMD').val(),
+                    consultVisible: $('#consultVisible').is(':checked'),
                     keyMD: $('#keyMD').val(),
+                    keyVisible: $('#keyVisible').is(':checked'),
                     phoneMessage: $('#phoneMessage').val(),
                     hangupMessage: $('#hangupMessage').val(),
                     maxSeconds: $('#maxSeconds').val(),
@@ -148,10 +150,12 @@ if (!Meteor.isClient) {
             },
 
 
-            tweet: function () {
+            tweet: function (consult_id) {
                 var tweet = this.tweetHeader + " ";
-                if (this.consultURL) {
-                    tweet += "    " + this.consultURL + "    ";
+                var consultURL = ConsultPages.findOne({consult_id: consult_id}).consultURL;
+
+                if (consultURL) {
+                    tweet += "    " + consultURL + "    ";
                 } else {
                     tweet += Meteor.absoluteUrl() + "oncall/" + this._id + "    ";
                 }
@@ -172,15 +176,36 @@ if (!Meteor.isClient) {
             phoneSelected: function (selectPhone) {
 
                 if (standardizedPhoneFormat($('#twilioPhoneNumber').val()) == standardizedPhoneFormat(selectPhone)) {
-
                     return "selected"
                 }
+            },
+
+            getConsultMD: function (consult_id) {
+                return ConsultPages.findOne({consult_id: consult_id}).consultMD;
+            }
+            ,
+
+            consultVisible: function (consult_id) {
+                if (ConsultPages.findOne({consult_id: consult_id}).consultVisible) {
+                    return true
+                }
+            }
+            ,
+            getKeyMD: function (consult_id) {
+                return KeyPages.findOne({consult_id: consult_id}).keyMD;
+            }
+            ,
+
+            keyVisible: function (consult_id) {
+                if (KeyPages.findOne({consult_id: consult_id}).keyVisible) {
+                    return true
+                }
+
 
             }
-
-
         }
-    );
+    )
+    ;
 
 
     Template.consultResponses.helpers({
@@ -210,10 +235,10 @@ if (!Meteor.isClient) {
                 $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info');
                 return "selected";
             }
-        }
+                }
 
 
-    });
+            });
     /*  This was an incredibly hackish way of getting the students associated with the response record.  The problem
      * was trying to associate button presses with forms when they all had the same names and ids. Ended up giving
      *  each form/button/select a different name and pulling the info out of the event.currentTarget scope.*/

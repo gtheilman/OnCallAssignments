@@ -79,20 +79,34 @@
                 <div class="form-group">
                     <label for="consultMD">
                         <a href="{{pathFor 'oncall' }}" target="_blank">Consult</a> (Markdown Format)
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{#if consultVisible _id}}
+                            <input type="checkbox" id="consultVisible" name="consultVisible" checked>
+                        {{else}}
+                            <input type="checkbox" id="consultVisible" name="consultVisible">
+                        {{/if}}
+                        Visible to students
                     </label>
                     <textarea class="form-control" name="consultMD"
                               placeholder="Enter your consult here in Markdown format.  A webpage will be created. The easiest option would probably be to create your document in a Markdown editor like http://StackEdit.io .  Then cut-and-paste the document into this box."
-                              id="consultMD" rows="6">{{consultMD}}</textarea>
+                              id="consultMD" rows="6">{{getConsultMD _id}}</textarea>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="keyMD">
                         <a href="/key/{{ reverse _id }}" target="_blank">Key</a> (Markdown Format)
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{#if keyVisible _id}}
+                            <input type="checkbox" id="keyVisible" name="keyVisible" checked>
+                        {{else}}
+                            <input type="checkbox" id="keyVisible" name="keyVisible">
+                        {{/if}}
+                        Visible to students
                     </label>
                     <textarea class="form-control" id="keyMD" name="keyMD"
                               placeholder="Enter your key here in Markdown format.  A webpage will be created."
-                              rows="6">{{keyMD}}</textarea>
+                              rows="6">{{getKeyMD _id}}</textarea>
                 </div>
             </div>
         </div>
@@ -219,7 +233,7 @@
                 <p>&nbsp;</p>
                 {{#if tweet }}
                     <p>
-                        <b>Tweet:</b> {{ tweet }}
+                        <b>Tweet:</b> {{ tweet _id }}
                         <br>
                         ( <i> {{ tweetlength tweet }} characters ) </i>
                     </p>
