@@ -72,9 +72,7 @@ if (!Meteor.isClient) {
         grader: function () {
             return Session.get("grader");
         },
-        active: function () {
-            return Session.get("active");
-        }
+
 
     });
 
@@ -100,7 +98,6 @@ if (!Meteor.isClient) {
                     _id: $('#_id').val(),
                     username: $('#username').val(),
                     email: $('#email').val(),
-                    active: $('#active').is(':checked'),
                     admin: $('#admin').is(':checked'),
                     grader: $('#grader').is(':checked')
                 };
@@ -126,25 +123,6 @@ if (!Meteor.isClient) {
             Router.go('users');
         },
 
-        // if person is not 'active', all other roles are removed as well
-        'change #active': function (event) {
-            if (!$('#active').is(':checked')) {
-                $('#admin').prop('checked', false);
-                $('#grader').prop('checked', false);
-            }
-        },
-        // if person is given a role, they also have to be 'active'
-        'change #admin': function (event) {
-            if ($('#admin').is(':checked')) {
-                $('#active').prop('checked', true);
-            }
-        },
-        // if person is given a role, they also have to be 'active'
-        'change #grader': function (event) {
-            if ($('#grader').is(':checked')) {
-                $('#active').prop('checked', true);
-            }
-        }
 
     });
 

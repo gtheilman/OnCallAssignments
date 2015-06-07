@@ -90,18 +90,6 @@
         {{#if isInRole 'admin'}}
         <div class="row">
             <div class="col-md-1"></div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <div class="checkbox">
-                        {{#if active}}
-                            <input type="checkbox" id="active" name="active" checked>
-                        {{else}}
-                            <input type="checkbox" id="active" name="active">
-                        {{/if}}
-                        Active (unchecking this disables account, but doesn't delete user)
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="row">
@@ -160,7 +148,8 @@
     {{#if isInRole 'admin'}}
     <div class=" row">
         <div class="col-md-6">
-            <i>Before deleting a user, consider whether it would be better to just mark them as "inactive"...</i>
+            <i>Before deleting a user, consider whether it would be better to just remove their roles, just in case you
+                want to use them again later.</i>
         </div>
         <div class="col-md-2">
             <button type="button" id="deleteUserButton" class="btn btn-sm btn-danger">Delete

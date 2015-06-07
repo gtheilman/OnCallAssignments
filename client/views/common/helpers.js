@@ -49,6 +49,13 @@ if (!Meteor.isClient) {
 
     Template.registerHelper('reverse', reverse);
 
+    Template.navItems.helpers({
+        hasRole: function () {
+            if (Roles.userIsInRole(Meteor.userId(), 'admin') || Roles.userIsInRole(Meteor.userId(), 'grader')) {
+                return true
+            }
+        }
+    });
 
 
 }

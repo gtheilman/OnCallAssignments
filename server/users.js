@@ -12,18 +12,17 @@ if (Meteor.isServer) {
                     var newUser = Meteor.users.findOne({username: user.username});
 
                     if (newUser) {
-                        Roles.addUsersToRoles(newUser._id, ['grader', 'active']);
+                        Roles.addUsersToRoles(newUser._id, ['grader']);
                         return true
                     }
 
                 }
             },
             'retrieveUser': function (id) {
-                if (Roles.userIsInRole(Meteor.user(), 'active')) {
+                if (Roles.userIsInRole(Meteor.user(), 'admin')) {
                     var user = Meteor.users.findOne({_id: id});
                     user.admin = Roles.userIsInRole(id, 'admin');
                     user.grader = Roles.userIsInRole(id, 'grader');
-                    user.active = Roles.userIsInRole(id, 'active');
                     return user
                 }
             },
@@ -39,19 +38,14 @@ if (Meteor.isServer) {
                         }
                     );
                     if (user.admin) {
-                        Roles.addUsersToRoles(user._id, ['admin', 'active']);
+                        Roles.addUsersToRoles(user._id, ['admin']);
                     } else {
                         Roles.removeUsersFromRoles(user._id, ['admin']);
                     }
                     if (user.grader) {
-                        Roles.addUsersToRoles(user._id, ['grader', 'active']);
+                        Roles.addUsersToRoles(user._id, ['grader']);
                     } else {
                         Roles.removeUsersFromRoles(user._id, ['grader']);
-                    }
-                    if (user.active) {
-                        Roles.addUsersToRoles(user._id, ['active']);
-                    } else {
-                        Roles.removeUsersFromRoles(user._id, ['admin', 'active', 'grader']);
                     }
                 }
             },
@@ -73,7 +67,7 @@ if (Meteor.isServer) {
                 }
             },
             'passwordUser': function (_id) {
-                if (Roles.userIsInRole(Meteor.user(), 'active')) {
+                if (Roles.userIsInRole(Meteor.user(), 'admin')) {
                     Accounts.sendResetPasswordEmail(_id);
                     return true
                 } else {

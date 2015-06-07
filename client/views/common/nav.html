@@ -36,26 +36,24 @@
 <template name="navItems">
 
     {{#if currentUser}}
-        {{#if isInRole 'active'}}
+        {{#if hasRole}}
             <li class="{{ activeIfTemplateIs 'consults' }}">
                 <a href="{{ pathFor 'consults'}}">Consults</a>
             </li>
-            <li class="{{ activeIfTemplateIs 'students' }}">
-                <a href="{{ pathFor 'students'}}">Students</a>
-            </li>
-
-            <li class="{{ activeIfTemplateIs 'users' }}">
-                <a href="{{ pathFor 'users'}}">Faculty</a>
-            </li>
 
             {{#if isInRole 'admin'}}
+                <li class="{{ activeIfTemplateIs 'students' }}">
+                    <a href="{{ pathFor 'students'}}">Students</a>
+                </li>
+
+                <li class="{{ activeIfTemplateIs 'users' }}">
+                    <a href="{{ pathFor 'users'}}">Faculty</a>
+                </li>
 
                 <li class="{{ activeIfTemplateIs 'credentialsForm' }}">
                     <a href="{{ pathFor 'credentialsForm'}}">Credentials</a>
                 </li>
             {{/if}}
-
-
 
             <li class="{{ activeIfTemplateIs 'about' }}">
                 <a href="{{pathFor 'about'}}">About</a>
@@ -72,18 +70,3 @@
 </template>
 
 
-<template name="navdropdown">
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown<span
-                class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
-        </ul>
-    </li>
-</template>

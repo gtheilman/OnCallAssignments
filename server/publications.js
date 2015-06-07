@@ -4,11 +4,10 @@ Meteor.publish(null, function () {
 
 
 Meteor.publish('consults', function () {
-    //returns empty set if not logged in or not active
-    if (this.userId) {
-        if (Roles.userIsInRole(this.userId, 'active')) {
-            return Consults.find();
-        }
+    //returns empty set if not logged in or not in these roles
+
+    if (Roles.userIsInRole(this.userId, 'admin') || Roles.userIsInRole(this.userId, 'grader')) {
+        return Consults.find();
     } else {
         return Consults.find({activate: true});
     }
@@ -16,20 +15,16 @@ Meteor.publish('consults', function () {
 
 
 Meteor.publish('students', function () {
-    //returns empty set if not logged in or not active
-    if (this.userId) {
-        if (Roles.userIsInRole(this.userId, 'active')) {
-            return Students.find();
-        }
+    //returns empty set if not logged in or not in these roles
+    if (Roles.userIsInRole(this.userId, 'admin') || Roles.userIsInRole(this.userId, 'grader')) {
+        return Students.find();
     }
 });
 
 
 Meteor.publish('responses', function () {
-    //returns empty set if not logged in or not active
-    if (this.userId) {
-        if (Roles.userIsInRole(this.userId, 'active')) {
-            return Responses.find();
-        }
+    //returns empty set if not logged in or not in these roles
+    if (Roles.userIsInRole(this.userId, 'admin') || Roles.userIsInRole(this.userId, 'grader')) {
+        return Responses.find();
     }
 });
