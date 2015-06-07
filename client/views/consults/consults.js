@@ -293,6 +293,8 @@ if (!Meteor.isClient) {
         });
         $('[data-toggle="tooltip"]').tooltip();
 
+        $('#responseTable').DataTable();
+
 
     });
 

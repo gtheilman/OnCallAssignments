@@ -124,6 +124,13 @@ if (!Meteor.isClient) {
         }
     });
 
+    Template.studentConsultResponses.onRendered(function () {
+
+
+        $('#studentResponsesTable').DataTable();
+
+
+    });
 
     Template.importStudentCSV.events({
         "click .btnReadCsv": function (event, template) {
