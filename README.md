@@ -20,7 +20,20 @@ Within a few minutes the student receives a text message (SMS) on their phone wi
 
 Faculty can then go through the responses left by the students and score them on communications skills, clinical reasoning, professionalism, etc.
 
-For an additional fee, the service will transcribe the recording and look up the person registered to that cell phone number.
+Additional features:
+- Manage several different phone numbers.  For example, different classes could be using the application at the same time, just by calling different telephone numbers.
+- Different permission levels for administrators and those who are just need to grade student responses
+- Generate web pages to display a written consult and/or a grading rubric (key)
+-  Transcribe the recording (extra fee charged by provider)
+-  Look up the person registered to an incoming cell phone number (extra fee charged by provider)
+-  Choose from different voices for outgoing messages
+-  Specify the maximum amount of time students have to record their responses (no rambling).
+-  Import and export students in CSV format
+
+
+
+
+
 
 ### Technical Details
 
@@ -48,7 +61,7 @@ Installation does involve some use of the command line.  If you have no idea wha
 
 The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
 
-**Step 2:** Install Meteor on your local Windows, Mac or Linux computer.
+**Step 2:** Sign up for an [account](https://www.meteor.com/) with Meteor.  Install Meteor on your local Windows, Mac or Linux computer.
 
 The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/) or [this video](https://youtu.be/9EsDHeI327s) helpful.
 
