@@ -151,12 +151,12 @@ if (!Meteor.isClient) {
             tweet: function () {
                 var tweet = this.tweetHeader + " ";
                 if (this.consultURL) {
-                    tweet += this.consultURL + " ";
+                    tweet += "    " + this.consultURL + "    ";
                 } else {
-                    tweet += Meteor.absoluteUrl() + "oncall/" + this._id;
+                    tweet += Meteor.absoluteUrl() + "oncall/" + this._id + "    ";
                 }
 
-                tweet += friendlyPhoneFormat(this.phone);
+                tweet +=  "    " + friendlyPhoneFormat(this.phone);
                 Session.set('tweetLength', tweet.length);
 
 
