@@ -22,7 +22,9 @@ if (!Meteor.isClient) {
 
 
         TwitterScreenName: function () {
-            return ReactiveMethod.call("testTwitter");
+            accountinfo = ReactiveMethod.call("testTwitter");
+            Session.set("twitterValidityCheck", '<div class="alert alert-success" role="alert">There are Twitter credentials in the database for the account: <b>' + accountinfo.screen_name + '</b>.</div>');
+            return
         }
 
 
