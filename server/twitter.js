@@ -6,20 +6,23 @@ if (Meteor.isServer) {
         testTwitter: function () {
 
             var credentials = Credentials.findOne();
-
-
+            //var decrypted_twitter_consumer_secret = Meteor.call("decrypt", credentials.twitter_consumer_secret);
+            // var decrypted_access_token_secret = Meteor.call("decrypt", credentials.access_token_secret);
+            var decrypted_twitter_consumer_secret = credentials.twitter_consumer_secret;
+            var decrypted_access_token_secret = credentials.access_token_secret;
             var options = {
                 consumer_key: credentials.twitter_consumer_key,
-                consumer_secret: credentials.twitter_consumer_secret,
+                consumer_secret: decrypted_twitter_consumer_secret,
                 access_token_key: credentials.twitter_access_token_key,
-                access_token_secret: credentials.twitter_access_token_secret
+                access_token_secret: decrypted_access_token_secret
             };
 
 
-            var client = new Twitter(options);
- 
 
-            Twitter.getAsync(client, 'favorites/list', function (error, tweets, response) {
+            var client = new Twitter(options);
+
+
+            Twitter.getAsync(client, 'followers/ids', {screen_name: 'py3class'}, function (error, tweets, response) {
                 if (error) {
                     return error
                 } else if (tweets) {
@@ -65,8 +68,10 @@ if (Meteor.isServer) {
         },
 
         updateTwitterCredentials: function (credentials) {
-            var encrypted_twitter_access_token_secret = Meteor.call("encrypt", credentials.twitter_access_token_secret);
-            var encrypted_twitter_consumer_secret = Meteor.call("encrypt", credentials.twitter_consumer_secret);
+            // var encrypted_twitter_access_token_secret = Meteor.call("encrypt", credentials.twitter_access_token_secret);
+            // var encrypted_twitter_consumer_secret = Meteor.call("encrypt", credentials.twitter_consumer_secret);
+            var encrypted_twitter_access_token_secret = credentials.twitter_access_token_secret;
+            var encrypted_twitter_consumer_secret = credentials.twitter_consumer_secret;
             var credential = Credentials.findOne();
             Credentials.update(
                 {_id: credential._id},
