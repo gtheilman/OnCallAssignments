@@ -118,6 +118,7 @@ if (!Meteor.isClient) {
             }
         },
         'click #deleteUserButton': function (event) {
+            // confirm("Are you sure you want to delete this faculty member?  Would it be better to just remove their roles?");
             Meteor.call('deleteUser', $('#_id').val());
 
             //clear variables used to edit user

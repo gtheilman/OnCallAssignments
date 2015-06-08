@@ -49,6 +49,7 @@ if (!Meteor.isClient) {
             }
         },
         "click #deleteStudentButton": function (event) {
+            // confirm("Are you sure you want to delete this student?");
             Meteor.call('deleteStudentData', $('#student_id').val(), function (error, result) {
                 if (result) {
                     sAlert.success('Deleted.', {

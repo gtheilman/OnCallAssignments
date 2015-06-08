@@ -69,6 +69,7 @@ if (!Meteor.isClient) {
 
 
         "click #deleteConsultButton": function (event) {
+            // confirm("Are you sure you want to delete this consult?");
             Meteor.call('deleteConsult', $('#id').val(), function (error, result) {
                 if (result) {
                     sAlert.success('Deleted.', {
@@ -90,6 +91,16 @@ if (!Meteor.isClient) {
                     });
 
                 }
+
+            });
+
+        },
+
+        "click #tweetSubmitButton": function (event) {
+            Meteor.call('deleteConsult', $('#id').val(), function (error, result) {
+                event.preventDefault();
+                // confirm("Are you really sure you want to send out this tweet to the students?");
+
 
             });
 
