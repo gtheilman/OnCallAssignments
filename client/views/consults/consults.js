@@ -98,7 +98,7 @@ if (!Meteor.isClient) {
 
         "click #tweetSubmitButton": function (event) {
                 event.preventDefault();
-            alert("clicked");
+
                 // confirm("Are you really sure you want to send out this tweet to the students?");
             var tweet = this.tweetHeader + " ";
             var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
@@ -112,6 +112,8 @@ if (!Meteor.isClient) {
             Meteor.call('sendTweet', tweet, function (error, result) {
                 if (result) {
                     console.log(result);
+                } else {
+                    console.log(error);
                 }
 
             });
