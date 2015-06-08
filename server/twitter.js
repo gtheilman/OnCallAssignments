@@ -21,7 +21,7 @@ if (Meteor.isServer) {
                 access_token: credentials.twitter_access_token_key,
                 access_token_secret: credentials.twitter_access_token_secret
             });
-
+            /*
 
             var twitter = Async.runSync(function (done) {
                 T.get('search/tweets', {q: 'banana since:2011-11-11', count: 100}, function (err, data, response) {
@@ -29,6 +29,17 @@ if (Meteor.isServer) {
                     done(null, data);
                 });
             });
+             */
+
+
+            var twitter = Async.runSync(function (done) {
+                T.get('account/settings', function (err, data, response) {
+
+                    done(null, data);
+                });
+            });
+
+
 
             return twitter.result;
 

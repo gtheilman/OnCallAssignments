@@ -18,18 +18,19 @@ if (!Meteor.isClient) {
         twilioPhones: function () {
             // simple:reactive-method
             return ReactiveMethod.call("phoneList");
+        },
+
+
+        TwitterScreenName: function () {
+            return ReactiveMethod.call("testTwitter");
         }
+
+
 
 
     });
 
-// TODO:  do I need this
-    Template.twittertest.helpers({
-        statuses: function () {
-            return Session.get("tweets");
-        }
 
-    });
 
     // Handles the result of the user (faculty) form submission
     Template.credentialsForm.events({
@@ -210,15 +211,9 @@ if (!Meteor.isClient) {
                 });
 
             }
-        },
-
-
-        "click #testTwitterButton": function (event) {
-            event.preventDefault();
-            Router.go('twittertest');
-
-
         }
+
+
     });
 }
 
