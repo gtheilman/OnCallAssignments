@@ -1,6 +1,3 @@
-**This is still in development.  Not ready to be used.**
-
-
 # OncallAssignments
 This is a program to manage an "on-call" assignment for health-care students.
 
