@@ -23,6 +23,14 @@ if (!Meteor.isClient) {
 
     });
 
+// TODO:  do I need this
+    Template.twittertest.helpers({
+        statuses: function () {
+            return Session.get("tweets");
+        }
+
+    });
+
     // Handles the result of the user (faculty) form submission
     Template.credentialsForm.events({
         "submit #twilioCredentialsForm": function (event) {
@@ -207,17 +215,9 @@ if (!Meteor.isClient) {
 
         "click #testTwitterButton": function (event) {
             event.preventDefault();
+            Router.go('twittertest');
 
 
-            Meteor.call("testTwitter", function (error, result) {
-
-
-                console.log(error);
-
-                console.log(result);
-
-
-            })
         }
     });
 }
