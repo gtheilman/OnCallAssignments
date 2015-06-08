@@ -210,8 +210,7 @@ if (!Meteor.isClient) {
 
 
             Meteor.call("testTwitter", function (error, result) {
-                alert(error);
-                alert(result);
+
 
                 console.log(error);
 
