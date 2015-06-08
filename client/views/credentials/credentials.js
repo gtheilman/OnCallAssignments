@@ -27,9 +27,6 @@ if (!Meteor.isClient) {
             return
         }
 
-
-
-
     });
 
 
