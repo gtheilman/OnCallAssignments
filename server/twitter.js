@@ -10,27 +10,29 @@ if (Meteor.isServer) {
             // var decrypted_access_token_secret = Meteor.call("decrypt", credentials.access_token_secret);
             var decrypted_twitter_consumer_secret = credentials.twitter_consumer_secret;
             var decrypted_access_token_secret = credentials.access_token_secret;
-            var options = {
-                consumer_key: credentials.twitter_consumer_key,
-                consumer_secret: decrypted_twitter_consumer_secret,
-                access_token_key: credentials.twitter_access_token_key,
-                access_token_secret: decrypted_access_token_secret
-            };
 
 
+            var Twit = Meteor.npmRequire('twit');
 
-            var client = new Twitter(options);
 
-
-            Twitter.getAsync(client, 'followers/ids', {screen_name: 'py3class'}, function (error, tweets, response) {
-                if (error) {
-                    return error
-                } else if (tweets) {
-                    return tweets
-                } else {
-                    return response
-                }
+            var T = new Twit({
+                consumer_key: "kZtrtUq3quBAK2zvhF2wHZvD7",
+                consumer_secret: "jCWvQABoNHKweH0TXSe3YjOzzrP1ZNKlABQZuyPqugz1vSu7tG",
+                access_token: "48777223-f1WSLPivKfR944qj8L2naLP8Tr3d1zXsC0yVyS5T8",
+                access_token_secret: "k5aSbqjAQFMfKjuA5IzujVreeSZxsqieNQfrUKUabaUIr"
             });
+
+
+            var twitter = Async.runSync(function (done) {
+                T.get('search/tweets', {q: 'banana since:2011-11-11', count: 100}, function (err, data, response) {
+
+                    done(null, data);
+                });
+            });
+
+            return twitter.result;
+
+
         },
 
 
