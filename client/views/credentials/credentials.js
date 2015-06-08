@@ -23,8 +23,10 @@ if (!Meteor.isClient) {
 
         TwitterScreenName: function () {
             accountinfo = ReactiveMethod.call("testTwitter");
-            Session.set("twitterValidityCheck", '<div class="alert alert-success" role="alert">There are Twitter credentials in the database for the account: <b>' + accountinfo.screen_name + '</b>.</div>');
-            return
+            if (accountinfo) {
+                Session.set("twitterValidityCheck", '<div class="alert alert-success" role="alert">There are Twitter credentials in the database for the account: <b>@' + accountinfo.screen_name + '</b>.</div>');
+                Session.set("twitterHandle", accountinfo.screen_name);
+            }
         }
 
     });

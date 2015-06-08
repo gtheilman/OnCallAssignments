@@ -157,6 +157,18 @@ if (!Meteor.isClient) {
 
             },
 
+            twitterStatus: function () {
+
+                if (Session.get('twitterHandle')) {
+                    return true
+                }
+
+            },
+            twitterHandle: function () {
+
+                return Session.get('twitterHandle');
+
+            },
 
             tweet: function () {
                 var tweet = this.tweetHeader + " ";
