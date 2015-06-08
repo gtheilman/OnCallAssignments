@@ -175,10 +175,7 @@ if (!Meteor.isClient) {
             //TODO:  Get this working
             tweetLength: function (tweet) {
 
-                return $('input:#tweet').val().length;
-
-
-
+                return $("#" + tweet).val().length;
             },
 
 
