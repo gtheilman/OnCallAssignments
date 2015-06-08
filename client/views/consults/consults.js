@@ -170,15 +170,15 @@ if (!Meteor.isClient) {
 
     Template.consultForm.helpers({
 
-            tweetlength: function (tweet) {
+            //TODO:  Get this working
+            tweetLength: function (tweet) {
 
-                var tweetlength = tweet.length;
+                return $('input:#tweet').val().length;
 
-                if (tweetlength) {
-                    return tweetlength
-                }
+
 
             },
+
 
             twitterStatus: function () {
 
@@ -193,7 +193,7 @@ if (!Meteor.isClient) {
 
             },
 
-            tweet: function () {
+            buildTweet: function () {
                 var tweet = this.tweetHeader + " ";
                 var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
 
