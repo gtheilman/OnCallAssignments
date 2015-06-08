@@ -1,74 +1,46 @@
 if (Meteor.isServer) {
 
 
+    var credentials = Credentials.findOne();
+    //var decrypted_twitter_consumer_secret = Meteor.call("decrypt", credentials.twitter_consumer_secret);
+    // var decrypted_access_token_secret = Meteor.call("decrypt", credentials.access_token_secret);
+    // var decrypted_twitter_consumer_secret = credentials.twitter_consumer_secret;
+    // var decrypted_access_token_secret = credentials.access_token_secret;
+
+
+    var Twit = Meteor.npmRequire('twit');
+
+
+    var T = new Twit({
+        consumer_key: credentials.twitter_consumer_key,
+        consumer_secret: credentials.twitter_consumer_secret,
+        access_token: credentials.twitter_access_token_key,
+        access_token_secret: credentials.twitter_access_token_secret
+    });
+
+
     Meteor.methods({
 
         testTwitter: function () {
-
-            var credentials = Credentials.findOne();
-            //var decrypted_twitter_consumer_secret = Meteor.call("decrypt", credentials.twitter_consumer_secret);
-            // var decrypted_access_token_secret = Meteor.call("decrypt", credentials.access_token_secret);
-            // var decrypted_twitter_consumer_secret = credentials.twitter_consumer_secret;
-            // var decrypted_access_token_secret = credentials.access_token_secret;
-
-
-            var Twit = Meteor.npmRequire('twit');
-
-
-            var T = new Twit({
-                consumer_key: credentials.twitter_consumer_key,
-                consumer_secret: credentials.twitter_consumer_secret,
-                access_token: credentials.twitter_access_token_key,
-                access_token_secret: credentials.twitter_access_token_secret
-            });
-            /*
-
-            var twitter = Async.runSync(function (done) {
-                T.get('search/tweets', {q: 'banana since:2011-11-11', count: 100}, function (err, data, response) {
-
-                    done(null, data);
-                });
-            });
-             */
-
-
             var twitter = Async.runSync(function (done) {
                 T.get('account/settings', function (err, data, response) {
-
                     done(null, data);
                 });
             });
 
-
-
             return twitter.result;
-
-
         },
 
 
-        sendTweet: function (to, subject, text) {
-            check([to, subject, text], [String]);
-
-
-            var credentials = Credentials.findOne();
-
-            if (credentials.emailPassword) {
-                var decrypted_emailPassword = Meteor.call("decrypt", credentials.emailPassword);
-                process.env.MAIL_URL = 'smtp://' + encodeURIComponent(credentials.emailUsername) + ':' + encodeURIComponent(decrypted_emailPassword) + '@' + encodeURIComponent(credentials.smtpServer) + ':' + credentials.smtpPort;
-            }
-
-
-            // Let other method calls from the same client start running,
-            // without waiting for the email sending to complete.
-            this.unblock();
-
-            Email.send({
-                to: to,
-                from: credentials.emailUsername,
-                subject: subject,
-                text: text
+        sendTweet: function (text) {
+            var twitter = Async.runSync(function (done) {
+                T.post('account/settings', {time_zone: 'American/Chicago'}, function (err, data, response) {
+                    done(null, data);
+                });
             });
+
+            return twitter.result;
+
         },
 
         confirmTwitterCredentials: function () {
