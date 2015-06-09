@@ -89,7 +89,7 @@ _Mac Instructions_
 
 Go back to the Terminal window.
 
-From the command prompt, type <code>cd </code.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
+From the command prompt, type <code>cd </code>.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
 
 Find the folder with the files your just downloaded.  It is probably called "OncallAssignments-master".
 
