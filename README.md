@@ -67,11 +67,15 @@ It may not be immediately obvious, but to create an account you first click on t
 
 The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/)  helpful.   
 
+_Windows_
 The Windows installation process is pretty similar to what you see with installing other Windows programs.
 
+
+_Mac_
 The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.
 
 Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press enter.
+
 
 You can skip the "demo application" that Meteor asks you to create.
 
@@ -84,14 +88,12 @@ If you have a Mac, it will probably unzip the folder for you automatically.
 If you have Windows, you'll need to unzip the folder yourself.
 
 **Step 5:**  Run the application locally at least once.  
-
-_Mac Instructions_
-
-1. Go back to the Terminal window you opened in the prior step.
+ 
+1.  Go back to the Terminal  (or [Windows command prompt](Open the [command prompt](http://www.7tutorials.com/7-ways-launch-command-prompt-windows-7-windows-8) )).
 
 2. From the command prompt, type <code>cd </code>.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
 
-3. Find the folder with the files your just downloaded.  It is probably called "OncallAssignments-master".  Don't move it from its original location.
+3. Find the folder with the files your just downloaded and unzipped.  It is probably called "OncallAssignments-master".  Don't move it from its original location.
 
 4. Drag the folder _name_ with little folder icon in front of it into the Terminal window.   You are not selecting a bunch of files, but just that once line with the folder name.  Drop it anywhere in the Terminal window.
 
@@ -101,8 +103,7 @@ _Mac Instructions_
 
 _Windows Instructions_
 
-In Windows, you can get to the command prompt [through the menu[(http://windows.microsoft.com/en-us/windows-vista/open-a-command-prompt-window).   
-
+ 
 Type the word _meteor_ in the command prompt window.
  
 
@@ -110,9 +111,9 @@ Type the word _meteor_ in the command prompt window.
 
 While you can open the application in a web browser while it is running oon your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by typing CTRL-C twice.
 
-So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  Think of a unique one-word name for the application. 
+So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  Think of a unique one-word name for the application. Suppose you decide to call it <code>foo</code>.
 
-Then, from the command prompt (or Terminal) type <code> deploy </code> and then the unique name you chose.
+Then, from the command prompt (or Terminal) type <code>meteor deploy foo </code> (or whatever name you chose).
 
 When you deploy to Meteor, you will be given a URL where your application can be accessed.  Make a note of it.
 
