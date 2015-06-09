@@ -93,7 +93,7 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 4. Drag the folder _name_ with little folder icon in front of it into the Terminal window.   You are not selecting a bunch of files, but just that once line with the folder name.  Drop it anywhere in the Terminal window.
 
-5. Click with your mouse anywhere in the Terminal window.  Now press the Enter key.
+5. Click with your mouse anywhere in the Terminal window.  Now press the <code>Enter</code> key.
 
 6. Type the word _meteor_ in the Terminal window. 
 
