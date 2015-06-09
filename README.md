@@ -67,9 +67,9 @@ The official instructions are [here](https://www.meteor.com/install), but you al
 **Step 4:**  Download the zip file with the contents of this repository and unzip it into that directory. 
 The "Download Zip" button is on the right-side of the repository page.  
 
-**Step 5:**  Run the application locally
+**Step 5:**  Run the application locally at least once
 
-Type _Meteor_ at the command prompt to  [run the application locally] (http://docs.meteor.com/#/basic/quickstart).   Then type CTRL-C to stop it.
+Type _meteor_ at the command prompt to  [run the application locally] (http://docs.meteor.com/#/basic/quickstart).   Then type CTRL-C to stop it.
 
 **Step 6:**  Deploy the application
 
@@ -77,7 +77,7 @@ While you can open the application in a web browser while it is running oon your
 
 When you deploy to Meteor, you will be given a URL where your application can be accessed.  Make a note of it.
 
-**Step 7:** Run the application using the Meteor URL  
+**Step 7:** Open the application in your web browser using the provided URL  
 
 When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate role (i.e., administrator).
 
