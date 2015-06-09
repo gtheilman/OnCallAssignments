@@ -174,6 +174,7 @@ if (Meteor.isServer) Meteor.methods({
                 // entries from being created.
 
                 var consultURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + newConsult._id);
+
                 ConsultPage.update(
                     {consult_id: consult._id},
                     {
