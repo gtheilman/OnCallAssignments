@@ -67,12 +67,10 @@ It may not be immediately obvious, but to create an account you first click on t
 
 The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/)  helpful.   
 
-_Windows_
-The Windows installation process is pretty similar to what you see with installing other Windows programs.
+_Windows:_   The Windows installation process is pretty similar to what you see with installing other Windows programs.
 
 
-_Mac_
-The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.
+_Mac:_  The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.
 
 Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press enter.
 
