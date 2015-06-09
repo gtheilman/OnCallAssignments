@@ -108,6 +108,7 @@ Type the word _meteor_ in the command prompt window.
 While you can open the application in a web browser while it is running oon your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer:
 
 _Windows:_  Hold down the <code>Ctrl</code> key and tap <code>c</code> twice
+
 _Mac:_  Hold down the <code>control</code> key and tap <code>c</code> twice
 
 Instead, we are going to [install your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  
