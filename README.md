@@ -60,7 +60,7 @@ The Twilio website takes you through the process of obtaining a phone number, bu
 
 **Step 2:** Install Meteor on your local Windows, Mac or Linux computer.
 
-The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/) or [this video](https://youtu.be/9EsDHeI327s) helpful.   
+The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/)  helpful.   
 
 The Windows installation process is pretty similar to what you see with installing other Windows programs.
 
@@ -76,10 +76,16 @@ During the setup process, you will be prompted to register for an [account](http
 If your are using a Mac, here are [instructions](https://support.apple.com/kb/PH18762?locale=en_US&viewlocale=en_US) for creating a folder.  [Here](http://windows.microsoft.com/en-us/windows/create-new-folder#1TC=windows-7) are the analogous instructions for Windows.
 
 
-**Step 4:**  Download the zip file with the contents of this repository and unzip it into that directory. 
+**Step 4:**  Download the zip file with the contents of this repository and unzip it into that directory you just created. 
 The "Download Zip" button is on the right-side of the repository page.  
 
-**Step 5:**  Run the application locally at least once.  First time may take a while to start.
+**Step 5:**  Run the application locally at least once.  
+
+For both Windows and Mac, you need to be at the command line.
+
+You opened Terminal in OSX in an earlier step.   Now, you can go to the correct folder by [dragging that folder] into the Terminal window.
+
+In Windows, you can get to the command prompt [through the menu[(http://windows.microsoft.com/en-us/windows-vista/open-a-command-prompt-window).  To get to the correct directory, just
 
 Type _meteor_ at the command prompt to  [run the application locally] (http://docs.meteor.com/#/basic/quickstart).   Then type CTRL-C to stop it.
 
