@@ -91,11 +91,11 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 3. Find the folder with the files your just downloaded and unzipped.  It is probably called "OncallAssignments-master".  Don't move it from its original location.
 
-4. Drag the folder _name_ with little folder icon in front of it into the Terminal window.   You are not selecting a bunch of files, but just that one line with the folder name.  Drop it anywhere in the Terminal window.
+4. Drag the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Drop it anywhere in the Terminal window.
 
-5. Click with your mouse anywhere in the Terminal window.  Now press the <code>Enter</code> key.
+5. Click with your mouse anywhere in the Terminal window.  Now press the <code>Enter/return</code> key.
 
-6. Type the word _meteor_ in the Terminal window. 
+6. Type the word _meteor_ in the Terminal window.   Press the <code>Enter/return</code> key.
 
 _Windows Instructions_
 
@@ -110,9 +110,13 @@ While you can open the application in a web browser while it is running oon your
 _Windows:_  Hold down the <code>Ctrl</code> key and tap <code>c</code> twice
 _Mac:_  Hold down the <code>control</code> key and tap <code>c</code> twice
 
-[Deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  Think of a unique one-word name for the application. Suppose you decide to call it <code>foo</code>.
+Instead, we are going to [install your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  
 
-Then, from the command prompt (or Terminal) type <code>meteor deploy foo </code> (or whatever name you chose).
+Think of a unique one-word name for the application. Suppose you decide to call it <code>foo</code>.
+
+Then, from the command prompt (or Terminal) type <code>meteor deploy foo </code> (or whatever name you chose).    Press the <code>Enter/return</code> key.
+
+You will likely be asked for your Meteor username and password during this process.   When you type your password, it won't look like anything is happening on the screen.  Don't worry, it _is_ being typed.  When you are done,   press the <code>Enter/return</code> key.
 
 When you deploy to Meteor, you will be given a URL where your application can be accessed.  Make a note of it.
 
@@ -122,14 +126,13 @@ When the application is initially set up, the _login | password_  is _admin | ad
 
 **Step 8:**  Enter your Twilio credentials into the application.
 
-This is the AccountSID and AuthToken associated with your Twilio account.   They are entered under "Credentials" in the application.
+These is the AccountSID and AuthToken associated with your Twilio account.  They can be accessed on the Twilio page on your Account page.   
+
+Copy and paste these into the "Credentials" page in the application.
 
 **Step 9:**  Call the Twilio phone number from a cell phone and leave a message.
 
 **Step 10:**  Review the response within the application.
-
-
-
 
 
 
