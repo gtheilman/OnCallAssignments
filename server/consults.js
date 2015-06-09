@@ -155,12 +155,10 @@ if (Meteor.isServer) Meteor.methods({
                 });
 
 
-                var consultURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + newConsult._id);
                 var entry = {
                     consult_id: consult._id,
                     consultVisible: consult.consultVisible,
-                    consultMD: consult.consultMD,
-                    consultURL: consultURL
+                    consultMD: consult.consultMD
                 };
                 ConsultPages.insert(entry);
 
@@ -170,6 +168,22 @@ if (Meteor.isServer) Meteor.methods({
                     keyMD: consult.keyMD,
                 };
                 KeyPages.insert(entry);
+
+
+                // moved this to last because it sometimes caused the program to hang up, preventing the above
+                // entries from being created.
+
+                var consultURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + newConsult._id);
+                ConsultPage.update(
+                    {consult_id: consult._id},
+                    {
+                        $set: {
+                            consultURL: consultURL
+                        }
+                    }
+                )
+
+
             }
 
             return
