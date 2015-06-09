@@ -91,9 +91,9 @@ _Mac Instructions_
 
 2. From the command prompt, type <code>cd </code>.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
 
-3. Find the folder with the files your just downloaded.  It is probably called "OncallAssignments-master".
+3. Find the folder with the files your just downloaded.  It is probably called "OncallAssignments-master".  Don't move it from its original location.
 
-4. Drag the folder name into the Terminal window.   Drop it anywhere in the Terminal window.
+4. Drag the folder _name_ with little folder icon in front of it into the Terminal window.   You are not selecting a bunch of files, but just that once line with the folder name.  Drop it anywhere in the Terminal window.
 
 5. Click with your mouse anywhere in the Terminal window.  Now press the Enter key.
 
