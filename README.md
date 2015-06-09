@@ -67,23 +67,27 @@ The official instructions are [here](https://www.meteor.com/install), but you al
 **Step 4:**  Download the zip file with the contents of this repository and unzip it into that directory. 
 The "Download Zip" button is on the right-side of the repository page.  
 
-**Step 5:**  Deploy the application
+**Step 5:**  Run the application locally
 
-While you can [run the application locally] (http://docs.meteor.com/#/basic/quickstart) on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  For production purposes, a PaaS service like [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) may be more appropriate.
+Type _Meteor_ at the command prompt to  [run the application locally] (http://docs.meteor.com/#/basic/quickstart).   Then type CTRL-C to stop it.
+
+**Step 6:**  Deploy the application
+
+While you can open the application in a web browser while it is running oon your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  For production purposes, a PaaS service like [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) may be more appropriate.
 
 When you deploy to Meteor, you will be given a URL where your application can be accessed.  Make a note of it.
 
-**Step 6:** Run the application using the Meteor URL  
+**Step 7:** Run the application using the Meteor URL  
 
 When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate role (i.e., administrator).
 
-**Step 7:**  Enter your Twilio credentials into the application.
+**Step 8:**  Enter your Twilio credentials into the application.
 
 This is the AccountSID and AuthToken associated with your Twilio account.   They are entered under "Credentials" in the application.
 
-**Step 8:**  Call the Twilio phone number from a cell phone and leave a message.
+**Step 9:**  Call the Twilio phone number from a cell phone and leave a message.
 
-**Step 9:**  Review the response within the application.
+**Step 10:**  Review the response within the application.
 
 
 
