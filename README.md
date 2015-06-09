@@ -60,9 +60,21 @@ The Twilio website takes you through the process of obtaining a phone number, bu
 
 **Step 2:** Install Meteor on your local Windows, Mac or Linux computer.
 
-The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/) or [this video](https://youtu.be/9EsDHeI327s) helpful.   During the setup process, you will be prompted to register for an [account](https://www.meteor.com/) with Meteor. 
+The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/) or [this video](https://youtu.be/9EsDHeI327s) helpful.   
 
-**Step 3:**  Create a directory on your local computer.  Call it something like "OnCallAssignments".
+The Windows installation process is pretty similar to what you see with installing other Windows programs.
+
+
+The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.
+
+Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press enter.
+
+During the setup process, you will be prompted to register for an [account](https://www.meteor.com/) with Meteor. 
+
+**Step 3:**  Create a directory (folder_ on your local computer.  Call it something like "OnCall".
+
+If your are using a Mac, here are [instructions](https://support.apple.com/kb/PH18762?locale=en_US&viewlocale=en_US) for creating a folder.  [Here](http://windows.microsoft.com/en-us/windows/create-new-folder#1TC=windows-7) are the analogous instructions for Windows.
+
 
 **Step 4:**  Download the zip file with the contents of this repository and unzip it into that directory. 
 The "Download Zip" button is on the right-side of the repository page.  
