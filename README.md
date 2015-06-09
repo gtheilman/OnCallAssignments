@@ -70,9 +70,7 @@ The official instructions are [here](https://www.meteor.com/install), but you al
 _Windows:_   The Windows installation process is pretty similar to what you see with installing other Windows programs.
 
 
-_Mac:_  The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.
-
-Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press enter.
+_Mac:_  The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.  Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press enter.
 
 
 You can skip the "demo application" that Meteor asks you to create.
@@ -107,9 +105,12 @@ Type the word _meteor_ in the command prompt window.
 
 **Step 6:**  Deploy the application
 
-While you can open the application in a web browser while it is running oon your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by typing CTRL-C twice.
+While you can open the application in a web browser while it is running oon your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer:
 
-So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  Think of a unique one-word name for the application. Suppose you decide to call it <code>foo</code>.
+_Windows:_  Hold down the <code>Ctrl</code> key and tap <code>c</code> twice
+_Mac:_  Hold down the <code>control</code> key and tap <code>c</code> twice
+
+[Deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  Think of a unique one-word name for the application. Suppose you decide to call it <code>foo</code>.
 
 Then, from the command prompt (or Terminal) type <code>meteor deploy foo </code> (or whatever name you chose).
 
