@@ -87,33 +87,32 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 _Mac Instructions_
 
-Go back to the Terminal window.
+1. Go back to the Terminal window you opened in the prior step.
 
-From the command prompt, type <code>cd </code>.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
+2. From the command prompt, type <code>cd </code>.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
 
-Find the folder with the files your just downloaded.  It is probably called "OncallAssignments-master".
+3. Find the folder with the files your just downloaded.  It is probably called "OncallAssignments-master".
 
-Drag the folder name into the Terminal window.   Drop it anywhere in the Terminal window.
+4. Drag the folder name into the Terminal window.   Drop it anywhere in the Terminal window.
 
-Click with your mouse anywhere in the Terminal window.  Now press the Enter key.
+5. Click with your mouse anywhere in the Terminal window.  Now press the Enter key.
 
-Type the word _meteor_ in the Terminal window.
+6. Type the word _meteor_ in the Terminal window. 
 
+_Windows Instructions_
 
+In Windows, you can get to the command prompt [through the menu[(http://windows.microsoft.com/en-us/windows-vista/open-a-command-prompt-window).   
 
-
-
-For both Windows and Mac, you need to be at the command line.
-
-You opened Terminal in OSX in an earlier step.   Now, you can go to the correct folder by [dragging that folder] into the Terminal window.
-
-In Windows, you can get to the command prompt [through the menu[(http://windows.microsoft.com/en-us/windows-vista/open-a-command-prompt-window).  To get to the correct directory, just
-
-Type _meteor_ at the command prompt to  [run the application locally] (http://docs.meteor.com/#/basic/quickstart).   Then type CTRL-C to stop it.
+Type the word _meteor_ in the command prompt window.
+ 
 
 **Step 6:**  Deploy the application
 
-While you can open the application in a web browser while it is running oon your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  For production purposes, a PaaS service like [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) may be more appropriate.
+While you can open the application in a web browser while it is running oon your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by typing CTRL-C twice.
+
+So, [deploy your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  Think of a unique one-word name for the application. 
+
+Then, from the command prompt (or Terminal) type <code> deploy </code> and then the unique name you chose.
 
 When you deploy to Meteor, you will be given a URL where your application can be accessed.  Make a note of it.
 
