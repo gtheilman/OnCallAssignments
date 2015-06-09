@@ -165,7 +165,7 @@ if (Meteor.isServer) Meteor.methods({
                 var entry = {
                     consult_id: consult._id,
                     keyVisible: consult.keyVisible,
-                    keyMD: consult.keyMD,
+                    keyMD: consult.keyMD
                 };
                 KeyPages.insert(entry);
 
