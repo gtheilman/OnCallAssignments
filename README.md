@@ -58,28 +58,50 @@ Installation does involve some use of the command line.  If you have no idea wha
 
 The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
 
-**Step 2:** Install Meteor on your local Windows, Mac or Linux computer.
+**Step 2** Sign up for a [Meteor account](https://www.meteor.com/)
+
+It may not be immediately obvious, but to create an account you first click on the "Sign In" button on the Meteor website.  Then you will be given the opportunity to create a new account.
+
+
+**Step 3:** Install Meteor on your local Windows, Mac or Linux computer.
 
 The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/)  helpful.   
 
 The Windows installation process is pretty similar to what you see with installing other Windows programs.
 
-
 The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.
 
 Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press enter.
 
-During the setup process, you will be prompted to register for an [account](https://www.meteor.com/) with Meteor. 
+You can skip the "demo application" that Meteor asks you to create.
 
-**Step 3:**  Create a directory (folder_ on your local computer.  Call it something like "OnCall".
+**Step 4:**  Download the application files to your local computer
 
-If your are using a Mac, here are [instructions](https://support.apple.com/kb/PH18762?locale=en_US&viewlocale=en_US) for creating a folder.  [Here](http://windows.microsoft.com/en-us/windows/create-new-folder#1TC=windows-7) are the analogous instructions for Windows.
+The "Download Zip" button is towards the top of this page, on the right-side of the screen.
 
+If you have a Mac, it will probably unzip the folder for you automatically.
 
-**Step 4:**  Download the zip file with the contents of this repository and unzip it into that directory you just created. 
-The "Download Zip" button is on the right-side of the repository page.  
+If you have Windows, you'll need to unzip the folder yourself.
 
 **Step 5:**  Run the application locally at least once.  
+
+_Mac Instructions_
+
+Go back to the Terminal window.
+
+From the command prompt, type <code>cd </code.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
+
+Find the folder with the files your just downloaded.  It is probably called "OncallAssignments-master".
+
+Drag the folder name into the Terminal window.   Drop it anywhere in the Terminal window.
+
+Click with your mouse anywhere in the Terminal window.  Now press the Enter key.
+
+Type the word _meteor_ in the Terminal window.
+
+
+
+
 
 For both Windows and Mac, you need to be at the command line.
 
