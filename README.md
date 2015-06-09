@@ -67,7 +67,7 @@ The official instructions are [here](https://www.meteor.com/install), but you al
 **Step 4:**  Download the zip file with the contents of this repository and unzip it into that directory. 
 The "Download Zip" button is on the right-side of the repository page.  
 
-**Step 5:**  Run the application locally at least once
+**Step 5:**  Run the application locally at least once.  First time may take a while to start.
 
 Type _meteor_ at the command prompt to  [run the application locally] (http://docs.meteor.com/#/basic/quickstart).   Then type CTRL-C to stop it.
 
