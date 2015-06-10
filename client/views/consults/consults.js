@@ -95,30 +95,6 @@ if (!Meteor.isClient) {
                 });
             }
 
-        },
-
-        "click #tweetSubmitButton": function (event) {
-            event.preventDefault();
-            if (confirm("Are you really sure you want to send out this tweet to the students?")) {
-                var tweet = this.tweetHeader + " ";
-                var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
-                if (consultURL) {
-                    tweet += "    " + consultURL + "    ";
-                } else {
-                    tweet += Meteor.absoluteUrl() + "oncall/" + this._id + "    ";
-                }
-                tweet += "    " + friendlyPhoneFormat(this.phone);
-                console.log(tweet);
-                Meteor.call('sendTweet', tweet, function (error, result) {
-                    if (result) {
-                        console.log(result);
-                    } else {
-                        console.log(error);
-                    }
-
-                });
-
-            }
         }
     });
 
@@ -180,18 +156,6 @@ if (!Meteor.isClient) {
             },
 
 
-            twitterStatus: function () {
-
-                if (Session.get('twitterHandle')) {
-                    return true
-                }
-
-            },
-            twitterHandle: function () {
-
-                return Session.get('twitterHandle');
-
-            },
 
             buildTweet: function () {
                 var tweet = this.tweetHeader + " ";
