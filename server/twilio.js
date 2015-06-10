@@ -125,8 +125,35 @@ if (Meteor.isServer) {
                     var errorJson = JSON.parse(result.content);
                     throw new Meteor.Error(result.statusCode, errorJson.error);
                 }
-                return credentials.accountsid    // SUCCCESS
+                return credentials.accountsid;  // SUCCCESS
             }, // END validateTwilioCredentials
+
+
+            'clearTwilioCredentials': function (to, from, message) {
+                var credentials = Credentials.findOne();
+                Credentials.update(
+                    {_id: credentials._id},
+
+                    {
+                        set: {
+                            accountsid: "null",
+                            authtoken: "null",
+                            emailUsername: "",
+                            emailPassword: "",
+                            smtpServer: "",
+                            smtpPort: "",
+                            twitter_consumer_key: "",
+                            twitter_consumer_secret: "",
+                            twitter_access_token_key: "",
+                            twitter_access_token_secret: ""
+
+                        }
+                    }
+                );
+
+                return true;
+
+            },
 
 
             // this is to check if the credentials already in the db are valid

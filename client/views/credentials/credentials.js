@@ -32,7 +32,6 @@ if (!Meteor.isClient) {
     });
 
 
-
     // Handles the result of the user (faculty) form submission
     Template.credentialsForm.events({
         "submit #twilioCredentialsForm": function (event) {
@@ -141,6 +140,31 @@ if (!Meteor.isClient) {
 
             }
         },
+
+
+        "click #clearTwilioCredentialsButton": function (event) {
+            event.preventDefault();
+
+            Meteor.call('clearTwilioCredentials', function (error, result) {
+                if (result) {
+
+                    Session.set("credentialsStatus", 0);
+                    Session.set("credentialValidityCheck", '<div class="alert alert-danger" role="alert">The Twilio credentials in the database are NOT valid.</div>');
+                    sAlert.warning('It does not appear that Twilio credentials are in the database.   You cannot use the program without them.  Go to <a href="http://www.twilio.com">Twilio</a> to sign up. ', {
+                        effect: 'scale', html: true, position: 'top-right',
+                        timeout: '45000', onRouteClose: false, stack: true, offset: '0px'
+                    });
+                    Session.set("emailValidityCheck", '<div class="alert alert-danger" role="alert">There are no email credentials in the database.</div>');
+                    Session.set("twitterValidityCheck", '<div class="alert alert-danger" role="alert">There are no Twitter credentials in the database.</div>');
+                    Router.go('consults');
+                } else {
+                    console.log(error);
+                }
+            });
+        }
+        ,
+
+
         "submit #testEmail": function (event) {
             event.preventDefault();
 
@@ -160,7 +184,9 @@ if (!Meteor.isClient) {
                     timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                 });
             }
-        },
+        }
+
+        ,
         "submit #twitterCredentialsForm": function (event) {
             event.preventDefault();
 
@@ -215,6 +241,7 @@ if (!Meteor.isClient) {
         }
 
 
-    });
+    })
+    ;
 }
 
