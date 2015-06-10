@@ -52,7 +52,7 @@ Deploying to [Modulus](http://help.modulus.io/customer/portal/articles/1647770-u
 
 If you are a faculty member at an accredited health-care education school and would like assistance setting this up for your institution, please feel free to contact me.   
 
-Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.
+Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.  But, if you are feeling adventurous, go ahead and follow the instructions below.
 
 **Step 1:**  Sign up for a [Twilio account](https://www.twilio.com/)
 
@@ -70,7 +70,7 @@ The official instructions are [here](https://www.meteor.com/install), but you al
 _Windows:_   The Windows installation process is pretty similar to what you see with installing other Windows programs.
 
 
-_Mac:_  The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.  Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press enter.
+_Mac:_  The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.  Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press <code>return</code>.
 
 
 You can skip the "demo application" that Meteor asks you to create.
@@ -91,25 +91,18 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 3. Find the folder with the files your just downloaded and unzipped.  It is probably called "OncallAssignments-master".  Don't move it from its original location.
 
-4. Drag the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Drop it anywhere in the Terminal window.
+4. [Drag](http://osxdaily.com/2009/11/23/copy-a-files-path-to-the-terminal-by-dragging-and-dropping/) the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Drop it anywhere in the Terminal/command prompt window.
 
-5. Click with your mouse anywhere in the Terminal window.  Now press the <code>Enter/return</code> key.
+5. Click with your mouse anywhere in the Terminal/command prompt window.  Now press the <code>Enter/return</code> key.
 
 6. Type the word _meteor_ in the Terminal window.   Press the <code>Enter/return</code> key.
 
-_Windows Instructions_
 
- 
-Type the word _meteor_ in the command prompt window.
- 
 
 **Step 6:**  Deploy the application
 
-While you can open the application in a web browser while it is running oon your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer:
-
-_Windows:_  Hold down the <code>Ctrl</code> key and tap <code>c</code> twice
-
-_Mac:_  Hold down the <code>control</code> key and tap <code>c</code> twice
+While you can open the application in a web browser while it is running on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by holding down the <code>Ctrl</code> (or <code>control</code>key and tapping <code>c</code> twice
+ 
 
 Instead, we are going to [install your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  
 
@@ -119,7 +112,7 @@ Then, from the command prompt (or Terminal) type <code>meteor deploy foo </code>
 
 You will likely be asked for your Meteor username and password during this process.   When you type your password, it won't look like anything is happening on the screen.  Don't worry, it _is_ being typed.  When you are done,   press the <code>Enter/return</code> key.
 
-When you deploy to Meteor, you will be given a URL where your application can be accessed.  Make a note of it.
+After you successfully deploy to Meteor, a URL where your application can be accessed will be in the Terminal/command prompt window.  It will very likely be something like <code>http://foo.meteor.com</code>.  Make a note of it.
 
 **Step 7:** Open the application in your web browser using the provided URL  
 
@@ -127,13 +120,15 @@ When the application is initially set up, the _login | password_  is _admin | ad
 
 **Step 8:**  Enter your Twilio credentials into the application.
 
-These is the AccountSID and AuthToken associated with your Twilio account.  They can be accessed on the Twilio page on your Account page.   
+These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed on the Twilio page in your Account settings.   
 
 Copy and paste these into the "Credentials" page in the application.
 
 **Step 9:**  Call the Twilio phone number from a cell phone and leave a message.
 
 **Step 10:**  Review the response within the application.
+
+Once your application is up and running, you can delete the folder containing the files you downloaded.
 
 
 
