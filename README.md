@@ -120,7 +120,7 @@ When the application is initially set up, the _login | password_  is _admin | ad
 
 **Step 8:**  Enter your Twilio credentials into the application.
 
-These is the AccountSID and AuthToken associated with your Twilio account.  They can be accessed on the Twilio page on your Account page.   
+These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed on the Twilio page in your Account settings.   
 
 Copy and paste these into the "Credentials" page in the application.
 
