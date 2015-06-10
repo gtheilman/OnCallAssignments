@@ -98,7 +98,6 @@ if (!Meteor.isClient) {
 
         "click #tweetSubmitButton": function (event) {
                 event.preventDefault();
-
                 // confirm("Are you really sure you want to send out this tweet to the students?");
             var tweet = this.tweetHeader + " ";
             var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
@@ -311,6 +310,12 @@ if (!Meteor.isClient) {
 
             });
 
+
+        },
+        "click #exportResponsesCSV": function (event) {
+            alert("clicked");
+
+            Router.go("exportResponsesCSV/" + this._id);
 
         }
     });
