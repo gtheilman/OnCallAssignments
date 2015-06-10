@@ -118,18 +118,23 @@ if (!Meteor.isClient) {
             }
         },
         'click #deleteUserButton': function (event) {
-            // confirm("Are you sure you want to delete this faculty member?  Would it be better to just remove their roles?");
-            Meteor.call('deleteUser', $('#_id').val());
+            if (confirm("Are you sure you want to delete this faculty member?  Would it be better to just remove their roles?")) {
+                Meteor.call('deleteUser', $('#_id').val(), function (error, result) {
+                    if (!result) {
+                        sAlert.error('You cannot delete the admin account.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
+                    }
 
-            //clear variables used to edit user
-            Session.set("username", "");
-            Session.set("email", "");
-            Session.set("_id", "");
-
-            Router.go('users');
-        },
-
-
+                });
+                //clear variables used to edit user
+                Session.set("username", "");
+                Session.set("email", "");
+                Session.set("_id", "");
+                Router.go('users');
+            }
+        }
     });
 
     // Delete User function is called in routes.js file

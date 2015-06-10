@@ -69,54 +69,56 @@ if (!Meteor.isClient) {
 
 
         "click #deleteConsultButton": function (event) {
-            // confirm("Are you sure you want to delete this consult?");
-            Meteor.call('deleteConsult', $('#id').val(), function (error, result) {
-                if (result) {
-                    sAlert.success('Deleted.', {
-                        effect: 'scale', position: 'top-right',
-                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
-                    });
-                    Router.go('consults');
-                } else if (error) {
-                    console.log(error);
-                    sAlert.error('Something went wrong  Check console.log.', {
-                        effect: 'scale', position: 'top-right',
-                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
-                    });
-                }
-                else {
-                    sAlert.error('Could not delete consult.  Students may have already responded to it.', {
-                        effect: 'scale', position: 'top-right',
-                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
-                    });
+            if (confirm("Are you sure you want to delete this consult?")) {
+                Meteor.call('deleteConsult', $('#id').val(), function (error, result) {
+                    if (result) {
+                        sAlert.success('Deleted.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
+                        Router.go('consults');
+                    } else if (error) {
+                        console.log(error);
+                        sAlert.error('Something went wrong  Check console.log.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
+                    }
+                    else {
+                        sAlert.error('Could not delete consult.  Students may have already responded to it.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
 
-                }
+                    }
 
-            });
+                });
+            }
 
         },
 
         "click #tweetSubmitButton": function (event) {
-                event.preventDefault();
-                // confirm("Are you really sure you want to send out this tweet to the students?");
-            var tweet = this.tweetHeader + " ";
-            var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
-            if (consultURL) {
-                tweet += "    " + consultURL + "    ";
-            } else {
-                tweet += Meteor.absoluteUrl() + "oncall/" + this._id + "    ";
-            }
-            tweet += "    " + friendlyPhoneFormat(this.phone);
-            console.log(tweet);
-            Meteor.call('sendTweet', tweet, function (error, result) {
-                if (result) {
-                    console.log(result);
+            event.preventDefault();
+            if (confirm("Are you really sure you want to send out this tweet to the students?")) {
+                var tweet = this.tweetHeader + " ";
+                var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
+                if (consultURL) {
+                    tweet += "    " + consultURL + "    ";
                 } else {
-                    console.log(error);
+                    tweet += Meteor.absoluteUrl() + "oncall/" + this._id + "    ";
                 }
+                tweet += "    " + friendlyPhoneFormat(this.phone);
+                console.log(tweet);
+                Meteor.call('sendTweet', tweet, function (error, result) {
+                    if (result) {
+                        console.log(result);
+                    } else {
+                        console.log(error);
+                    }
 
-            });
+                });
 
+            }
         }
     });
 

@@ -53,14 +53,15 @@ if (Meteor.isServer) {
             'deleteUser': function (id) {
                 if (Roles.userIsInRole(Meteor.user(), 'admin')) {
                     var adminId = Meteor.users.findOne({username: 'admin'});
-                    if (id == adminId) {
-                        return
+                    if (id == adminId._id) {
+                        return false
                     } else {
                         Meteor.users.remove(
                             {
                                 _id: id
                             }
-                        )
+                        );
+                        return true
                     }
                 } else {
                     return

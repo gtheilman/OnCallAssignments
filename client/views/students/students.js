@@ -49,30 +49,31 @@ if (!Meteor.isClient) {
             }
         },
         "click #deleteStudentButton": function (event) {
-            // confirm("Are you sure you want to delete this student?");
-            Meteor.call('deleteStudentData', $('#student_id').val(), function (error, result) {
-                if (result) {
-                    sAlert.success('Deleted.', {
-                        effect: 'scale', position: 'top-right',
-                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
-                    });
-                    Router.go('students');
-                } else if (error) {
-                    console.log(error);
-                    sAlert.error('Something went wrong  Check console.log.', {
-                        effect: 'scale', position: 'top-right',
-                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
-                    });
-                }
-                else {
-                    sAlert.error('Could not delete student.  They may have responses in the database already.', {
-                        effect: 'scale', position: 'top-right',
-                        timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
-                    });
+            if (confirm("Are you sure you want to delete this student?")) {
+                Meteor.call('deleteStudentData', $('#student_id').val(), function (error, result) {
+                    if (result) {
+                        sAlert.success('Deleted.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
+                        Router.go('students');
+                    } else if (error) {
+                        console.log(error);
+                        sAlert.error('Something went wrong  Check console.log.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
+                    }
+                    else {
+                        sAlert.error('Could not delete student.  They may have responses in the database already.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
 
-                }
+                    }
 
-            });
+                });
+            }
 
         }
 
