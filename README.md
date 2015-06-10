@@ -128,6 +128,8 @@ Copy and paste these into the "Credentials" page in the application.
 
 **Step 10:**  Review the response within the application.
 
+Once your application is up and running, you can delete the folder containg the files you downloaded.
+
 
 
 **Some Warnings **
