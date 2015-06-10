@@ -112,7 +112,7 @@ Then, from the command prompt (or Terminal) type <code>meteor deploy foo </code>
 
 You will likely be asked for your Meteor username and password during this process.   When you type your password, it won't look like anything is happening on the screen.  Don't worry, it _is_ being typed.  When you are done,   press the <code>Enter/return</code> key.
 
-After you successfully deploy to Meteor, a URL where your application can be accessed will be in the Terminal/command prompt.  It will very likely be something like <code>http://foo.meteor.com</code>.  Make a note of it.
+After you successfully deploy to Meteor, a URL where your application can be accessed will be in the Terminal/command prompt window.  It will very likely be something like <code>http://foo.meteor.com</code>.  Make a note of it.
 
 **Step 7:** Open the application in your web browser using the provided URL  
 
