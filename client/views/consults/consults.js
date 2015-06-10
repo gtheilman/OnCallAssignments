@@ -312,12 +312,7 @@ if (!Meteor.isClient) {
 
 
         },
-        "click #exportResponsesCSV": function (event) {
-            alert("clicked");
 
-            Router.go("exportResponsesCSV/" + this._id);
-
-        }
     });
 
     // Change the color of the buttons on the responses to blue if they have already been associated with students.
