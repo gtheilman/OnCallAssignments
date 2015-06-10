@@ -52,7 +52,7 @@ Deploying to [Modulus](http://help.modulus.io/customer/portal/articles/1647770-u
 
 If you are a faculty member at an accredited health-care education school and would like assistance setting this up for your institution, please feel free to contact me.   
 
-Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.
+Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.  But, if you are feeling adventurous, go ahead and follow the instructions below.
 
 **Step 1:**  Sign up for a [Twilio account](https://www.twilio.com/)
 
