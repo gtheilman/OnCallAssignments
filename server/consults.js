@@ -150,20 +150,21 @@ if (Meteor.isServer) Meteor.methods({
                 var newConsult = Consults.findOne({
                     shortName: consult.shortName,
                     tweetHeader: consult.tweetHeader,
-                    consultMD: consult.consultMD,
-                    keyMD: consult.keyMD
+                    maxSeconds: consult.maxSeconds,
+                    phoneMessage: consult.phoneMessage,
+                    hangupMessage: consult.hangupMessage
                 });
 
 
                 var entry = {
-                    consult_id: consult._id,
+                    consult_id: newConsult._id,
                     consultVisible: consult.consultVisible,
                     consultMD: consult.consultMD
                 };
                 ConsultPages.insert(entry);
 
                 var entry = {
-                    consult_id: consult._id,
+                    consult_id: newConsult._id,
                     keyVisible: consult.keyVisible,
                     keyMD: consult.keyMD
                 };
@@ -173,10 +174,10 @@ if (Meteor.isServer) Meteor.methods({
                 // moved this to last because it sometimes caused the program to hang up, preventing the above
                 // entries from being created.
 
-                var consultURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + newConsult._id);
+                var shortURL = Meteor.call('shortenURL', Meteor.absoluteUrl() + "oncall/" + newConsult._id);
 
-                ConsultPage.update(
-                    {consult_id: consult._id},
+                ConsultPages.update(
+                    {consult_id: newConsult._id},
                     {
                         $set: {
                             consultURL: consultURL

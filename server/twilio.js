@@ -187,26 +187,28 @@ if (Meteor.isServer) {
             }
             ,
 
+            /*
 
-            // Extra fee (1 cent) to lookup name associated with number
-            'getTranscription': function (PhoneNumber) {
-                var credentials = Credentials.findOne();
-                if (!credentials.accountsid) {
-                    return error
-                }
-                var restURL = "https://lookups.twilio.com/v1/PhoneNumbers/+" + PhoneNumber;
-                var authtoken = Meteor.call("decrypt", credentials.authtoken);
-                var auth = credentials.accountsid + ":" + authtoken;
-                var phoneInfo = Meteor.http.get(restURL,
-                    {
-                        auth: auth,
-                    });
-                var respJson = JSON.parse(phoneInfo.content);
-                return respJson;
+             // Extra fee (1 cent) to lookup name associated with number
+             'getTranscription': function (PhoneNumber) {
+             var credentials = Credentials.findOne();
+             if (!credentials.accountsid) {
+             return error
+             }
+             var restURL = "https://lookups.twilio.com/v1/PhoneNumbers/+" + PhoneNumber;
+             var authtoken = Meteor.call("decrypt", credentials.authtoken);
+             var auth = credentials.accountsid + ":" + authtoken;
+             var phoneInfo = Meteor.http.get(restURL,
+             {
+             auth: auth
+             });
+             var respJson = JSON.parse(phoneInfo.content);
+             return respJson;
 
-            }
-            ,
+             }
+             ,
 
+             */
 
             // this is to set the URL Twilio contacts when a phone call is received
             'setTwilioVoiceURL': function (PhoneNumber, sid) {
@@ -244,7 +246,7 @@ if (Meteor.isServer) {
                 var credentials = Credentials.findOne();
                 if (!credentials.accountsid) {
                     return error
-            }
+                }
                 var authtoken = Meteor.call("decrypt", credentials.authtoken);
                 var auth = credentials.accountsid + ":" + authtoken;
                 restURL = "https://api.twilio.com/2010-04-01/Accounts/" + credentials.accountsid
@@ -268,13 +270,6 @@ if (Meteor.isServer) {
                 }
 
             },
-
-
-
-
-
-
-
 
 
             'sendSMS': function (to, from, message) {
@@ -414,19 +409,22 @@ if (Meteor.isServer) {
 
                     var transcriptionInfo = JSON.parse(transcriptionList.content);
 
-                    var transcriptionSid = transcriptionInfo.transcriptions[0].sid;
-                    var transcriptionText = transcriptionInfo.transcriptions[0].transcription_text;
+                    if (transcriptionInfo) {
 
-                    if (transcriptionSid) {
-                        Responses.update(
-                            {callSid: callSid},
-                            {
-                                $set: {
-                                    transcriptionSid: transcriptionSid,
-                                    transcriptionText: transcriptionText
+                        var transcriptionSid = transcriptionInfo.transcriptions[0].sid;
+                        var transcriptionText = transcriptionInfo.transcriptions[0].transcription_text;
+
+                        if (transcriptionSid) {
+                            Responses.update(
+                                {callSid: callSid},
+                                {
+                                    $set: {
+                                        transcriptionSid: transcriptionSid,
+                                        transcriptionText: transcriptionText
+                                    }
                                 }
-                            }
-                        );
+                            );
+                        }
                     }
 
                     return recordingURL
