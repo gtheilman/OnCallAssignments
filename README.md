@@ -97,11 +97,7 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 6. Type the word _meteor_ in the Terminal window.   Press the <code>Enter/return</code> key.
 
-_Windows Instructions_
 
- 
-Type the word _meteor_ in the command prompt window.
- 
 
 **Step 6:**  Deploy the application
 
