@@ -70,7 +70,7 @@ The official instructions are [here](https://www.meteor.com/install), but you al
 _Windows:_   The Windows installation process is pretty similar to what you see with installing other Windows programs.
 
 
-_Mac:_  The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.  Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press enter.
+_Mac:_  The Mac installer requires that you use [Terminal](http://guides.macrumors.com/Terminal).   You can [find the icon to open Terminal](http://www.wikihow.com/Open-Applications-Using-Terminal-on-Mac) in your Applications/Utilities folder.  Once you have Terminal open, cut and paste [the command](https://www.meteor.com/install) from the Meteor website into the Terminal window.  Then press <code>return</code>.
 
 
 You can skip the "demo application" that Meteor asks you to create.
@@ -91,9 +91,9 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 3. Find the folder with the files your just downloaded and unzipped.  It is probably called "OncallAssignments-master".  Don't move it from its original location.
 
-4. Drag the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Drop it anywhere in the Terminal window.
+4. [Drag](http://osxdaily.com/2009/11/23/copy-a-files-path-to-the-terminal-by-dragging-and-dropping/) the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Drop it anywhere in the Terminal/command prompt window.
 
-5. Click with your mouse anywhere in the Terminal window.  Now press the <code>Enter/return</code> key.
+5. Click with your mouse anywhere in the Terminal/command prompt window.  Now press the <code>Enter/return</code> key.
 
 6. Type the word _meteor_ in the Terminal window.   Press the <code>Enter/return</code> key.
 
