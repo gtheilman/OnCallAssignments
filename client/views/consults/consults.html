@@ -76,7 +76,9 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="consultMD">
-                        <a href="{{pathFor 'oncall' }}" target="_blank">Consult</a> (Markdown Format)
+                        <a href="{{pathFor 'oncall' }}" target="_blank">Consult</a> (Markdown Format
+                        <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                              title="Markdown is a simple formatting syntax.  There are many good tutorials on the Google."></span>)
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {{#if consultVisible _id}}
                             <input type="checkbox" id="consultVisible" name="consultVisible" checked>
@@ -165,7 +167,9 @@
                         {{else}}
                             <input type="checkbox" id="transcribe" name="transcribe">
                         {{/if}}
-                        Transcribe?<br>(Extra charge)
+                        Transcribe <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign"
+                                         aria-hidden="true"
+                                         title="For an extra fee, Twilio will transcribe the recording to text.  Much more expensive than the call itself, costing about 5 cents per minute."></span>
                     </div>
                 </div>
             </div>
@@ -178,7 +182,9 @@
                         {{else}}
                             <input type="checkbox" id="voiceCallerIdLookup" name="voiceCallerIdLookup">
                         {{/if}}
-                        Lookup Phone Registrant?<br>(Extra charge)
+                        Lookup Phone Registrant
+                        <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                              title="For an extra fee, Twilio will try to look up the name of the person to whom the cell phone is registered. It was 1 cent extra, last I checked."></span>
                     </div>
                 </div>
             </div>
@@ -229,9 +235,12 @@
                 <p>&nbsp;</p>
 
                 <p>&nbsp;</p>
-
                 <p>
-                    <b>Tweet:</b> (copy and paste into Twitter website):<input type="text" class="form-control"
+                    <b>Tweet:</b> (copy and paste into <a href="http://www.twitter.com" target="_blank">Twitter
+                    website</a>):
+                    <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                          title="The URL here is for the page generated from the Markdown entered in the Consult box above.  If you have the consult somewhere else, use that URL instead."></span>
+                    <input type="text" class="form-control"
                                                                                id="tweet"
                                         placeholder="{{buildTweet}}"
                                         value="{{buildTweet}}">
