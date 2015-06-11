@@ -28,7 +28,7 @@ Additional features:
 -  Import and export students in CSV format
 
 
-
+The program doesn't currently interact with Twitter.   It will generate a "draft tweet" that you can cut and paste into actual Twitter website.
 
 
 
