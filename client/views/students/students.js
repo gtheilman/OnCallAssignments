@@ -82,27 +82,24 @@ if (!Meteor.isClient) {
     Template.studentConsultResponses.helpers({
         responses: function () {
             var student = Template.parentData(1);
-            // console.log("xStudent:");
-            // console.log(student._id);
-
             ConfirmedStudentResponses.remove({}); // clear out the temporary db
 
-            Responses.find({student_id: student._id}, {createdAt: 1}).forEach(
-                function (response) {
-                    // console.log("Response:");
-                    // console.log(response);
-                    response.consult = Consults.findOne({"_id": response.consult_id});
-                    ConfirmedStudentResponses.insert(response);
-                }
-            );
+            // I think I might be getting errors when I delete a student because this is being called before the
+            // page refreshes.  See if I can prevent this from running if not needed.
+            if (student) {
+                Responses.find({student_id: student._id}, {createdAt: 1}).forEach(
+                    function (response) {
 
-            // console.log("ConfirmedStudentResponses");
-            var confirmedStudentResponses = ConfirmedStudentResponses.find();
-            // console.log(confirmedStudentResponses);
-            return confirmedStudentResponses;
+                        response.consult = Consults.findOne({"_id": response.consult_id});
+                        ConfirmedStudentResponses.insert(response);
+                    }
+                );
 
+                var confirmedStudentResponses = ConfirmedStudentResponses.find();
 
-            // return Responses.find({student_id: student._id}, {createdAt: 1});
+                return confirmedStudentResponses;
+            }
+
         },
 
         createdAtFormatted: function () {
@@ -110,16 +107,9 @@ if (!Meteor.isClient) {
         }
     });
 
-    // TODO:  Determine whether any responses exist for this student
+
     Template.studentForm.helpers({
-        countResponses: function () {
-            var student = Template.parentData(1);
-            console.log("student:");
-            console.log(student);
-            if (Responses.find({student_id: $('#student_id').val()})) {
-                return true
-            }
-        },
+
 
         createdAtFormatted: function () {
             return moment(this.createdAt).format("YYYY-MM-DD HH:mm");
