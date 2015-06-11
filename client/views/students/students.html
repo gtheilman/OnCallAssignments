@@ -58,13 +58,19 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="studentid">Student ID</label>
+                    <label for="studentid">Student ID <span data-toggle="tooltip"
+                                                            class="glyphicon glyphicon-question-sign"
+                                                            aria-hidden="true"
+                                                            title="I would suggest putting in whatever student id is used by Blackboard or your other learning management system."></span></label>
                     <input type="text" class="form-control" id="studentid" placeholder="123456" value="{{studentid}}">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Username  <span data-toggle="tooltip"
+                                                          class="glyphicon glyphicon-question-sign"
+                                                          aria-hidden="true"
+                                                          title="I would suggest putting in whatever username is used by Blackboard or your other learning management system."></span></label>
                     <input type="text" class="form-control" id="username" placeholder="Username" value="{{username}}">
                 </div>
             </div>
@@ -130,15 +136,12 @@
     <div class='row'>
         <div class="col-sm-4">
             <h3>Confirmed Responses</h3>
+            <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign"
+                  aria-hidden="true"
+                  title="These are the consult responses that have been manually confirmed to have been received from this student. It won't include the ones that are still 'guesses'.  To find unconfirmed responses, go to the page for the specific consult in question."></span>
         </div>
     </div>
-    <div class='row'>
-        <div class="col-sm-8">
-            These are the consult responses that have been manually confirmed to have been received from this
-            student.
-            To find unconfirmed responses, go to the page for the specific consult in question.
-        </div>
-    </div>
+
 
     <div class='row'>
         <div class="col-sm-12">

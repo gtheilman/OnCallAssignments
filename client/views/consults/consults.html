@@ -154,7 +154,10 @@
 
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="maxSeconds">Max Record Length</label>
+                    <label for="maxSeconds">Max Record Length  <span data-toggle="tooltip"
+                                                                     class="glyphicon glyphicon-question-sign"
+                                                                     aria-hidden="true"
+                                                                     title="The number of seconds students have to record their response.  If they go longer than this, the program will cut them off and play the hang-up message."></span></label>
                     <input type="number" class="form-control" id="maxSeconds" placeholder="120" value="{{maxSeconds}}">
                 </div>
             </div>
@@ -199,9 +202,10 @@
                             {{else}}
                                 <input type="checkbox" id="activate" name="activate">
                             {{/if}}
-                            Make active. This will be the consult students will hear when they call the phone number
-                            associated with this consult.<br>
-                            Other consults associated with this phone number will be deactivated automatically.
+                            Make active   <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign"
+                                                aria-hidden="true"
+                                                title="This will be the consult students will hear when they call the phone number
+                            associated with this consult. Other consults associated with this phone number will be deactivated automatically"></span>
                         </div>
                     </div>
                 </div>
@@ -263,7 +267,12 @@
 <template name="responses">
     <div class='row'>
         <div class="col-sm-4">
-            <h3>Responses</h3>
+            <h3>Responses</h3><span data-toggle="tooltip" class="glyphicon glyphicon-question-sign"
+                                    aria-hidden="true"
+                                    title="Responses don't become formally associated with students until you listen to the
+                                consult and click to confirm who it came from.   Before that, however, the program will try to
+                                guess who called based on caller ID.  But you still have to click to confirm that the program's
+                                guess is correct"></span>
         </div>
     </div>
 

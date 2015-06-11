@@ -118,7 +118,7 @@ if (!Meteor.isClient) {
 
     Template.studentConsultResponses.onRendered(function () {
 
-
+        $('[data-toggle="tooltip"]').tooltip();
         $('#studentResponsesTable').DataTable();
 
 
