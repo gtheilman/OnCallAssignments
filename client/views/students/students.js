@@ -111,10 +111,50 @@ if (!Meteor.isClient) {
     Template.studentForm.helpers({
 
 
-        createdAtFormatted: function () {
-            return moment(this.createdAt).format("YYYY-MM-DD HH:mm");
+            createdAtFormatted: function () {
+                return moment(this.createdAt).format("YYYY-MM-DD HH:mm");
+            },
+
+            gradYears: function () {
+                var gradYears = [
+                    {
+                        year: moment().format("YYYY")
+                    },
+                    {
+                        year: moment().add(1, 'y').format("YYYY")
+                    }
+                    ,
+                    {
+                        year: moment().add(2, 'y').format("YYYY")
+                    }
+                    ,
+                    {
+                        year: moment().add(3, 'y').format("YYYY")
+                    },
+                    {
+                        year: moment().add(4, 'y').format("YYYY")
+                    }
+                ];
+                return gradYears
+            },
+
+            selected_gradYear: function (year) {
+                if ($("#studentGradYear").val() == year) {
+                    return "selected";
+                }
+            }
         }
+    )
+    ;
+    Template.studentForm.onRendered(function () {
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#gradYear').val($('#studentGradYear').val());
+
+
     });
+
 
     Template.studentConsultResponses.onRendered(function () {
 

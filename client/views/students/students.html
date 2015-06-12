@@ -107,14 +107,23 @@
                                                                  class="glyphicon glyphicon-question-sign"
                                                                  aria-hidden="true"
                                                                  title="Not absolutely necessary, but may be helpful when trying to search for a specific group of students."></span></label>
-                    <input type="text" class="form-control" id="gradYear" placeholder="2021" value="{{gradYear}}">
+
+                    <select id="gradYear" name="gradYear">
+                        <option></option>
+                        {{#each gradYears}}
+                            <option value="{{year}}" {{selected_gradYear year}}>{{year}}</option>
+                        {{/each}}
+                    </select>
+
+                    <!-- Hackish way to get drop down select to choose gradYear already in database.-->
+                    <input type="hidden" name="studentGradYear" id="studentGradYear" value="{{gradYear}}">
 
                 </div>
             </div>
         </div>
         {{#if isInRole 'admin'}}
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 {{#if _id }}
                 <input type="hidden" name="student_id" value="{{_id}}" id="student_id">
 
