@@ -102,7 +102,10 @@
                         {{else}}
                             <input type="checkbox" id="admin" name="admin">
                         {{/if}}
-                        Administrator (can do everything)
+                        Administrator  <span data-toggle="tooltip"
+                                             class="glyphicon glyphicon-question-sign"
+                                             aria-hidden="true"
+                                             title="Can do everything."></span>
                     </div>
                 </div>
             </div>
@@ -118,8 +121,10 @@
                         {{else}}
                             <input type="checkbox" id="grader" name="grader">
                         {{/if}}
-                        Grader (Limited access. Good for residents or others who don't need to alter users, students,
-                        consults...)
+                        Grader  <span data-toggle="tooltip"
+                                      class="glyphicon glyphicon-question-sign"
+                                      aria-hidden="true"
+                                      title="Can listen to consults, but little else.  Good for people who don't need to be able to edit students, consults, etc."></span>
                     </div>
                 </div>
             </div>
@@ -147,13 +152,14 @@
 
     {{#if isInRole 'admin'}}
     <div class=" row">
-        <div class="col-md-6">
-            <i>Before deleting a user, consider whether it would be better to just remove their roles, just in case you
-                want to use them again later.</i>
-        </div>
+
         <div class="col-md-2">
             <button type="button" id="deleteUserButton" class="btn btn-sm btn-danger">Delete
-            </button>
+            </button>  <span data-toggle="tooltip"
+                             class="glyphicon glyphicon-question-sign"
+                             aria-hidden="true"
+                             title="Before deleting a user, consider whether it would be better to just uncheck their roles, just in case you
+                                        want to re-enable them again later."></span>
         </div>
 
     </div>

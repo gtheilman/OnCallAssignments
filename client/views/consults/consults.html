@@ -40,7 +40,10 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="tweetHeader">Tweet Header</label>
+                    <label for="tweetHeader">Tweet Header  <span data-toggle="tooltip"
+                                                                 class="glyphicon glyphicon-question-sign"
+                                                                 aria-hidden="true"
+                                                                 title="The phrase that starts off the request for a consult."></span></label>
                     <input type="text" class="form-control" id="tweetHeader" placeholder="Pharmacist On-Call:"
                            value="{{tweetHeader}}">
                 </div>
@@ -241,9 +244,10 @@
                 <p>&nbsp;</p>
                 <p>
                     <b>Tweet:</b> (copy and paste into <a href="http://www.twitter.com" target="_blank">Twitter
-                    website</a>):
+                    website</a>, your email program, or whatever method you plan to use to disseminate the request for
+                    consult.):
                     <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign" aria-hidden="true"
-                          title="The URL here is for the page generated from the Markdown entered in the Consult box above.  If you have the consult somewhere else, use that URL instead."></span>
+                          title="The URL here is for the page generated from the Markdown entered in the Consult box above.  If you have the consult posted somewhere else, use that URL instead."></span>
                     <input type="text" class="form-control"
                                                                                id="tweet"
                                         placeholder="{{buildTweet}}"

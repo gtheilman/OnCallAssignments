@@ -19,22 +19,30 @@ if (!Meteor.isClient) {
     });
 
     this.friendlyPhoneFormat = function (phone) {
-        phone = phone.replace("+1", '');
-        phone = phone.replace(/^1/, '');
-        phone = phone.replace(/[^0-9]/g, '');
-        phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-        return phone;
+        if (phone.length > 6) {
+            phone = phone.replace("+1", '');
+            phone = phone.replace(/^1/, '');
+            phone = phone.replace(/[^0-9]/g, '');
+            phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+            return phone;
+        } else {
+            return ""
+        }
     };
 
     Template.registerHelper('friendlyPhoneFormat', friendlyPhoneFormat);
 
 
     this.standardizedPhoneFormat = function (phone) {
-        phone = phone.replace(/[^0-9]/g, '');
-        if (phone.charAt(0) != "1") {
-            phone = "1" + phone;
+        if (phone.length > 6) {
+            phone = phone.replace(/[^0-9]/g, '');
+            if (phone.charAt(0) != "1") {
+                phone = "1" + phone;
+            }
+            return phone;
+        } else {
+            return ""
         }
-        return phone;
     };
 
     Template.registerHelper('standardizedPhoneFormat', standardizedPhoneFormat);

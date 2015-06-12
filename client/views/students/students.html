@@ -13,24 +13,24 @@
     </div>
 
     {{#if isInRole 'admin'}}
-        <div class="row">
-            <div class="col-md-2">
-                <a href="studentForm">
-                    <button type="button" id="newStudent" class="btn  btn-sm  btn-default">New Student</button>
-                </a>
-            </div>
-            <div class="col-md-2">
-                <a href="importStudentCSV">
-                    <button type="button" id="importStudentCSV" class="btn  btn-sm  btn-info">Import Students</button>
-                </a>
-            </div>
-            <div class="col-md-2">
-                <a href="exportStudentCSV">
-                    <button type="button" id="exportStudentCSV" class="btn  btn-sm  btn-success">Export Students
-                    </button>
-                </a>
-            </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="studentForm">
+                <button type="button" id="newStudent" class="btn  btn-sm  btn-default">New Student</button>
+            </a>
         </div>
+        <div class="col-md-2">
+            <a href="importStudentCSV">
+                <button type="button" id="importStudentCSV" class="btn  btn-sm  btn-info">Import Students</button>
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="exportStudentCSV">
+                <button type="button" id="exportStudentCSV" class="btn  btn-sm  btn-success">Export Students
+                </button>
+            </a>
+        </div>
+    </div>
     {{/if}}
 </template>
 
@@ -79,13 +79,19 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="Email">Email address</label>
+                    <label for="Email">Email address  <span data-toggle="tooltip"
+                                                            class="glyphicon glyphicon-question-sign"
+                                                            aria-hidden="true"
+                                                            title="If the Caller ID of the incoming call matches the phone number to the right, the program will try to send an email to this address confirming that the consult response was received."></span></label>
                     <input type="email" class="form-control" id="email" placeholder="Enter email" value="{{email}}">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
+                    <label for="phone">Phone Number  <span data-toggle="tooltip"
+                                                           class="glyphicon glyphicon-question-sign"
+                                                           aria-hidden="true"
+                                                           title="If you don't know the student's phone number, just leave this blank."></span></label>
                     <input type="tel" class="form-control" id="phone" placeholder="16015551212" value="{{phone}}">
                 </div>
             </div>
@@ -97,26 +103,30 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="gradYear">Graduation Year</label>
+                    <label for="gradYear">Graduation Year  <span data-toggle="tooltip"
+                                                                 class="glyphicon glyphicon-question-sign"
+                                                                 aria-hidden="true"
+                                                                 title="Not absolutely necessary, but may be helpful when trying to search for a specific group of students."></span></label>
                     <input type="text" class="form-control" id="gradYear" placeholder="2021" value="{{gradYear}}">
+
                 </div>
             </div>
         </div>
         {{#if isInRole 'admin'}}
-            <div class="row">
-                <div class="col-md-6">
-                    {{#if _id }}
-                        <input type="hidden" name="student_id" value="{{_id}}" id="student_id">
+        <div class="row">
+            <div class="col-md-6">
+                {{#if _id }}
+                <input type="hidden" name="student_id" value="{{_id}}" id="student_id">
 
-                        <div class="col-md-2">
-                            <button type="button" id="deleteStudentButton" class="btn btn-sm btn-danger">Delete</button>
-                        </div>
-                    {{/if}}
+                <div class="col-md-2">
+                    <button type="button" id="deleteStudentButton" class="btn btn-sm btn-danger">Delete</button>
                 </div>
-
-
-                <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                {{/if}}
             </div>
+
+
+            <button type="submit" class="btn btn-sm btn-success">Submit</button>
+        </div>
         {{/if}}
 
     </form>
@@ -124,7 +134,7 @@
     <div class="row">
         <div class="col-md-12">
             {{#if _id }}
-                {{>studentConsultResponses}}
+            {{>studentConsultResponses}}
             {{/if}}
         </div>
     </div>
@@ -173,35 +183,35 @@
                     </thead>
                     <tbody>
                     {{#each responses}}
-                        <tr>
-                            <td>
-                                {{createdAtFormatted}}
-                            </td>
-                            <td>
-                                {{shortName}}
-                            </td>
-                            <td>
+                    <tr>
+                        <td>
+                            {{createdAtFormatted}}
+                        </td>
+                        <td>
+                            {{shortName}}
+                        </td>
+                        <td>
 
-                                <a href="{{#with consult}}{{consultURL}}{{/with}}" target="_blank">{{#with
+                            <a href="{{#with consult}}{{consultURL}}{{/with}}" target="_blank">{{#with
                                 consult}}{{consultURL}}{{/with}}</a>
 
-                            </td>
-                            <td>
+                        </td>
+                        <td>
 
-                                <a href="{{#with consult}}{{keyURL}}{{/with}}" target="_blank">{{#with
+                            <a href="{{#with consult}}{{keyURL}}{{/with}}" target="_blank">{{#with
                                 consult}}{{keyURL}}{{/with}}</a>
 
-                            </td>
-                            <td>
-                                {{friendlyPhoneFormat from}}
-                            </td>
-                            <td>
-                                <audio controls>
-                                    <source src="{{recordingURL}}" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </td>
-                        </tr>
+                        </td>
+                        <td>
+                            {{friendlyPhoneFormat from}}
+                        </td>
+                        <td>
+                            <audio controls>
+                                <source src="{{recordingURL}}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </td>
+                    </tr>
 
                     {{/each}}
                     </tbody>

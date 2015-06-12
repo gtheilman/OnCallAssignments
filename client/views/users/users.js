@@ -141,5 +141,12 @@ if (!Meteor.isClient) {
     // Send User password rest link function is called in routes.js file
 
 
+    Template.editUserForm.onRendered(function () {
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+    });
+
+
 }
 
