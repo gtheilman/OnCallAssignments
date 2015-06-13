@@ -271,12 +271,7 @@
 <template name="responses">
     <div class='row'>
         <div class="col-sm-4">
-            <h3>Responses</h3><span data-toggle="tooltip" class="glyphicon glyphicon-question-sign"
-                                    aria-hidden="true"
-                                    title="Responses don't become formally associated with students until you listen to the
-                                consult and click to confirm who it came from.   Before that, however, the program will try to
-                                guess who called based on caller ID.  But you still have to click to confirm that the program's
-                                guess is correct"></span>
+            <h3>Responses</h3>
         </div>
     </div>
 
@@ -312,7 +307,12 @@
                 </th>
 
                 <th>
-                    Name
+                    Name  <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign" data-placement="bottom"
+                                aria-hidden="true"
+                                title="Responses don't become formally associated with students until you listen to the
+                                consult and click to confirm who it came from.   Before that, however, the program will try to
+                                guess who called based on caller ID.  But you still have to click to confirm that the program's
+                                guess is correct"></span>
                 </th>
 
             </tr>
@@ -332,7 +332,7 @@
                     <td>
                         {{#if transcriptionText}}
                             <span data-toggle="tooltip"
-                                  aria-hidden="true"
+                                  aria-hidden="true" data-placement="bottom"
                                   title="{{transcriptionText}}">MouseOver to View</span>
 
                         {{/if}}
