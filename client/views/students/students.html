@@ -177,7 +177,7 @@
                             Consult
                         </th>
                         <th>
-                            Consult URL
+                            Consult Page
                         </th>
                         <th>
                             Consult Key
@@ -201,14 +201,12 @@
                         </td>
                         <td>
 
-                            <a href="{{#with consult}}{{consultURL}}{{/with}}" target="_blank">{{#with
-                                consult}}{{consultURL}}{{/with}}</a>
+                            <a href="{{consultURL consult_id}}" target="_blank">Consult</a>
 
                         </td>
                         <td>
 
-                            <a href="{{#with consult}}{{keyURL}}{{/with}}" target="_blank">{{#with
-                                consult}}{{keyURL}}{{/with}}</a>
+                            <a href="{{keyURL consult_id}}" target="_blank">Key</a>
 
                         </td>
                         <td>

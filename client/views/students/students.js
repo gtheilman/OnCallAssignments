@@ -102,6 +102,15 @@ if (!Meteor.isClient) {
 
         },
 
+        consultURL: function (consult_id) {
+            return Meteor.absoluteUrl() + 'oncall/' + consult_id;
+
+        },
+
+        keyURL: function (consult_id) {
+            return Meteor.absoluteUrl() + 'key/' + reverse(consult_id)
+        },
+
         createdAtFormatted: function () {
             return moment(this.createdAt).format("YYYY-MM-DD HH:mm");
         }
