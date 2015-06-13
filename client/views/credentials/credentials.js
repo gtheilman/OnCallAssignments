@@ -142,7 +142,10 @@ if (!Meteor.isClient) {
                             timeout: '45000', onRouteClose: false, stack: true, offset: '0px'
                         });
                         Session.set("emailValidityCheck", '<div class="alert alert-danger" role="alert">There are no email credentials in the database.</div>');
-
+                        sAlert.success('Email credentials updated.', {
+                            effect: 'scale', position: 'top-right',
+                            timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                        });
                         Router.go('consults');
                     } else {
                         console.log(error);

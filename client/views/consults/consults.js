@@ -57,11 +57,9 @@ if (!Meteor.isClient) {
                     voiceCallerIdLookup: $('#voiceCallerIdLookup').is(':checked'),
                     activate: $('#activate').is(':checked')
                 };
-                // console.log(consult);
+
 
                 Meteor.call('upsertConsultData', consult, function (result, error) {
-                    //  console.log(result);
-                    //   console.log(error);
                 });
                 Router.go('consults');
             }
@@ -128,10 +126,6 @@ if (!Meteor.isClient) {
                         });
                         console.log(err);
                     } else {
-                        // console.log("Hitting Twilio Database");
-                        // console.log(data);
-                        // console.log("After Hitting Twilio Database");
-                        // Get recording information
                         Meteor.call('recordingInfo', response.callSid, function (err, recordingInfo) {
                             if (err) {
                                 console.log(err);
@@ -217,8 +211,7 @@ if (!Meteor.isClient) {
     Template.consultResponses.helpers({
         responses: function () {
             var consult = Template.parentData(1);
-            //console.log("Consult:");
-            // console.log(consult._id);
+
             return Responses.find({consult_id: consult._id}, {createdAt: 1});
         },
 
@@ -277,7 +270,6 @@ if (!Meteor.isClient) {
                     if (student_phone.length < 7) {
                         var updatePhone = Meteor.call('updateStudentPhone', student_id, response_phone);
                     } else if (student_phone != response_phone) {
-                        console.log(Responses.findOne({_id: response_id}));
                         if (confirm("The phone number associated with this student is " + student_phone + ".   Would you like to change it to " + response_phone + "?")) {
                             var updatePhone = Meteor.call('updateStudentPhone', student_id, response_phone);
                         }
