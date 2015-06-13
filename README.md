@@ -17,6 +17,10 @@ Within a few minutes the student receives a text message (SMS) on their phone wi
 
 Faculty can then go through the responses left by the students and score them on communications skills, clinical reasoning, professionalism, etc.
 
+
+![ScreenShot.png](https://github.com/gtheilman/OncallAssignments/blob/master/media/ScreenShot.png)
+ 
+
 Additional features:
 - Manage several different phone numbers.  For example, different classes could be using the application at the same time, just by calling different telephone numbers.
 - Different permission levels for administrators and those who are just need to grade student responses
@@ -46,8 +50,6 @@ Deploying to [Meteor](https://www.meteor.com/try/6)   is the simplest option (an
 
 Deploying to [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) takes a few more steps to set up but is not really all that difficult.  Modulus charges to host the application but allows you to "turn off" the application during times it is not being used.  It also has the capability to scaling up for brief periods of time in case you find the website is not keeping up with student demand.
 
-![ScreenShot.png](https://github.com/gtheilman/OncallAssignments/blob/master/media/ScreenShot.png)
- 
 ###Installation
 
 If you are a faculty member at an accredited health-care education school and would like assistance setting this up for your institution, please feel free to contact me.   
