@@ -1,4 +1,4 @@
-# OncallAssignments
+# OnCallAssignments
 This is a program to manage an "on-call" assignment for health-care students.
 
 ### Scenario
