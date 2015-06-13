@@ -94,7 +94,7 @@ if (!Meteor.isClient) {
             }
 
         },
-
+        // this is paired with the 'tweetLength' helper below to dynamically change the value on the screen
         "keydown #tweet": function (event) {
             Session.set('currenttweet', $('#tweet').val().length);
         }
@@ -149,7 +149,7 @@ if (!Meteor.isClient) {
 
 
     Template.consultForm.helpers({
-
+            // combined with the keydown event handler above to update tweet length on display.
             tweetLength: function () {
                 return Session.get('currenttweet');
             },
