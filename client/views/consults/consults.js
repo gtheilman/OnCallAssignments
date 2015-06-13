@@ -93,6 +93,10 @@ if (!Meteor.isClient) {
                 });
             }
 
+        },
+
+        "keydown #tweet": function (event) {
+            Session.set('currenttweet', $('#tweet').val().length);
         }
     });
 
@@ -107,6 +111,9 @@ if (!Meteor.isClient) {
         } else if (consult.voice == 'man') {
             $("#voiceMan").prop("checked", true);
         }
+
+
+        Session.set('currenttweet', $('#tweet').val().length);
 
 
     });
@@ -143,10 +150,8 @@ if (!Meteor.isClient) {
 
     Template.consultForm.helpers({
 
-            //TODO:  Get this working
-            tweetLength: function (tweet) {
-
-                return $("#" + tweet).val().length;
+            tweetLength: function () {
+                return Session.get('currenttweet');
             },
 
 
