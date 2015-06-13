@@ -210,28 +210,6 @@ if (Meteor.isServer) {
             }
             ,
 
-            /*
-
-             // Extra fee (1 cent) to lookup name associated with number
-             'getTranscription': function (PhoneNumber) {
-             var credentials = Credentials.findOne();
-             if (!credentials.accountsid) {
-             return error
-             }
-             var restURL = "https://lookups.twilio.com/v1/PhoneNumbers/+" + PhoneNumber;
-             var authtoken = Meteor.call("decrypt", credentials.authtoken);
-             var auth = credentials.accountsid + ":" + authtoken;
-             var phoneInfo = Meteor.http.get(restURL,
-             {
-             auth: auth
-             });
-             var respJson = JSON.parse(phoneInfo.content);
-             return respJson;
-
-             }
-             ,
-
-             */
 
             // this is to set the URL Twilio contacts when a phone call is received
             'setTwilioVoiceURL': function (PhoneNumber, sid) {

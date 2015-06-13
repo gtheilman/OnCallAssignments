@@ -13,7 +13,7 @@ if (Meteor.isServer) {
                 process.env.MAIL_URL = 'smtp://' + encodeURIComponent(credentials.emailUsername) + ':' + encodeURIComponent(decrypted_emailPassword) + '@' + encodeURIComponent(credentials.smtpServer) + ':' + credentials.smtpPort;
             }
 
-
+            console.log(process.env.MAIL_URL);
             // Let other method calls from the same client start running,
             // without waiting for the email sending to complete.
             this.unblock();
