@@ -158,7 +158,8 @@ if (Meteor.isServer) Meteor.methods({
                 var entry = {
                     consult_id: newConsult._id,
                     consultVisible: consult.consultVisible,
-                    consultMD: " \n" + consult.consultMD
+                    consultMD: " \n" + consult.consultMD,
+                    count: 0
                 };
                 ConsultPages.insert(entry);
 
@@ -210,6 +211,21 @@ if (Meteor.isServer) Meteor.methods({
             } else {
                 return false
             }
+        },
+
+        'updateConsultPageCount': function (consult_id) {
+
+            var count = ConsultPages.findOne({consult_id: consult_id}).count + 0.5;
+
+            ConsultPages.update(
+                {consult_id: consult_id},
+                {
+                    $set: ({
+                        count: count
+                    })
+                }
+            );
+            return count;
         }
 
 
