@@ -5,7 +5,7 @@ This is a program to manage an "on-call" assignment for health-care students.
 Students are told that they are "on-call" for a certain period of time.  During that time, they must monitor a Twitter feed.  At random times during the on-call period, the faculty member tweets the URL of a webpage containing a "consult".  Each student has an hour to 
 - Review the consult
 - Formulate a recommendation 
-- Phone it in to a telephone number provided in the tweet
+- Phone in the recommendation to a telephone number provided in the tweet
 
 When the student calls the telephone number, they are greeted by a message saying something along the lines of 
  
@@ -28,7 +28,7 @@ Additional features:
 -  Import and export students in CSV format
 
 
-The program doesn't currently interact with Twitter.   It will generate a "draft tweet" that you can cut and paste into actual Twitter website.
+The program doesn't currently interact with Twitter.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, your email program, or whatever method you choose to disseminate the consult request.
 
 
 
