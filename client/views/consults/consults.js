@@ -156,7 +156,6 @@ if (!Meteor.isClient) {
             },
 
 
-
             buildTweet: function () {
                 var tweet = this.tweetHeader + " ";
                 var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
@@ -242,10 +241,10 @@ if (!Meteor.isClient) {
                 $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info');
                 return "selected";
             }
-                }
+        }
 
 
-            });
+    });
     /*  This was an incredibly hackish way of getting the students associated with the response record.  The problem
      * was trying to associate button presses with forms when they all had the same names and ids. Ended up giving
      *  each form/button/select a different name and pulling the info out of the event.currentTarget scope.*/
@@ -268,16 +267,24 @@ if (!Meteor.isClient) {
                     console.log(err);
                 } else {
                     $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-success').html("Changed");
-                    sAlert.success('Changed.', {
+                    sAlert.success('Response associated with student.', {
                         effect: 'scale', position: 'top-right',
                         timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
                     });
+                    //  check to see if student phone matches response phone. If not, offer to change it
+                    var student_phone = Students.findOne({_id: response.student_id}).phone;
+                    var response_phone = Responses.findOne({_id: response.response_id}).from;
+                    if (student_phone.length < 7) {
+                        var updatePhone = Meteor.call('updateStudentPhone', student_id, response_phone);
+                    } else if (student_phone != response_phone) {
+                        console.log(Responses.findOne({_id: response_id}));
+                        if (confirm("The phone number associated with this student is " + student_phone + ".   Would you like to change it to " + response_phone + "?")) {
+                            var updatePhone = Meteor.call('updateStudentPhone', student_id, response_phone);
+                        }
+                    }
                 }
-
             });
-
-
-        },
+        }
 
     });
 

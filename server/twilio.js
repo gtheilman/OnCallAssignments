@@ -346,7 +346,7 @@ if (Meteor.isServer) {
                         {
                             $set: {
                                 to: data.to,
-                                from: data.from,
+                                from: data.from.substr(data.from.length - 11),
                                 start_time: data.start_time,
                                 callerName: data.caller_name,
                                 student_id: response.student_id,
