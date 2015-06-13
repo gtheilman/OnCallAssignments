@@ -79,7 +79,7 @@ You can skip the "demo application" that Meteor asks you to create.
 
 **Step 4:**  Download the application files to your local computer
 
-The "Download Zip" button is towards the top of this page, on the right-side of the screen.
+Go to the [releases page](https://github.com/gtheilman/OnCallAssignments/releases) to obtain the most recent version of the application.   Download the zip file.
 
 If you have a Mac, it will probably unzip the folder for you automatically.
 
@@ -91,7 +91,7 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 2. From the command prompt, type <code>cd </code>.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
 
-3. Find the folder with the files your just downloaded and unzipped.  It is probably called "OncallAssignments-master".  Don't move it from its original location.
+3. Find the folder with the files your just downloaded and unzipped.  It is probably start with "OnCallAssignments-".  Don't move it from its original location.
 
 4. [Drag](http://osxdaily.com/2009/11/23/copy-a-files-path-to-the-terminal-by-dragging-and-dropping/) the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Drop it anywhere in the Terminal/command prompt window.
 
