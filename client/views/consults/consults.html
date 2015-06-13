@@ -331,7 +331,10 @@
                     </td>
                     <td>
                         {{#if transcriptionText}}
-                            <a href="#" data-toggle="tooltip" title="{{transcriptionText}}">MouseOver to View</a>
+                            <span data-toggle="tooltip"
+                                  aria-hidden="true"
+                                  title="{{transcriptionText}}">MouseOver to View</span>
+
                         {{/if}}
 
                     </td>
