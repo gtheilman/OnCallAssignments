@@ -158,7 +158,6 @@ if (!Meteor.isClient) {
 
         "submit #testEmail": function (event) {
             event.preventDefault();
-
             if ($('#testEmailAddress').val() == "") {
                 sAlert.error('An email address must be provided.', {
                     effect: 'scale', position: 'top-right',
@@ -169,15 +168,27 @@ if (!Meteor.isClient) {
                 Meteor.call('sendEmail',
                     $('#testEmailAddress').val(),
                     'Test from OnCallAssignments',
-                    'This is the test email you requested from the OnCallAssignments program.');
-                sAlert.success('Sent', {
-                    effect: 'scale', position: 'top-right',
-                    timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
-                });
+                    'This is the test email you requested from the OnCallAssignments program.',
+                    function (error, result) {
+                        if (result) {
+                            sAlert.success('Sent', {
+                                effect: 'scale', position: 'top-right',
+                                timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                            });
+                        } else if (error) {
+                            console.log("Email send error");
+                            console.log(error);
+                            sAlert.error('There was a problem.   Check the console.log', {
+                                effect: 'scale', position: 'top-right',
+                                timeout: '5000', onRouteClose: false, stack: true, offset: '0px'
+                            });
+                        }
+                    }
+                );
+
+
             }
         }
-
-
 
 
     })
