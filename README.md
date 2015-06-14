@@ -126,7 +126,7 @@ When the application is initially set up, the _login | password_  is _admin | ad
 
 **Step 8:**  Enter your Twilio credentials into the application.
 
-These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed on the Twilio page in your Account settings.   
+These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed in your account settings on the Twilio website.
 
 Copy and paste these into the "Credentials" page in the application.
 
@@ -138,8 +138,10 @@ Once your application is up and running, you can delete the folder containing th
 
 
 
-**Some Warnings **
+**Some Cautions **
 
-While not absolutely necessary to use the program, this application is designed to store  student information.  Some of that information (such as phone number) might fall under  [Federal rules](http://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html) regarding  protecting student privacy.   While I have done my best to avoid situations which might expose private student information, I am making no guarantees as to data security.  You are responsible for reviewing the source code and making sure it meets the requirements of your institution.   If you are uncomfortable with adding student information to the application, you can still use it.   It's just that some of the features that involve matching students with consult responses won't work.
+While not absolutely necessary to use the program, this application is designed to store  student information.  Some of that information (such as phone numbers) might fall under  [Federal rules](http://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html) regarding  protecting student records.   While I have done my best to avoid situations which might expose private student information, I am making no guarantees as to data security.  You are responsible for reviewing the source code and making sure it meets the requirements of your institution.   If you are uncomfortable with adding student information to the application, **just don't add it**.   You can still have students phone in their reponses, it's just that some of the features that involve matching students with responses won't work.
 
 I have not installed any "backdoors" that would allow me to access your installation of the application.   You can review the source code to see for yourself.   If you wish me to provide some sort of assistance once you have the application set-up, you would have to provide me with credentials to access your application.
+
+
