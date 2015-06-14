@@ -1,5 +1,5 @@
 # OnCallAssignments
-This is a program to manage an "on-call" assignment for health-care students.
+This is a web-based program to manage an "on-call" assignment for health-care students.
 
 ### Scenario
 Students are told that they are "on-call" for a certain period of time.  During that time, they must monitor a Twitter feed.  At random times during the on-call period, the faculty member tweets the URL of a webpage containing a "consult".  Each student has an hour to 
@@ -23,7 +23,7 @@ Faculty can then go through the responses left by the students and score them on
 
 Additional features:
 - Manage several different phone numbers.  For example, different classes could be using the application at the same time, just by calling different telephone numbers.
-- Different permission levels for administrators and those who are just need to grade student responses
+- Different permission levels for administrators and those who just need to grade student responses
 - Generate web pages to display a written consult and/or a grading rubric (key)
 -  Transcribe the recording (extra fee charged by provider)
 -  Look up the person registered to an incoming cell phone number (extra fee charged by provider)
@@ -32,7 +32,7 @@ Additional features:
 -  Import and export students in CSV format
 
 
-The program doesn't currently interact with Twitter.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, your email program, or whatever method you choose to disseminate the consult request.
+The program doesn't currently interact with Twitter.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, a Blackboard Announcement, or whatever method by which you choose to disseminate the consult request.
 
 
 
