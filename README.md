@@ -56,16 +56,12 @@ If you are a faculty member at an accredited health-care education school and wo
 
 Installation does involve some use of the command line.  If you have no idea what "ls", "sudo" or "mkdir" mean, it might be best to get someone to help you.  But, if you are feeling adventurous, go ahead and follow the instructions below.
 
-**Step 1:**  Sign up for a [Twilio account](https://www.twilio.com/)
-
-The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
-
-**Step 2** Sign up for a [Meteor account](https://www.meteor.com/)
+**Step 1** Sign up for a [Meteor account](https://www.meteor.com/)
 
 It may not be immediately obvious, but to create an account you first click on the "Sign In" button on the Meteor website.  Then you will be given the opportunity to create a new account.
 
 
-**Step 3:** Install Meteor on your local Windows, Mac or Linux computer.
+**Step 2:** Install Meteor on your local Windows, Mac or Linux computer.
 
 The official instructions are [here](https://www.meteor.com/install), but you also might find these [unofficial instructions](http://meteortips.com/first-meteor-tutorial/getting-started/)  helpful.   
 
@@ -77,7 +73,7 @@ _Mac:_  The Mac installer requires that you use [Terminal](http://guides.macrumo
 
 You can skip the "demo application" that Meteor asks you to create.
 
-**Step 4:**  Download the application files to your local computer
+**Step 3:**  Download the application files to your local computer
 
 Go to the [releases page](https://github.com/gtheilman/OnCallAssignments/releases) to obtain the most recent version of the application.   Download the zip file.
 
@@ -85,7 +81,7 @@ If you have a Mac, it will probably unzip the folder for you automatically.
 
 If you have Windows, you'll need to unzip the folder yourself.
 
-**Step 5:**  Run the application locally at least once.  
+**Step 4:**  Run the application locally at least once.  
 
 This involves going into Terminal (or Windows command prompt) and changing to the directory containing the Meteor files.  It can sometimes be difficult to figure out the path to the files you just downloaded.  Here's a way of doing it that might be easiest:
 
@@ -108,7 +104,7 @@ Type the word <code>meteor</code> in the Terminal window.   Press the <code>Ente
 
 
 
-**Step 6:**  Deploy the application
+**Step 5:**  Deploy the application
 
 While you can open the application in a web browser while it is running on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by holding down the <code>Ctrl</code> (or <code>control</code>key and tapping <code>c</code> twice
  
@@ -128,22 +124,26 @@ Once your application is up and running, you can delete the folder containing th
 
 ###Initial Use
 
-
 **Step 1:** Open the application in your web browser using the provided URL  
 
 When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.
 
-**Step 2:**  Enter your Twilio credentials into the application.
+**Step 2:**  Sign up for a [Twilio account](https://www.twilio.com/)
+
+The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
+
+
+**Step 3:**  Enter your Twilio credentials into the application.
 
 These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed in your account settings on the Twilio website.  Copy and paste these into the "Credentials" page in the application.
 
-**Step 3:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.  If you have not given Twilio a credit card number, make sure you call from a cell phone that you have "authorized" with Twilio.   If you want _any_ cell phone to be able to use the system, you have to give them a credit card number first.
+**Step 4:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.  If you have not given Twilio a credit card number, make sure you call from a cell phone that you have "authorized" with Twilio.   If you want _any_ cell phone to be able to use the system, you have to give them a credit card number first.
 
 Leave a message, then press any key on the cell phone to finish.
 
 Within a few seconds you should get a text message with a link to the recording.
 
-**Step 4:**  Review the response within the application by clicking on _Edit/View/Grade_ from within the _Consults_ page.
+**Step 5:**  Review the response within the application by clicking on _Edit/View/Grade_ from within the _Consults_ page.
 
 
 
