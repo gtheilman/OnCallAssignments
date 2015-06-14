@@ -93,7 +93,12 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 3. Find the folder with the files your just downloaded and unzipped.  It is probably start with "OnCallAssignments-".  Don't move it from its original location.
 
-4. [Drag](http://osxdaily.com/2009/11/23/copy-a-files-path-to-the-terminal-by-dragging-and-dropping/) the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Drop it anywhere in the Terminal/command prompt window.
+4. [Drag](http://osxdaily.com/2009/11/23/copy-a-files-path-to-the-terminal-by-dragging-and-dropping/) the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Make sure you choose the folder immediately above the collection of files.
+
+![](https://github.com/gtheilman/OncallAssignments/blob/master/media/folders.jpg) 
+ 
+
+8. Drop it anywhere in the Terminal/command prompt window.
 
 5. Click with your mouse anywhere in the Terminal/command prompt window.  Now press the <code>Enter/return</code> key.
 
