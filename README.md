@@ -91,7 +91,7 @@ If you have Windows, you'll need to unzip the folder yourself.
 
 2. From the command prompt, type <code>cd </code>.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
 
-3. Find the folder with the files your just downloaded and unzipped.  It is probably start with "OnCallAssignments-".  Don't move it from its original location.
+3. Find the folder with the files your just downloaded and unzipped.  It probably starts with "OnCallAssignments-".  Don't move it from its original location.
 
 4. [Drag](http://osxdaily.com/2009/11/23/copy-a-files-path-to-the-terminal-by-dragging-and-dropping/) the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Make sure you choose the folder immediately above the collection of files.
 
@@ -99,9 +99,9 @@ If you have Windows, you'll need to unzip the folder yourself.
  
 Drop it anywhere in the Terminal/command prompt window.
 
-5. Click with your mouse anywhere in the Terminal/command prompt window.  Now press the <code>Enter/return</code> key.
+Click with your mouse anywhere in the Terminal/command prompt window.  Now press the <code>Enter/return</code> key.
 
-6. Type the word <code>meteor</code> in the Terminal window.   Press the <code>Enter/return</code> key.
+Type the word <code>meteor</code> in the Terminal window.   Press the <code>Enter/return</code> key.
 
 
 
