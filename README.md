@@ -122,7 +122,7 @@ After you successfully deploy to Meteor, a URL where your application can be acc
 
 **Step 7:** Open the application in your web browser using the provided URL  
 
-When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate role (i.e., administrator).
+When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate role (i.e., administrator).
 
 **Step 8:**  Enter your Twilio credentials into the application.
 
