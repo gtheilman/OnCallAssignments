@@ -137,7 +137,11 @@ When the application is initially set up, the _login | password_  is _admin | ad
 
 These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed in your account settings on the Twilio website.  Copy and paste these into the "Credentials" page in the application.
 
-**Step 3:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.   Leave a message.
+**Step 3:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.  If you have not given Twilio a credit card number, make sure you call from a cell phone that you have "authorized" with Twilio.   If you want _any_ cell phone to be able to use the system, you have to give them a credit card number first.
+
+Leave a message, then press any key on the cell phone to finish.
+
+Within a few seconds you should get a text message with a link to the recording.
 
 **Step 4:**  Review the response within the application by clicking on _Edit/View/Grade_ from within the _Consults_ page.
 
