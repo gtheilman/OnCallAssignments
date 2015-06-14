@@ -137,9 +137,9 @@ The Twilio website takes you through the process of obtaining a phone number, bu
 
 These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed in your account settings on the Twilio website.  Copy and paste these into the "Credentials" page in the application.
 
-**Step 4:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.  If you have not given Twilio a credit card number, make sure you call from a cell phone that you have "authorized" with Twilio.   If you want _any_ cell phone to be able to use the system, you have to give them a credit card number first.
+**Step 4:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.  If you have not given Twilio a credit card number, make sure you call from a cell phone that you have "validated" with Twilio.   If you want _any_ cell phone to be able to use the system, you have to give them a credit card number first.
 
-Leave a message, then press any key on the cell phone to finish.
+You'll first hear the "nag" message telling you to upgrade.  Press a key and you will hear the actual prompt for the consult.   Leave a message, then press any key on the cell phone to finish.
 
 Within a few seconds you should get a text message with a link to the recording.
 
