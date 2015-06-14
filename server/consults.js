@@ -180,7 +180,7 @@ if (Meteor.isServer) Meteor.methods({
                     {consult_id: newConsult._id},
                     {
                         $set: {
-                            consultURL: consultURL
+                            consultURL: shortURL
                         }
                     }
                 )
