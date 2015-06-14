@@ -86,12 +86,15 @@ If you have a Mac, it will probably unzip the folder for you automatically.
 If you have Windows, you'll need to unzip the folder yourself.
 
 **Step 5:**  Run the application locally at least once.  
+
+This involves going into Terminal (or Windows command prompt) and changing to the directory containing the Meteor files.  It can sometimes be difficult to figure out the path to the files you just downloaded.  Here's a way of doing it that might be easiest:
+
  
 1.  Go back to the Terminal  (or [Windows command prompt](Open the [command prompt](http://www.7tutorials.com/7-ways-launch-command-prompt-windows-7-windows-8) )).
 
 2. From the command prompt, type <code>cd </code>.   That's the letter "c" , the letter "d" and a space.  Don't hit return yet.
 
-3. Find the folder with the files your just downloaded and unzipped.  It probably starts with "OnCallAssignments-".  Don't move it from its original location.
+3. From with Windows _File Manager_ (or OSX _Finder_) locate the folder with the files you just downloaded and unzipped.  It probably starts with "OnCallAssignments-".  Don't move it from its original location.
 
 4. [Drag](http://osxdaily.com/2009/11/23/copy-a-files-path-to-the-terminal-by-dragging-and-dropping/) the folder _name_ with little folder icon in front of it into the Terminal/command prompt window.   You are not selecting a bunch of files, but just that one line with the folder name.  Make sure you choose the folder immediately above the collection of files.
 
