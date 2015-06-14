@@ -153,12 +153,16 @@ This software might be useful for any situation where you might wish to record s
 *  Practice having a pharmacy student call another pharmacy to request that a prescription be transferred.
 *  Calling a physician's office to clarify a prescription.
 
+###Giving Credit
 
+**If you use this software for a class, please send me an email letting me know.**  This is not to limit your use of the software, it is just so I can include some information on my faculty activity report regarding how the software is being used.
 
-### Cautions
+### Disclaimers
 
 While not absolutely necessary to use the program, this application is designed to store  student information.  Some of that information (such as phone numbers) might fall under  [Federal rules](http://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html) regarding  protecting student records.   While I have done my best to avoid situations which might expose private student information, I am making no guarantees as to data security.  You are responsible for reviewing the source code and making sure it meets the requirements of your institution.   If you are uncomfortable with adding student information to the application, **just don't add it**.   You can still have students phone in their reponses, it's just that some of the features that involve matching students with responses won't work.
 
 I have not installed any "backdoors" that would allow me to access your installation of the application.   You can review the source code to see for yourself.   If you wish me to provide some sort of assistance once you have the application set-up, you would have to provide me with credentials to access your application.
+
+Please review the software's license regarding lack of warranty and liability.    We are not responsible for anything bad that happens as a result of your using this software.
 
 
