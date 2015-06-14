@@ -153,9 +153,9 @@ This software might be useful for any situation where you might wish to record s
 *  Practice having a pharmacy student call another pharmacy to request that a prescription be transferred.
 *  Calling a physician's office to clarify a prescription.
 
-###Giving Credit
+###Notification of Use
 
-**If you use this software for a class, please send me an email letting me know.**  This is not to limit your use of the software, it is just so I can include some information on my faculty activity report regarding how the software is being used.
+**If you use this software for a class, please send me an email letting me know.**  This is just so I can include some information on my faculty activity report regarding how the software is being used.
 
 ### Disclaimers
 
