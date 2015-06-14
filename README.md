@@ -46,7 +46,7 @@ The program is written using Bootstrap and the Meteor framework.   Meteor was ch
 
 Meteor lends itself well to deployment using a [Platform as a Service](https://en.wikipedia.org/wiki/Platform_as_a_service) (Paas) provider.  These are services where the server itself is managed by the company and the user is simply responsible for uploading and maintaining the application running on it. 
 
-Deploying to [Meteor](https://www.meteor.com/try/6)   is the simplest option (and it is free!).  However, you have less control than you might if you use other "pay" options such as [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus), [Heroku](https://github.com/jordansissel/heroku-buildpack-meteor) or [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-meteor-js-application-on-ubuntu-14-04-with-nginx).
+Deploying to [Meteor's own hosting service](https://www.meteor.com/try/6)   is the simplest option (and it is free!).  However, you have less control than you might if you use other "for pay" options such as [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus), [Heroku](https://github.com/jordansissel/heroku-buildpack-meteor) or [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-meteor-js-application-on-ubuntu-14-04-with-nginx).
 
 ###Installation
 
