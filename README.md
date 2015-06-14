@@ -120,21 +120,23 @@ You will likely be asked for your Meteor username and password during this proce
 
 After you successfully deploy to Meteor, a URL where your application can be accessed will be in the Terminal/command prompt window.  It will very likely be something like <code>http://foo.meteor.com</code>.  Make a note of it.
 
-**Step 7:** Open the application in your web browser using the provided URL  
-
-When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private.   Create a user account for yourself and use it rather than the admin account.  Make sure to give your new account the appropriate role (i.e., administrator).
-
-**Step 8:**  Enter your Twilio credentials into the application.
-
-These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed in your account settings on the Twilio website.
-
-Copy and paste these into the "Credentials" page in the application.
-
-**Step 9:**  Call the Twilio phone number from a cell phone and leave a message.
-
-**Step 10:**  Review the response within the application.
-
 Once your application is up and running, you can delete the folder containing the files you downloaded.
+
+
+###Initial Use
+
+
+**Step 1:** Open the application in your web browser using the provided URL  
+
+When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.
+
+**Step 2:**  Enter your Twilio credentials into the application.
+
+These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed in your account settings on the Twilio website.  Copy and paste these into the "Credentials" page in the application.
+
+**Step 3:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.   Leave a message.
+
+**Step 4:**  Review the response within the application by clicking on _Edit/View/Grade_ from within the _Consults_ page.
 
 
 
