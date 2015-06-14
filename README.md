@@ -38,17 +38,15 @@ The program doesn't currently interact with Twitter.   However, it will generate
 
 ### Technical Details
 
-This particular version uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever [charges](https://www.twilio.com/pricing) are incurred.   I do not have any financial interest in Twilio and this software could probably be easily adapted to use a different service.   Twilio just seemed to have a nicely documented REST API to work with.
+This particular version uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever [charges](https://www.twilio.com/pricing) are incurred.   I do not have any financial interest in Twilio.  For sake of disclosure, some of the other providers of similar services are [Tropo](https://www.tropo.com/), [Plivo](https://www.plivo.com/), and [Nexmo](https://www.nexmo.com/).    Fork requests from persons wishing to adapt this software for use with other company's backends are welcome.
 
 ![](https://github.com/gtheilman/OncallAssignments/blob/master/media/Process.png)
  
 The program is written using Bootstrap and the Meteor framework.   Meteor was chosen to allow for easy customization and deployment by faculty members with little programming experience.   
 
-Meteor lends itself well to deployment using a [Platform as a Service](https://en.wikipedia.org/wiki/Platform_as_a_service) (Paas) provider.  These are services where the server itself is managed by the company and the user is simply responsible for uploading and maintaining the application running on it.  Two common options for deploying Meteor applications are Meteor itself and Modulus.
+Meteor lends itself well to deployment using a [Platform as a Service](https://en.wikipedia.org/wiki/Platform_as_a_service) (Paas) provider.  These are services where the server itself is managed by the company and the user is simply responsible for uploading and maintaining the application running on it. 
 
-Deploying to [Meteor](https://www.meteor.com/try/6)   is the simplest option (and it is free!).  However, the service is really intended for prototyping, not production.  It would probably do fine for the short bursts of activity that would be associated with students calling in responses, but I've not really tested it under those conditions.
-
-Deploying to [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) takes a few more steps to set up but is not really all that difficult.  Modulus charges to host the application but allows you to "turn off" the application during times it is not being used.  It also has the capability to scaling up for brief periods of time in case you find the website is not keeping up with student demand.
+Deploying to [Meteor](https://www.meteor.com/try/6)   is the simplest option (and it is free!).  However, you have less control than you might if you use other "pay" options such as Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus), [Heroku](https://github.com/jordansissel/heroku-buildpack-meteor) or [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-meteor-js-application-on-ubuntu-14-04-with-nginx).
 
 ###Installation
 
