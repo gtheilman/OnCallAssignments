@@ -146,8 +146,16 @@ Within a few seconds you should get a text message with a link to the recording.
 **Step 5:**  Review the response within the application by clicking on _Edit/View/Grade_ from within the _Consults_ page.
 
 
+### Other Uses
 
-**Some Cautions **
+This software might be useful for any situation where you might wish to record something a student is saying and have it reviewed/scored later.   
+*  Patient counseling exercises:   Call the Twilio number and put the cell phone on "speakerphone".    Have the student counsel the "patient".
+*  Practice having a pharmacy student call another pharmacy to request that a prescription be transferred.
+*  Calling a physician's office to clarify a prescription.
+
+
+
+### Cautions
 
 While not absolutely necessary to use the program, this application is designed to store  student information.  Some of that information (such as phone numbers) might fall under  [Federal rules](http://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html) regarding  protecting student records.   While I have done my best to avoid situations which might expose private student information, I am making no guarantees as to data security.  You are responsible for reviewing the source code and making sure it meets the requirements of your institution.   If you are uncomfortable with adding student information to the application, **just don't add it**.   You can still have students phone in their reponses, it's just that some of the features that involve matching students with responses won't work.
 
