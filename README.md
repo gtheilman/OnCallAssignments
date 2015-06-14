@@ -98,11 +98,11 @@ If you have Windows, you'll need to unzip the folder yourself.
 ![](https://github.com/gtheilman/OncallAssignments/blob/master/media/folders.jpg) 
  
 
-8. Drop it anywhere in the Terminal/command prompt window.
+5. Drop it anywhere in the Terminal/command prompt window.
 
-5. Click with your mouse anywhere in the Terminal/command prompt window.  Now press the <code>Enter/return</code> key.
+6. Click with your mouse anywhere in the Terminal/command prompt window.  Now press the <code>Enter/return</code> key.
 
-6. Type the word _meteor_ in the Terminal window.   Press the <code>Enter/return</code> key.
+7. Type the word <code>meteor</code> in the Terminal window.   Press the <code>Enter/return</code> key.
 
 
 
