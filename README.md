@@ -150,8 +150,8 @@ Within a few seconds you should get a text message with a link to the recording.
 
 This software might be useful for any situation where you might wish to record something a student is saying and have it reviewed/scored later.   
 *  Patient counseling exercises:   Call the Twilio number and put the cell phone on "speakerphone".    Have the student counsel the "patient".
-*  Practice having a pharmacy student call another pharmacy to request that a prescription be transferred.
-*  Calling a physician's office to clarify a prescription.
+*  Practice having a pharmacy student call a "pharmacy" to request that a prescription be transferred.
+*  Calling a "physician's office" to clarify a prescription.
 
 ###Notification of Use
 
