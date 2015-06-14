@@ -2,8 +2,8 @@ if (Meteor.isServer) {
 
 
     Meteor.methods({
-        sendEmail: function (to, subject, text) {
-            check([to, subject, text], [String]);
+        sendEmail: function (to, subject, html) {
+            check([to, subject, html], [String]);
 
             var credentials = Credentials.findOne();
 
@@ -24,10 +24,10 @@ if (Meteor.isServer) {
                 to: to,
                 from: emailFrom,
                 subject: subject,
-                text: text
+                html: html
             });
 
-            var response = "to:" + to + " from: " + emailFrom + "  subject: " + subject + "  text:  " + text;
+            var response = "to:" + to + " from: " + emailFrom + "  subject: " + subject + "  html:  " + html;
 
             return response
         },
