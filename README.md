@@ -104,7 +104,7 @@ Drop it anywhere in the Terminal/command prompt window.
 
 Click with your mouse anywhere in the Terminal/command prompt window.  Now press the <code>Enter/return</code> key.
 
-Type the word <code>meteor</code> in the Terminal window.   Press the <code>Enter/return</code> key.
+Type the word <code>meteor</code> in the Terminal window.   Press the <code>Enter/return</code> key.  It will take a few minutes for the installation process to complete.
 
 
 
