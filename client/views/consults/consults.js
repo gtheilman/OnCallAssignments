@@ -228,18 +228,8 @@ if (!Meteor.isClient) {
 
             return Students.find({}, {sort: {lastName: 1, firstName: 1}});
 
-        },
-
-        selected: function (student_id) {
-            var response = Template.parentData(1);
-            if (student_id == response.student_id) {
-                $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-success');
-                return "selected";
-            } else if (Students.findOne({_id: student_id, phone: standardizedPhoneFormat(response.from)})) {
-                $("#btnConfirm_" + response.response_id).removeClass('btn-default').addClass('btn-info');
-                return "selected";
-            }
         }
+
 
 
     });
@@ -294,7 +284,15 @@ if (!Meteor.isClient) {
                 $("#btnConfirm_" + response._id).removeClass('btn-default').addClass('btn-info').html("Change");
                 $("#selector_" + response._id).val(response.student_id);
             }
+
+            var student = Students.findOne({phone: standardizedPhoneFormat(response.from)});
+            if (student) {
+                // $("#btnConfirm_" + response._id).removeClass('btn-default').addClass('btn-info');
+                $("#selector_" + response._id).val(student._id);
+            }
         });
+
+
         $('[data-toggle="tooltip"]').tooltip();
 
         $('#responseTable').DataTable();
