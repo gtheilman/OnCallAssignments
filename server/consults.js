@@ -111,7 +111,7 @@ if (Meteor.isServer) Meteor.methods({
                     {consult_id: consult.id},
                     {
                         $set: {
-                            consultMD: " \n" + consult.consultMD,
+                            consultMD: consult.consultMD,
                             consultVisible: consult.consultVisible
                         }
                     }
@@ -122,7 +122,7 @@ if (Meteor.isServer) Meteor.methods({
                     {consult_id: consult.id},
                     {
                         $set: {
-                            keyMD: " \n" + consult.keyMD,
+                            keyMD: consult.keyMD,
                             keyVisible: consult.keyVisible
                         }
                     }
@@ -158,7 +158,7 @@ if (Meteor.isServer) Meteor.methods({
                 var entry = {
                     consult_id: newConsult._id,
                     consultVisible: consult.consultVisible,
-                    consultMD: " \n" + consult.consultMD,
+                    consultMD: consult.consultMD,
                     count: 0
                 };
                 ConsultPages.insert(entry);
@@ -166,7 +166,7 @@ if (Meteor.isServer) Meteor.methods({
                 var entry = {
                     consult_id: newConsult._id,
                     keyVisible: consult.keyVisible,
-                    keyMD: " \n" + consult.keyMD
+                    keyMD: consult.keyMD
                 };
                 KeyPages.insert(entry);
 

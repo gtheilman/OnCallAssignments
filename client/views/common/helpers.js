@@ -65,6 +65,21 @@ if (!Meteor.isClient) {
         }
     });
 
+    Template.oncall.helpers({
+
+        addNewLine: function (md) {
+            return "  \n" + md;
+        }
+    });
+
+
+    Template.key.helpers({
+
+        addNewLine: function (md) {
+            return "  \n" + md;
+        }
+    });
+
 
 }
 

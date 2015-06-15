@@ -287,7 +287,6 @@ if (!Meteor.isClient) {
 
             var student = Students.findOne({phone: standardizedPhoneFormat(response.from)});
             if (student) {
-                // $("#btnConfirm_" + response._id).removeClass('btn-default').addClass('btn-info');
                 $("#selector_" + response._id).val(student._id);
             }
         });
