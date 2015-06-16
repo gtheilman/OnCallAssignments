@@ -105,22 +105,23 @@ Click with your mouse anywhere in the Terminal/command prompt window.  Now press
 
 Type the word <code>meteor</code> in the Terminal window.   Press the <code>Enter/return</code> key.  It will take a few minutes for the installation process to complete.
 
+The program is now running on your local computer.    You can access it by pointing your web browser at <code>http://localhost:3000/</code>
 
 
 **Step 5:**  Deploy the application
 
-While you can open the application in a web browser while it is running on your local computer, you'll likely have problems with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by holding down the <code>Ctrl</code> (or <code>control</code>key and tapping <code>c</code> twice
+While you can open the application in a web browser while it is running on your local computer, you'll likely have problems interacting with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by holding down the <code>Ctrl</code> (or <code>control</code>key and tapping <code>c</code> twice
  
 
-Instead, we are going to [install your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free server to try it out.  
+We are going to [install your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free hosting service to try it out for real.  
 
 Think of a unique one-word name for the application. Suppose you decide to call it <code>foo</code>.
 
-Then, from the command prompt (or Terminal) type <code>meteor deploy foo </code> (or whatever name you chose).    Press the <code>Enter/return</code> key.
+From the command prompt (or Terminal) type <code>meteor deploy foo </code> (or whatever name you chose).    Press the <code>Enter/return</code> key.
 
-You will likely be asked for your Meteor username and password during this process.   When you type your password, it won't look like anything is happening on the screen.  Don't worry, it _is_ being typed.  When you are done,   press the <code>Enter/return</code> key.
+You will likely be asked for your Meteor username and password during this process.   When you type your password, it won't look like anything is happening on the screen.  Don't worry, it _is_ being entered.  Type your password, then press the <code>Enter/return</code> key.
 
-After you successfully deploy to Meteor, a URL where your application can be accessed will be in the Terminal/command prompt window.  It will very likely be something like <code>http://foo.meteor.com</code>.  Make a note of it.
+After you successfully deploy to Meteor, a URL where your application can be accessed will be displayed in the Terminal/command prompt window.  It will very likely be something like <code>http://foo.meteor.com</code>.  Make a note of it.
 
 Once your application is up and running, you can delete the folder containing the files you downloaded.
 
@@ -129,7 +130,7 @@ Once your application is up and running, you can delete the folder containing th
 
 **Step 1:** Open the application in your web browser using the provided URL  
 
-When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.  **Make sure you provide a real email address**.  The only way to recover a password is by requesting that the application send an password reset link by email.   If you forget your password and have not provided a recovery email address, you are locked out of the application.  
+When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.  **Make sure you provide a real email address**.  The only way to recover a password is by requesting that the application send a password reset link by email.   If you forget your password and have not provided a recovery email address, you are locked out of the application.  
 
 **Step 2:**  Sign up for a [Twilio account](https://www.twilio.com/)
 
