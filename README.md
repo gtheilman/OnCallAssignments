@@ -44,7 +44,9 @@ Additional features:
 
 ### Technical Details
 
-The application uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever [charges](https://www.twilio.com/pricing) are incurred.   I do not have any financial interest in Twilio.  For sake of disclosure, some of the other providers of similar services are [Tropo](https://www.tropo.com/), [Plivo](https://www.plivo.com/), and [Nexmo](https://www.nexmo.com/).    Fork requests from persons wishing to adapt this software for use with other company's backends are welcome.
+The application uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever [charges](https://www.twilio.com/pricing) are incurred.   I estimate that running an assignment like the one above with a class of 100 students would cost between $3.00 - $5.00.
+
+I do not have any financial interest in Twilio.  For sake of disclosure, some of the other providers of similar services are [Tropo](https://www.tropo.com/), [Plivo](https://www.plivo.com/), and [Nexmo](https://www.nexmo.com/).    Fork requests from persons wishing to adapt this software for use with other company's backends are welcome.
 
 ![](https://github.com/gtheilman/OncallAssignments/blob/master/media/Process.png)
  
@@ -111,7 +113,7 @@ The program is now running on your local computer.    You can access it by point
 
 **Step 5:**  Deploy the application
 
-While you can open the application in a web browser while it is running on your local computer, you'll likely have problems interacting with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by holding down the <code>Ctrl</code> (or <code>control</code>key and tapping <code>c</code> twice
+While you can open the application in a web browser while it is running on your local computer, you'll likely have problems interacting with Twilio if your program is not accessible to the outside world.   So, we're going to stop the program on your local computer by holding down the <code>Ctrl</code> (or <code>control</code>) key and tapping <code>c</code> twice
  
 
 We are going to [install your application]  (http://docs.meteor.com/#/basic/quickstart)  on Meteor's free hosting service to try it out for real.  
