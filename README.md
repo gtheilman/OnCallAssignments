@@ -32,13 +32,13 @@ Additional features:
 -  Import and export students in CSV format
 
 
-The program doesn't currently interact with Twitter.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, a Blackboard Announcement, or whatever method by which you choose to disseminate the consult request.
+The program doesn't send the tweet.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, an email, a Blackboard Announcement, or whatever method by which you choose to disseminate the consult request.
 
 
 
 ### Technical Details
 
-This particular version uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever [charges](https://www.twilio.com/pricing) are incurred.   I do not have any financial interest in Twilio.  For sake of disclosure, some of the other providers of similar services are [Tropo](https://www.tropo.com/), [Plivo](https://www.plivo.com/), and [Nexmo](https://www.nexmo.com/).    Fork requests from persons wishing to adapt this software for use with other company's backends are welcome.
+The application uses [Twilio](http://www.Twilio.com) as a backend for the voice recording and text messages.   The faculty member has to have their own Twilio account and is responsible for whatever [charges](https://www.twilio.com/pricing) are incurred.   I do not have any financial interest in Twilio.  For sake of disclosure, some of the other providers of similar services are [Tropo](https://www.tropo.com/), [Plivo](https://www.plivo.com/), and [Nexmo](https://www.nexmo.com/).    Fork requests from persons wishing to adapt this software for use with other company's backends are welcome.
 
 ![](https://github.com/gtheilman/OncallAssignments/blob/master/media/Process.png)
  
@@ -124,18 +124,18 @@ Once your application is up and running, you can delete the folder containing th
 
 **Step 1:** Open the application in your web browser using the provided URL  
 
-When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.
+When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.  *Make sure you provide a real email address*.  The only way to recover a password is by requesting that the application send an password reset link by email.   If you forget your password and have not provided a recovery email address, you are locked out of the application.  
 
 **Step 2:**  Sign up for a [Twilio account](https://www.twilio.com/)
 
-The Twilio website takes you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
+The Twilio website walks you through the process of obtaining a phone number, but [this video](https://www.youtube.com/watch?v=MR5sAZUlx_0) might also help.  At this point, you don't need to provide Twilio a credit card.  The phone number used in the demo account is limited, but sufficient for testing purposes.
 
 
 **Step 3:**  Enter your Twilio credentials into the application.
 
 These are the AccountSID and AuthToken associated with your Twilio account.  They can be accessed in your account settings on the Twilio website.  Copy and paste these into the "Credentials" page in the application.
 
-**Step 4:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.  If you have not given Twilio a credit card number, make sure you call from a cell phone that you have "validated" with Twilio.   If you want _any_ cell phone to be able to use the system, you have to give them a credit card number first.
+**Step 4:**  Click on the _Consults_ menu item and call the Twilio phone number listed there.  If you have not given Twilio a credit card number, make sure you call from a cell phone that you have "validated" with Twilio.    That's fine if you are just testing the application.
 
 You'll first hear the "nag" message telling you to upgrade.  Press a key and you will hear the actual prompt for the consult.   Leave a message, then press any key on the cell phone to finish.
 
