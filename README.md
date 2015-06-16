@@ -133,7 +133,7 @@ Once your application is up and running, you can delete the folder containing th
 
 **Step 1:** Open the application in your web browser using the provided URL  
 
-When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.  **Make sure you provide a real email address**.  The only way to recover a password is by requesting that the application send a password reset link by email.   If you forget your password and have not provided a recovery email address, you are locked out of the application.  
+When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin password right away by clicking on the word _admin_ in the manu.  **Make sure you also provide a real email address**.  The only way to recover a password is by requesting that the application send a password reset link by email.   If you forget your password and have not provided a recovery email address, you are locked out of the application.  You change the admin email address by clicking on the _Faculty_ menu item and then _View/Edit/Delete_. 
 
 **Step 2:**  Sign up for a [Twilio account](https://www.twilio.com/)
 
