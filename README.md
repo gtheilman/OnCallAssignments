@@ -23,8 +23,8 @@ Faculty can then go through the responses left by the students and score them on
 
 Additional features:
 - Host the application for free on your own personal website by following the instructions below.
-- Generate a web page for the "consult" from within the application.  You can also create a webpage for the key/rubric.  Track the number of "hits" on the page in real-time.
-- - The program doesn't send the tweet.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, an email, a Blackboard Announcement, or whatever method by which you choose to disseminate the consult request.
+- Generate a web page for the "consult" from within the application.  You can also generate a webpage for the key/rubric.  Track the number of "hits" on the page in real-time.
+- The program doesn't send the tweet.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, an email, a Blackboard Announcement, or whatever method by which you choose to disseminate the consult request.
 - Specify the message students hear when they call the phone number and the message they hear after they are done leaving their consult.
 - Specify the maximum amount of time students have to record their responses (encourage them to be concise).
 - Set different permission levels for administrators and for those who just need to grade student responses
