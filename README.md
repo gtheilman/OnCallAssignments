@@ -2,7 +2,7 @@
 This is a web-based program to manage an "on-call" assignment for health-care students.
 
 ### Scenario
-Students are told that they are "on-call" for a certain period of time.  During that time, they must monitor a Twitter feed.  At random times during the on-call period, the faculty member tweets the URL of a webpage containing a "consult".  Each student has an hour to 
+Students are told that they are "on-call" for a certain span of hours.  During that time, they must monitor a Twitter feed.  At random times during the on-call period, the faculty member tweets the URL of a webpage containing a "consult".  Each student then has an hour to 
 - Review the consult
 - Formulate a recommendation 
 - Phone in the recommendation to a telephone number provided in the tweet
@@ -22,18 +22,20 @@ Faculty can then go through the responses left by the students and score them on
  
 
 Additional features:
-- Manage several different phone numbers.  For example, different classes could be using the application at the same time, just by calling different telephone numbers.
-- Different permission levels for administrators and those who just need to grade student responses
-- Generate web pages to display a written consult and/or a grading rubric (key)
--  Transcribe the recording (extra fee charged by provider)
--  Look up the person registered to an incoming cell phone number (extra fee charged by provider)
--  Choose from different voices for outgoing messages
--  Specify the maximum amount of time students have to record their responses (no rambling).
--  Import and export students in CSV format
-
-
-The program doesn't send the tweet.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, an email, a Blackboard Announcement, or whatever method by which you choose to disseminate the consult request.
-
+- Host the application for free on your own personal website by following the instructions below.
+- Generate a web page for the "consult" from within the application.  You can also create a webpage for the key/rubric.  Track the number of "hits" on the page in real-time.
+- - The program doesn't send the tweet.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, an email, a Blackboard Announcement, or whatever method by which you choose to disseminate the consult request.
+- Specify the message students hear when they call the phone number and the message they hear after they are done leaving their consult.
+- Specify the maximum amount of time students have to record their responses (encourage them to be concise).
+- Set different permission levels for administrators and for those who just need to grade student responses
+- Choose from different voices for outgoing messages
+- Application is automatically set to use [Mailgun's](http://www.mailgun.com) free email service.   Alternatively, you can route emails through your own provider.
+- Import and export students in CSV format
+- Export consult responses in CSV format
+- Program attempts to guess which student left the response based on their phone number (helpful if the student mumbles or fails to leave their name).
+- Sort tables on different columns.  Search tables for specific information.
+- Transcribe the recording (extra fee charged by Twilio)
+- Look up the person registered to an incoming cell phone number (extra fee charged by Twilio)
 
 
 ### Technical Details
@@ -124,7 +126,7 @@ Once your application is up and running, you can delete the folder containing th
 
 **Step 1:** Open the application in your web browser using the provided URL  
 
-When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.  *Make sure you provide a real email address*.  The only way to recover a password is by requesting that the application send an password reset link by email.   If you forget your password and have not provided a recovery email address, you are locked out of the application.  
+When the application is initially set up, the _login | password_  is _admin | admin_.   Change the admin email and password right away to something private by clicking on the _Faculty_ menu item and then _View/Edit/Delete_.  **Make sure you provide a real email address**.  The only way to recover a password is by requesting that the application send an password reset link by email.   If you forget your password and have not provided a recovery email address, you are locked out of the application.  
 
 **Step 2:**  Sign up for a [Twilio account](https://www.twilio.com/)
 
