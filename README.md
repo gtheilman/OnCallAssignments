@@ -31,6 +31,7 @@ Additional features:
 - Specify the maximum amount of time students have to record their responses (encourage them to be concise).
 - Set different permission levels for administrators and for those who just need to grade student responses
 - Application is automatically set to use [Mailgun's](http://www.mailgun.com) free email service.   Alternatively, you can route emails through your own provider.
+- Program will attempt to generate "shortened URLs" for links to consult pages and recordings of student responses.
 - Import and export students in CSV format
 - Export consult responses in CSV format
 - Program attempts to guess which student left the response based on their phone number (helpful if the student mumbles or fails to leave their name).
