@@ -28,6 +28,7 @@ Additional features:
 - The program doesn't send the tweet.   However, it will generate a "draft tweet" that you can cut and paste into the Twitter website, an email, a Blackboard Announcement, or whatever method by which you choose to disseminate the consult request.
 - Specify the message students hear when they call the phone number and the message they hear after they are done leaving their consult.
 - Choose from different voices for the messages
+- Multiple consult requests can be in play at the same time by purchasing additional phone numbers from Twilio (currently $1 per month).
 - Specify the maximum amount of time students have to record their responses (encourage them to be concise).
 - Set different permission levels for administrators and for those who just need to grade student responses
 - Application is automatically set to use [Mailgun's](http://www.mailgun.com) free email service.   Alternatively, you can route emails through your own provider.
@@ -36,8 +37,8 @@ Additional features:
 - Export consult responses in CSV format
 - Program attempts to guess which student left the response based on their phone number (helpful if the student mumbles or fails to leave their name).
 - Sort tables on different columns.  Search tables for specific information.
-- Transcribe the recording (extra fee charged by Twilio)
-- Look up the person registered to an incoming cell phone number (extra fee charged by Twilio)
+- Transcribe the recording (extra fee charged by Twilio, currently 5 cents per minute)
+- Look up the person registered to an incoming cell phone number (extra fee charged by Twilio, current 1 cent per lookup)
 - Source code is available and editable.  Personalize the program for your own needs.
 
 
