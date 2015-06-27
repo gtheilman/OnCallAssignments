@@ -18,8 +18,8 @@ Within a few minutes the student receives a text message (SMS) on their phone wi
 Faculty can then go through the responses left by the students and score them on communications skills, clinical reasoning, professionalism, etc.
 
 
-![ScreenShot.png](https://raw.githubusercontent.com/gtheilman/RxWars/master/media/scoreboard.png)
- 
+![ScreenShot.png](https://github.com/gtheilman/OncallAssignments/blob/master/media/ScreenShot.png)
+
 
 Additional features:
 - Host the application for free by following the instructions below.
