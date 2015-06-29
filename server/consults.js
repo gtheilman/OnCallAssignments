@@ -102,6 +102,7 @@ if (Meteor.isServer) Meteor.methods({
                             maxSeconds: consult.maxSeconds,
                             transcribe: consult.transcribe,
                             voiceCallerIdLookup: consult.voiceCallerIdLookup,
+                            shortURL: consult.shortURL,
                             activate: consult.activate
                         }
                     }
@@ -141,6 +142,7 @@ if (Meteor.isServer) Meteor.methods({
                         maxSeconds: consult.maxSeconds,
                         transcribe: consult.transcribe,
                         voiceCallerIdLookup: consult.voiceCallerIdLookup,
+                        shortURL: consult.shortURL,
                         activate: consult.activate,
                         createdAt: new Date()
                     }

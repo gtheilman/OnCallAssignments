@@ -196,8 +196,23 @@
             </div>
 
             <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            {{#if shortURL}}
+                                <input type="checkbox" id="shortURL" name="shortURL" checked>
+                            {{else}}
+                                <input type="checkbox" id="shortURL" name="shortURL">
+                            {{/if}}
+                            Use shortened URLs   <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign"
+                                                       aria-hidden="true"
+                                                       title="If checked, the program will try to use shortened URLs for the links to the consult and the responses.   That's
+                                               makes messages look neater, but some email and SMS providers block messages containing shortened URLs"></span>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-1"></div>
-                <div class="col-md-8">
+                <div class="col-md-3">
                     <div class="form-group">
                         <div class="checkbox">
                             {{#if activate}}
@@ -212,6 +227,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             {{#if isInRole 'admin'}}
@@ -242,6 +258,7 @@
                 <p>&nbsp;</p>
 
                 <p>&nbsp;</p>
+
                 <p>
                     <b>Tweet:</b> (copy and paste into <a href="http://www.twitter.com" target="_blank">Twitter
                     website</a>, your email program, or whatever method you plan to use to disseminate the request for
@@ -249,9 +266,9 @@
                     <span data-toggle="tooltip" class="glyphicon glyphicon-question-sign" aria-hidden="true"
                           title="The URL here is for the page generated from the Markdown entered in the Consult box above.  If you have the consult posted somewhere else, use that URL instead."></span>
                     <input type="text" class="form-control"
-                                                                               id="tweet"
-                                        placeholder="{{buildTweet}}"
-                                        value="{{buildTweet}}">
+                           id="tweet"
+                           placeholder="{{buildTweet}}"
+                           value="{{buildTweet}}">
                     <br>
                     ( <i> {{tweetLength buildTweet }} characters ) </i>
                 </p>
@@ -353,7 +370,7 @@
                             <select id="selector_{{_id}}" name="student_id">
                                 <option></option>
                                 {{#each students}}
-                                <option value="{{_id}}"> {{lastName}}, {{firstName}}</option>
+                                    <option value="{{_id}}"> {{lastName}}, {{firstName}}</option>
                                 {{/each}}
                             </select>
 
@@ -373,17 +390,15 @@
     </div>
 
 
-
-
-       <div class='row'>
-           <div class="col-md-2">
-               <p>&nbsp;</p>
-               <a href="/exportResponsesCSV/{{_id}}">
-                   <button type="button" id="exportResponsesCSV" class="btn  btn-sm  btn-success">Export Responses CSV
-                   </button>
-               </a>
-           </div>
-       </div>
+    <div class='row'>
+        <div class="col-md-2">
+            <p>&nbsp;</p>
+            <a href="/exportResponsesCSV/{{_id}}">
+                <button type="button" id="exportResponsesCSV" class="btn  btn-sm  btn-success">Export Responses CSV
+                </button>
+            </a>
+        </div>
+    </div>
 
 
 </template>

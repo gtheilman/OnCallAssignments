@@ -14,7 +14,6 @@ if (!Meteor.isClient) {
                 });
             }
 
-
             if ($('#shortName').val() == "") {
                 sAlert.error('A name must be provided', {
                     effect: 'scale', position: 'top-right',
@@ -55,6 +54,7 @@ if (!Meteor.isClient) {
                     voice: $('input:radio[name=voice]:checked').val(),
                     transcribe: $('#transcribe').is(':checked'),
                     voiceCallerIdLookup: $('#voiceCallerIdLookup').is(':checked'),
+                    shortURL: $('#shortURL').is(':checked'),
                     activate: $('#activate').is(':checked')
                 };
 
@@ -157,9 +157,10 @@ if (!Meteor.isClient) {
 
             buildTweet: function () {
                 var tweet = this.tweetHeader + " ";
+
                 var consultURL = ConsultPages.findOne({consult_id: this._id}).consultURL;
 
-                if (consultURL) {
+                if (consultURL && this.shortURL) {
                     tweet += "    " + consultURL + "    ";
                 } else {
                     tweet += Meteor.absoluteUrl() + "oncall/" + this._id + "    ";
