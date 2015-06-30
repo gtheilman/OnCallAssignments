@@ -156,6 +156,17 @@ if (!Meteor.isClient) {
         ,
 
 
+        "click #restartButton": function (event) {
+            event.preventDefault();
+            if (confirm("Do you really want to restart the server?")) {
+                Meteor.call('resetServer', function (error, result) {
+                        if (result) {
+                            alert("Restarting...");
+                        }
+                    }
+                );
+            }
+        },
         "submit #testEmail": function (event) {
             event.preventDefault();
             if ($('#testEmailAddress').val() == "") {
