@@ -129,6 +129,9 @@ After you successfully deploy to Meteor, a URL where your application can be acc
 Once your application is up and running, you can delete the folder containing the files you downloaded.
 
 
+**Note:**  Deploying to Meteor.com is a free service, so it's not really fair to complain when it slows down or stops working.   However, I have noticed that on occasion that it slows down or stops working.   While I think Meteor.com is a fine way of trying out the software to see if you like it, I'd suggest hosting on a "pay" site like [Modulus](http://help.modulus.io/customer/portal/articles/1647770-using-meteor-with-modulus) if you are planning on using this for actual assignments.   It's not that expensive and you can turn the program off between assignments to save money.
+
+
 ###Initial Use
 
 **Step 1:** Open the application in your web browser using the provided URL  
