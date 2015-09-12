@@ -226,7 +226,6 @@ if (!Meteor.isClient) {
         },
 
         students: function () {
-
             return Students.find({}, {sort: {lastName: 1, firstName: 1}});
 
         }
