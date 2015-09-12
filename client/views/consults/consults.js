@@ -213,7 +213,7 @@ if (!Meteor.isClient) {
     )
     ;
 
-
+ 
     Template.consultResponses.helpers({
         responses: function () {
             var consult = Template.parentData(1);
